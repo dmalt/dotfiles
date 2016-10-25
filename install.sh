@@ -4,7 +4,7 @@ sudo apt-get install i3blocks
 sudo apt-get install feh
 # make symbolic links
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
-ln -sL ~/dotfiles/.i3/ ~/.i3/
+ln -s ~/dotfiles/.i3/ ~/.i3
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 
