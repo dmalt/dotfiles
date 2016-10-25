@@ -2,7 +2,7 @@
 sudo apt-get install git
 sudo apt-get install ssh
 # make symbolic links
-ln -s ./.gitconfig ~/.gitconfig
-ln -s ./.i3 ~/.i3
-ln -s ./.zshrc ~/.zshrc
+ln -s ~/dotfiles/gitconfig ~/.gitconfig
+ln -s ~/dotfiles/.i3 ~/.i3
+ln -s ~/dotfiles/.zshrc ~/.zshrc
 
