@@ -2,6 +2,7 @@
 sudo apt-get install ssh
 sudo apt-get install i3blocks
 sudo apt-get install feh
+sudo apt-get install conky
 # make symbolic links
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.i3/ ~/.i3
