@@ -239,7 +239,7 @@ bindsym $mod+Shift+d exec google-chrome
 exec setxkbmap -layout us -option ctrl:nocaps
 exec --no-startup-id conky
 exec --no-startup-id xfce4-power-manager
-exec_always --no-startup-id feh --bg-scale ~/Dropbox/Pictures/Wallpapers/abstract_outer_space_astronauts_void_solid_icons_simplistic_simple_1920x1080.jpg
+exec_always --no-startup-id feh --bg-scale ~/dotfiles/wallpaper.jpg
 # exec_always --no-startup-id feh  ~/Dropbox/Pictures/Wallpapers/astronaut_crop.jpg
 
 bindsym Print exec --no-startup-id shutter -s
