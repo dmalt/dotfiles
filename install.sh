@@ -1,5 +1,4 @@
 #!/bin/bash
-sudo apt-get install git
 sudo apt-get install ssh
 sudo apt-get install i3blocks
 sudo apt-get install feh
@@ -7,6 +6,7 @@ sudo apt-get install feh
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -sL ~/dotfiles/.i3/ ~/.i3/
 ln -s ~/dotfiles/.zshrc ~/.zshrc
+ln -s ~/dotfiles/,vimrc ~/.vimrc
 
 # configure i3
 # install San Francisco font
