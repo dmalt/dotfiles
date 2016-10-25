@@ -1,0 +1,16 @@
+[user]
+	email = dm.altukhov@ya.ru
+	name = Dmitriy Altukhov
+[core]
+	editor = subl -w -n
+[alias]
+	st = status
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+[diff]
+	tool = sublimerge
+
+[http]
+	sslverify = false
