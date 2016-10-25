@@ -1,0 +1,67 @@
+# Window specifications
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+own_window_colour 2D2D2D
+double_buffer yes
+update_interval 3
+
+
+use_spacer right
+
+minimum_size 300
+
+# Alignment #
+alignment tr
+gap_x 50
+gap_y 200
+
+border_inner_margin 15
+border_outer_margin 0
+
+# Graphics settings #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# Text settings #
+use_xft yes
+xftalpha 0.8
+xftfont System San Francisco Display:size=10
+
+override_utf8_locale yes
+
+
+# Color scheme #
+default_color DCDCDC
+
+color1 2f343f
+color2 9933CC
+color3 669900
+color4 FF8800
+color5 CC0000
+color6 AAAAAA
+color7 484848
+
+TEXT
+${color1}Total CPU: ${cpu cpu0} $color
+${color1}${cpubar}$color
+${cpugraph}
+${color1}Core 1: ${freq 1} MHz        Temprature:  ${exec sensors|grep 'Core 0'|awk '{print $3}'}
+${cpu cpu1}% ${color1}${cpubar cpu1}
+${color1}Core 2: ${freq 2} MHz        Temprature:  ${exec sensors|grep 'Core 1'|awk '{print $3}'}
+${cpu cpu2}% ${color1}${cpubar cpu2}
+${color1}Core 3: ${freq 3} MHz        
+${cpu cpu3}% ${color1}${cpubar cpu3}
+${color1}Core 4: ${freq 4} MHz        
+${cpu cpu4}% ${color1}${cpubar cpu4}
+
+RAM:   $memperc%   ${membar 6}
+Swap:  $swapperc%   ${swapbar 6}$color
+${color7}${hr}${color}
+
+${color1}${execi 300 fortune -s}$color
+##############################################################################################

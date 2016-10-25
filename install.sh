@@ -8,6 +8,7 @@ ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.i3/ ~/.i3
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/.conkyrc ~/.conkyrc
 
 # configure i3
 # install San Francisco font
