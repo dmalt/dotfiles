@@ -24,9 +24,6 @@ call pathogen#infect()
 
 filetype indent on
 
-
-set nocompatible " make vim non backwards compatible
-
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
