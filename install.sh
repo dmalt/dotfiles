@@ -16,3 +16,4 @@ mkdir ~/.fonts; wget https://github.com/supermarin/YosemiteSanFranciscoFont/arch
 
 wget https://github.com/FortAwesome/Font-Awesome/archive/v4.7.0.zip; unzip v*.zip; rm v*.zip; mv Font-Awesome*/fonts/*.ttf ~/.fonts/; rm -r Font-Awesome* 
 
+wget https://github.com/DaveDavenport/rofi/releases/download/1.2.0/rofi-1.2.0.tar.gz; 
