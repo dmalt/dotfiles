@@ -46,6 +46,7 @@ set laststatus=2
 set relativenumber
 set undofile
 set background=dark
+set list listchars=tab:>-,eol:¶
 
 inoremap jk <ESC>
 nnoremap / /\v
