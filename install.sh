@@ -10,6 +10,7 @@ ln -s ~/dotfiles/.i3/ ~/.i3
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.conkyrc ~/.conkyrc
+ln -s ~/dotfiles/.zshrc ~/.zshrc
 
 
 # configure i3
@@ -18,4 +19,4 @@ mkdir ~/.fonts; wget https://github.com/supermarin/YosemiteSanFranciscoFont/arch
 
 wget https://github.com/FortAwesome/Font-Awesome/archive/v4.7.0.zip; unzip v*.zip; rm v*.zip; mv Font-Awesome*/fonts/*.ttf ~/.fonts/; rm -r Font-Awesome* 
 
-wget https://github.com/DaveDavenport/rofi/releases/download/1.2.0/rofi-1.2.0.tar.gz; 
+#wget https://github.com/DaveDavenport/rofi/releases/download/1.2.0/rofi-1.2.0.tar.gz; 

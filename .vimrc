@@ -19,7 +19,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 filetype off
 
-call pathogen#infect()
+"call pathogen#infect()
 " end of vundle configuration
 
 filetype indent on
@@ -53,7 +53,8 @@ vnoremap / /\v
 set ignorecase
 set smartcase
 
-color gruvbox
+set t_Co=256
+colorscheme gruvbox
 
 set clipboard=unnamedplus
 
