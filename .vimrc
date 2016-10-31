@@ -55,7 +55,10 @@ set ignorecase
 set smartcase
 
 set t_Co=256
+Plugin 'flazz/vim-colorschemes'
+
 colorscheme gruvbox
+"color gruvbox
 
 set clipboard=unnamedplus
 
@@ -69,5 +72,5 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-Plugin 'flazz/vim-colorschemes'
+"Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdcommenter'
