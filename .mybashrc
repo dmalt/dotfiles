@@ -16,5 +16,7 @@ alias sshautrs="sshmsc -t 'cd /net/server/data/home/meg/DMALT/aut_rs; bash -l'"
 
 export SCRIPTS_DIR=~/Dropbox/scripts
 
-alias l='ls -1F'
 # alias port_fwd_nb='ssh -N -f -L localhost:8888:localhost:8889 LKJ006'
+export HISTTIMEFORMAT="%d/%m/%y %T "
+xset r rate 250 60 
+

@@ -28,6 +28,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set expandtab
 
 set encoding=utf-8
 "set scrolloff=3
@@ -43,7 +44,10 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
+
+set number
 set relativenumber
+
 set undofile
 set background=dark
 set list listchars=tab:>-,eol:¶
@@ -60,11 +64,11 @@ Plugin 'flazz/vim-colorschemes'
 colorscheme gruvbox
 "color gruvbox
 
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 nnoremap j gj
 nnoremap k gk
-let mapleader = "\<Space>"
+let mapleader = '\<Space>'
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -73,4 +77,23 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 "Plugin 'flazz/vim-colorschemes'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'michaeljsmith/vim-indent-object'
+
+
+"if has("autocmd")
+    "au InsertEnter *
+        "\ if v:insertmode == 'i' |
+        "\   silent execute "!gnome-terminal-cursor-shape.sh ibeam" |
+        "\ elseif v:insertmode == 'r' |
+        "\   silent execute "!gnome-terminal-cursor-shape.sh underline" |
+        "\ endif
+    "au InsertLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
+    "au VimLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
+"endif
+
+autocmd FileType matlab setlocal commentstring=%\ %s
