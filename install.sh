@@ -6,7 +6,10 @@ sudo apt-get install conky
 
 # make symbolic links
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/dotfiles/.i3/ ~/.i3
+if ! [[ -f ~/.i3 ]]; then
+    ln -s ~/dotfiles/.i3/ ~/.i3
+fi
+
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.conkyrc ~/.conkyrc
