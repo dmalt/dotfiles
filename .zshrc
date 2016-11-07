@@ -89,4 +89,5 @@ export FREESURFER_HOME=/usr/local/freesurfer
 source $FREESURFER_HOME/SetUpFreeSurfer.sh
 
 PATH=$PATH:/home/dmalt/Desktop/mendeleydesktop-1.16.3-linux-x86_64/bin
+export PATH=/home/dmalt/anaconda2/bin:$PATH
 source /home/dmalt/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
