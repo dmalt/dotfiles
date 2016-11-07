@@ -85,9 +85,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/dotfiles/.mybashrc
-source ~/dotfiles/.mybashrc_laptop
-export FREESURFER_HOME=/usr/local/freesurfer
-source $FREESURFER_HOME/SetUpFreeSurfer.sh
 source ~/dotfiles/aliases
 
 PATH=$PATH:/home/dmalt/Desktop/mendeleydesktop-1.16.3-linux-x86_64/bin
@@ -98,3 +95,4 @@ bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
 
+source /home/dmalt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
