@@ -51,7 +51,7 @@ ZSH_THEME="pure"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip python web-search vi-mode cp colorize zsh-autosuggestions z safe-paste)
+plugins=(git pip python  vi-mode cp  zsh-autosuggestions z safe-paste)
 
 #plugins=(git pip python web-search vi-mode cp colorize  z)
 source $ZSH/oh-my-zsh.sh
@@ -87,7 +87,6 @@ source $ZSH/oh-my-zsh.sh
 source ~/dotfiles/.mybashrc
 source ~/dotfiles/aliases
 
-PATH=$PATH:/home/dmalt/Desktop/mendeleydesktop-1.16.3-linux-x86_64/bin
 export PATH=/home/dmalt/anaconda2/bin:$PATH
 source /home/dmalt/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
