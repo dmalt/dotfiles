@@ -2,7 +2,7 @@
 	email = dm.altukhov@ya.ru
 	name = Dmitriy Altukhov
 [core]
-	editor = vim
+	editor = nvim
 [alias]
 	st = status
 [filter "lfs"]
