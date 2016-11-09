@@ -83,7 +83,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'michaeljsmith/vim-indent-object'
-
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 "if has("autocmd")
     "au InsertEnter *
@@ -96,4 +97,7 @@ Plugin 'michaeljsmith/vim-indent-object'
     "au VimLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
 "endif
 
-autocmd FileType matlab setlocal commentstring=%\ %s
+
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme='bubblegum'
