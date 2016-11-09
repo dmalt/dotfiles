@@ -1,4 +1,6 @@
 export PATH="/usr/local/MATLAB/R2016a/bin:$PATH"
+export PATH="/usr/local/MATLAB/R2016a/bin/glnxa64:$PATH"
+
 alias mnd='matlab -nodesktop -nosplash'
 alias py2='/home/dmalt/anaconda/bin/python'
 alias ipy2='/home/dmalt/anaconda/bin/ipython'
