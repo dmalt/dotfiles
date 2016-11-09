@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/dmalt/.oh-my-zsh
+ export ZSH=/home/dmalt/.oh-my-zsh
+ export FPATH=$FPATH:/usr/share/zsh/4.3.11/functions
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -51,7 +52,7 @@ ZSH_THEME="pure"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip python  vi-mode cp  zsh-autosuggestions z safe-paste)
+plugins=(git pip python  vi-mode zsh-autosuggestions z safe-paste)
 
 #plugins=(git pip python web-search vi-mode cp colorize  z)
 source $ZSH/oh-my-zsh.sh
@@ -88,10 +89,40 @@ source ~/dotfiles/.mybashrc
 source ~/dotfiles/aliases
 
 export PATH=/home/dmalt/anaconda2/bin:$PATH
-source /home/dmalt/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
 
 source /home/dmalt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+
+
+function zrcautoload() {
+     emulate -L zsh
+     setopt extended_glob
+     local fdir ffile
+     local -i ffound
+ 
+     ffile=$1
+     (( found = 0 )) 
+     for fdir in ${fpath} ; do 
+         [[ -e ${fdir}/${ffile} ]] && (( ffound = 1 )) 
+     done 
+ 
+     (( ffound == 0 )) && return 1
+     if [[ $ZSH_VERSION == 3.1.<6-> || $ZSH_VERSION == <4->* ]] ; then 
+         autoload -U ${ffile} || return 1
+     else 
+         autoload ${ffile} || return 1
+     fi
+     return 0
+ }
+ 
+ zrcautoload vcs_info || vcs_info() {return 1}
+
+
+
+export PATH=/home/dmalt/anaconda3/bin:$PATH
