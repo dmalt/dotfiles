@@ -87,6 +87,7 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/MatlabFilesEdition'
+Plugin 'Valloric/YouCompleteMe'
 
 "if has("autocmd")
     "au InsertEnter *
@@ -105,3 +106,4 @@ autocmd BufEnter *.m    compiler mlint
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
+let g:python_host_prog='/home/dmalt/anaconda/bin/python'
