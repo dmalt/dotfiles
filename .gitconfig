@@ -5,6 +5,12 @@
 	editor = nvim
 [alias]
 	st = status
+    cm = commit -m
+    a = add
+    d = diff
+    co = checkout
+    cob = checkout -b
+    la = "!git config -l | grep alias | cut -c 7-"
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
