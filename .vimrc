@@ -1,3 +1,4 @@
+"My vimrc configuration
 set nocompatible              " required
 filetype off                  " required
 
@@ -80,7 +81,7 @@ nnoremap <C-H> <C-W><C-H>
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'michaeljsmith/vim-indent-object'
@@ -88,6 +89,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/MatlabFilesEdition'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'neomake/neomake'
 
 "if has("autocmd")
     "au InsertEnter *
@@ -107,3 +109,15 @@ autocmd BufEnter *.m    compiler mlint
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
 let g:python_host_prog='/home/dmalt/anaconda2/bin/python'
+
+"Map saving to ctrl+s
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>a
+
+" let g:neomake_python_flake8_maker = {
+"     \ 'exe': 'python2.7',
+"     \ 'errorformat': '%A%f: line %l\, col %v\, %m \ (%t%*\d\)',
+"     \ }
+" let g:neomake_python_enable_makers = ['flake8']
+
+autocmd InsertChange,TextChanged * update | Neomake
