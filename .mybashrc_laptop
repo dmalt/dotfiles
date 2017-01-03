@@ -9,5 +9,6 @@ alias port_fwd_nb='ssh -N -f -L localhost:8889:localhost:8889 LKJ006'
 export PATH=~/anaconda/bin:$PATH
 
 # export TZ=Europe/Moscow
-export TZ=America/Montreal
+/* export TZ=America/Montreal */
+export TZ=Europe/Moscow
 
