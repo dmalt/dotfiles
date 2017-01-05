@@ -19,6 +19,8 @@
 #   Twitter:  https://twitter.com/nicoulaj
 #
 # ------------------------------------------------------------------------------
+#
+# dmalt --> added timestamp to the right side of the prompt
 
 # Set required options
 #
