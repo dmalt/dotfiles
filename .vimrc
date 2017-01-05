@@ -10,7 +10,23 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
+" ----------- Install plugins ------- "
 Plugin 'gmarik/Vundle.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/MatlabFilesEdition'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'neomake/neomake'
+Plugin 'JamshedVesuna/vim-markdown-preview'
+" -------------------------------------- "
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -58,10 +74,6 @@ vnoremap / /\v
 set ignorecase
 set smartcase
 
-set t_Co=256
-Plugin 'flazz/vim-colorschemes'
-
-colorscheme gruvbox
 "color gruvbox
 
 set clipboard=unnamed
@@ -70,25 +82,16 @@ nnoremap j gj
 nnoremap k gk
 let mapleader = '\<Space>'
 
+
 "split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"Plugin 'flazz/vim-colorschemes'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-" Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/MatlabFilesEdition'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'neomake/neomake'
+
+set t_Co=256
+colorscheme gruvbox
 
 "if has("autocmd")
     "au InsertEnter *
@@ -108,6 +111,8 @@ autocmd BufEnter *.m    compiler mlint
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
 let g:python_host_prog='/home/dmalt/anaconda/bin/python'
+
+let vim_markdown_preview_github=1
 
 "Map saving to ctrl+s
 :nmap <c-s> :w<CR>
