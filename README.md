@@ -5,7 +5,7 @@ semiautomatic tool to apply all the custom setups on a completely new machine
 
 # My tools
 
-| Task            | Tool     | Dotfile           |
+| Category        | Tool     | Dotfile           |
 |-----------------|----------|-------------------|
 | Windows manager | i3       | .i3/config        |
 | Status bar      | i3blocks | .i3/i3blocks.conf |
@@ -17,6 +17,13 @@ semiautomatic tool to apply all the custom setups on a completely new machine
 # Manual tweaks
 
 ### ZSHELL
+
+#### Plugins for manual installation
+
+1. oh-my-zsh
+2. zsh-syntax-highlighting
+
+#### Theme
 I use oh-my-zsh for zshell customization. I really like pure theme
 but I wanted to add timestamp to the right of the screen so I modified it a bit and
 put my version in this repo. To make it available create a symlink inside .oh-my-zsh/themes folder like this:
@@ -32,3 +39,5 @@ ZSH_THEME="pure_dmalt"
 ```
 
 to your .zshrc file
+
+
