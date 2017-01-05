@@ -14,3 +14,5 @@ alias mnd='matlab -nodesktop -nosplash'
 
 alias py2='/home/dmalt/anaconda/bin/python'
 alias ipy2='/home/dmalt/anaconda/bin/ipython'
+
+alias history='fc -l -E 1'
