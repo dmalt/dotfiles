@@ -1,3 +1,4 @@
 alias sapt='sudo apt-get install'
 alias l='ls -1F'
+alias lll='ls -alh'
 
