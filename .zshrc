@@ -112,4 +112,7 @@ export SCRIPTS_DIR=~/Dropbox/scripts
 # export HISTTIMEFORMAT="%d/%m/%y %T "
 #
 # Speed up keyboard:
-xset r rate 250 60 
+
+if [ -f ~/.zshrc_local ]; then
+    source ~/.zshrc_local
+fi
