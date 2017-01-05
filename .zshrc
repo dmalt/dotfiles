@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/dmalt/.oh-my-zsh
+export ZSH=/home/dmalt/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -51,7 +51,7 @@ ZSH_THEME="pure_dmalt"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip python web-search vi-mode cp colorize zsh-autosuggestions z safe-paste)
+plugins=(git pip python web-search vi-mode cp colorize zsh-autosuggestions z safe-paste zsh-syntax-highlighting)
 
 #plugins=(git pip python web-search vi-mode cp colorize  z)
 source $ZSH/oh-my-zsh.sh
@@ -94,7 +94,7 @@ source ~/dotfiles/aliases
 PATH=$PATH:/home/dmalt/Desktop/mendeleydesktop-1.16.3-linux-x86_64/bin
 export PATH=/home/dmalt/anaconda2/bin:$PATH
 
-source /home/dmalt/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /home/dmalt/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
