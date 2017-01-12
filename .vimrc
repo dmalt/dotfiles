@@ -3,7 +3,7 @@ set nocompatible              " required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
@@ -76,11 +76,11 @@ set smartcase
 
 "color gruvbox
 
-set clipboard=unnamed
+" set clipboard=unnamed
 
 nnoremap j gj
 nnoremap k gk
-let mapleader = '\<Space>'
+let mapleader = ','
 
 
 "split navigations
@@ -89,20 +89,15 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+nnoremap gb :ls<CR>:b<Space>
+
 
 set t_Co=256
 colorscheme gruvbox
 
-"if has("autocmd")
-    "au InsertEnter *
-        "\ if v:insertmode == 'i' |
-        "\   silent execute "!gnome-terminal-cursor-shape.sh ibeam" |
-        "\ elseif v:insertmode == 'r' |
-        "\   silent execute "!gnome-terminal-cursor-shape.sh underline" |
-        "\ endif
-    "au InsertLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
-    "au VimLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
-"endif
+
+" change cursor shape in different modes
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 autocmd FileType matlab setlocal commentstring=%\ %s
 
