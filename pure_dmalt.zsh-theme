@@ -81,6 +81,7 @@ precmd() {
 PROMPT="%(?.%F{magenta}.%F{red})❯%f " # Display a red prompt char on failure
 RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f %F{magenta}%*%f"    # Display username if connected via SSH
 
+# RPS1=$RPS1' $(vi_mode_prompt_info)'
 # ------------------------------------------------------------------------------
 #
 # List of vcs_info format strings:
