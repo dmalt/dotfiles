@@ -54,8 +54,6 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 focus_follows_mouse no
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -219,13 +217,20 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightnes
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
+exec setxkbmap -layout us -option ctrl:nocaps
+exec setxkbmap -layout ru -option ctrl:nocaps
+
+exec xmodmap -e 'keycode 66 = Control_L'
+exec xmodmap -e 'clear Lock'
+exec xmodmap -e 'add Control = Control_L'
+
 assign [class="google-chrome"] $workspace3
 
 assign [class="Sublime_text"] $workspace2
 assign [class="Slack"] $workspace10
 assign [class="Pcmanfm"] $workspace4
 assign [class="Shutter"] $workspace6
-assign [class="telegram"] $workspace10
+assign [class="TelegramDesktop"] $workspace10
 assign [class="MATLAB R2016a"] $workspace5
 
 exec_always --no-startup-id compton
@@ -238,8 +243,7 @@ bindsym $mod+Shift+d exec google-chrome
 # setxkbmap -layout ru,us
 # setxkbmap -option 'grp:ctrl_alt_toggle'
 
-exec setxkbmap -layout us -option ctrl:nocaps
-exec setxkbmap -layout ru -option ctrl:nocaps
+# exec setxkbmap -layout us -option ctrl:nocaps
 exec --no-startup-id conky
 exec --no-startup-id xfce4-power-manager
 exec_always --no-startup-id feh --bg-scale ~/dotfiles/wallpaper.jpg
