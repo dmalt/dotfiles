@@ -20,16 +20,14 @@ semiautomatic tool to apply all the custom setups on a completely new machine
 
 #### Plugins to be installed manually
 1. oh-my-zsh
-...
-```bash
-bash -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-```
+    ```bash
+    bash -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+    ```
 
 2. zsh-syntax-highlighting
-...
-```bash
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-```
+    ```bash
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    ```
 
 #### Theme
 I use oh-my-zsh for zshell customization. I really like pure theme
