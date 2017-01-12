@@ -25,6 +25,7 @@ export PATH="/usr/local/MATLAB/R2016a/bin/glnxa64:$PATH"
 
 export PATH=$PATH:/home/dmalt/Desktop/mendeleydesktop-1.16.3-linux-x86_64/bin
 export PATH=$HOME/anaconda2/bin:$PATH
+export PATH=$HOME/anaconda3/bin:$PATH
 
 export LD_LIBRARY_PATH=/opt/OpenBLAS/lib:/opt/OpenBLAS/lib
 export PATH=$HOME/anaconda/bin:$PATH
