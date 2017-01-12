@@ -220,9 +220,6 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightnes
 exec setxkbmap -layout us -option ctrl:nocaps
 exec setxkbmap -layout ru -option ctrl:nocaps
 
-exec xmodmap -e 'keycode 66 = Control_L'
-exec xmodmap -e 'clear Lock'
-exec xmodmap -e 'add Control = Control_L'
 
 assign [class="google-chrome"] $workspace3
 
