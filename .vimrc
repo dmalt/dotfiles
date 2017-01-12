@@ -97,7 +97,7 @@ colorscheme gruvbox
 
 
 " change cursor shape in different modes
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 autocmd FileType matlab setlocal commentstring=%\ %s
 
@@ -106,6 +106,7 @@ autocmd BufEnter *.m    compiler mlint
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
 let g:python_host_prog='/home/dmalt/anaconda/bin/python'
+" let g:python3_host_prog='/home/dmalt/anaconda3/bin/python'
 
 let vim_markdown_preview_github=1
 
@@ -120,3 +121,9 @@ let vim_markdown_preview_github=1
 " let g:neomake_python_enable_makers = ['flake8']
 
 autocmd InsertChange,TextChanged * update | Neomake
+
+" Execute local vimrc settings
+let $LOCALFILE=expand("~/.vimrc_local")
+if filereadable($LOCALFILE)
+    source $LOCALFILE
+endif
