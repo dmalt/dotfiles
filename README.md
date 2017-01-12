@@ -22,3 +22,12 @@ cd dotfiles
 ./install.sh
 ```
 
+# Manual steps
+
+### Vim / Neovim
+
+Open vim/neovim and type 
+
+```
+:PluginInstall
+```
