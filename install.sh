@@ -16,6 +16,7 @@ ln -s ~/dotfiles/.conkyrc ~/.conkyrc
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/pure_dmalt.zsh-theme ~/.oh-my-zsh/themes/pure_dmalt.zsh-theme
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+ln -s $HOME/dotfiles/.xinputrc $HOME/.xinputrc
 
 
 # configure i3
