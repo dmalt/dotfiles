@@ -17,7 +17,7 @@ ln -sfv ~/dotfiles/.zshrc ~/.zshrc
 ln -sfv ~/dotfiles/pure_dmalt.zsh-theme ~/.oh-my-zsh/themes/pure_dmalt.zsh-theme
 ln -sfv ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sfv $HOME/dotfiles/.xinputrc $HOME/.xinputrc
-ln -sfv $HOME/dotfiles/.vimrc $HOME/.nvimrc
+ln -sfv $HOME/dotfiles/.vimrc $HOME/.config/nvim/init.vim
 
 
 bash -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
