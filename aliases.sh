@@ -6,7 +6,7 @@ alias nrestart='service network-manager restart'
 alias ndc='nipype_display_crash'
 
 alias sshmscpy="sshpass -p 'LrPbbK' ssh mutokukai.ru 'python' <"
-alias sshmsc="sshpass -p 'LrPbbK' ssh mutokukai.ru"
+alias sshmsc="sshpass -p 'LrPbbK' ssh mutokukai"
 alias sshautrs="sshmsc -t 'cd /net/server/data/home/meg/DMALT/aut_rs; bash -l'"
 alias port_fwd_nb='ssh -N -f -L localhost:8889:localhost:8889 LKJ006'
 
