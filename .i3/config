@@ -217,6 +217,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightnes
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
+# CapsLock to ctrl remap
 exec setxkbmap -layout us -option ctrl:nocaps
 exec setxkbmap -layout ru -option ctrl:nocaps
 
