@@ -38,7 +38,8 @@ override_utf8_locale yes
 # Color scheme #
 default_color DCDCDC
 
-color1 2f343f
+# color1 2f343f
+color1 bac3d8
 color2 9933CC
 color3 669900
 color4 FF8800

@@ -16,7 +16,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'michaeljsmith/vim-indent-object'
@@ -90,10 +90,12 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 nnoremap gb :ls<CR>:b<Space>
-
+" nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 set t_Co=256
-colorscheme gruvbox
+" colorscheme gruvbox
+" colorscheme Tomorrow-Night
+colorscheme Tomorrow
 
 
 " change cursor shape in different modes
@@ -120,10 +122,32 @@ let vim_markdown_preview_github=1
 "     \ }
 " let g:neomake_python_enable_makers = ['flake8']
 
-autocmd InsertChange,TextChanged * update | Neomake
+" autocmd InsertChange,TextChanged * update | Neomake
 
 " Execute local vimrc settings
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
     source $LOCALFILE
 endif
+
+" Define matlab linter mlint
+let g:neomake_matlab_mlint_maker = {
+    \ 'errorformat': 
+        \ 'L %l (C %c): %*[a-zA-Z0-9]: %m' .
+        \ 'L %l (C %c-%*[0-9]): %*[a-zA-Z0-9]: %m' ,
+    \ }
+
+" This was supposed to print W and E in gutter but doesn't work for now
+let g:neomake_warning_sign = {
+  \ 'text': 'W',
+  \ 'texthl': 'WarningMsg',
+  \ }
+
+let g:neomake_error_sign = {
+  \ 'text': 'E',
+  \ 'texthl': 'ErrorMsg',
+  \ }
+
+let g:neomake_matlab_enabled_makers = ['mlint']
+
+let g:neomake_open_list = 2
