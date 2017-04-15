@@ -26,6 +26,7 @@ Plugin 'vim-scripts/MatlabFilesEdition'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'neomake/neomake'
 Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'tpope/vim-repeat'
 " -------------------------------------- "
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
