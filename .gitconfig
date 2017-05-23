@@ -1,10 +1,10 @@
 [user]
-	email = dm.altukhov@ya.ru
-	name = Dmitriy Altukhov
+    email = dm.altukhov@ya.ru
+    name = Dmitriy Altukhov
 [core]
-	editor = nvim
+    editor = nvim
 [alias]
-	st = status
+    st = status
     cm = commit -m
     a = add
     d = diff
@@ -12,4 +12,4 @@
     cob = checkout -b
     la = "!git config -l | grep alias | cut -c 7-"
 [http]
-	sslverify = false
+    sslverify = false
