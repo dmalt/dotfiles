@@ -1,4 +1,5 @@
-alias sapt='sudo apt-get install'
+alias sinstall='sudo apt-get install'
+alias sapt-get='sudo apt-get'
 alias l='ls -1F'
 alias lll='ls -alh'
 
@@ -15,4 +16,6 @@ alias mnd='matlab -nodesktop -nosplash'
 alias py2='/home/dmalt/anaconda/bin/python'
 alias ipy2='/home/dmalt/anaconda/bin/ipython'
 
+alias vi=nvim
 alias history='fc -l -E 1'
+# alias vim='nvim'
