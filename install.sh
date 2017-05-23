@@ -7,10 +7,16 @@
 # make symbolic links
 bash -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# Install Vundle for vim
 git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 
 if ! [[ -d $HOME/.i3 ]]; then
     ln -sv $HOME/dotfiles/.i3/ $HOME/.i3
+fi
+
+if ! [[ -d $HOME/.config/rofi ]]; then
+    ln -sv $HOME/dotfiles/rofi/ $HOME/.config/rofi
 fi
 
 ln -sfv $HOME/dotfiles/.gitconfig             $HOME/.gitconfig

@@ -1,0 +1,6 @@
+! "Color scheme for normal row" Set from: Default
+rofi.color-normal:                   #002f343f,#f3f4f5,#002f343f,#002f343f,#9575cd
+rofi.color-urgent:                   #fdf6e3,#dc322f,#eee8d5,#dc322f,#fdf6e3
+rofi.color-active:                   #fdf6e3,#268bd2,#eee8d5,#268bd2,#fdf6e3
+rofi.color-window:                   #F12f343f,#F12f343f
+rofi.separator-style:                none
