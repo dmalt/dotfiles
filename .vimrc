@@ -12,11 +12,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 " ----------- Install plugins ------- "
 Plugin 'gmarik/Vundle.vim'
-Plugin 'flazz/vim-colorschemes'
+" Plugin 'flazz/vim-colorschemes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'michaeljsmith/vim-indent-object'
@@ -27,6 +27,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'neomake/neomake'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-fugitive'
+Plugin 'rafi/awesome-vim-colorschemes'
 " -------------------------------------- "
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
@@ -95,8 +97,9 @@ nnoremap gb :ls<CR>:b<Space>
 
 set t_Co=256
 " colorscheme gruvbox
+colorscheme afterglow
 " colorscheme Tomorrow-Night
-colorscheme Tomorrow
+" colorscheme Tomorrow
 
 
 " change cursor shape in different modes
@@ -124,7 +127,7 @@ let vim_markdown_preview_github=1
 " let g:neomake_python_enable_makers = ['flake8']
 
 " autocmd InsertChange,TextChanged * update | Neomake
-
+autocmd BufWritePost,BufEnter * Neomake
 " Execute local vimrc settings
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
@@ -133,22 +136,31 @@ endif
 
 " Define matlab linter mlint
 let g:neomake_matlab_mlint_maker = {
-    \ 'errorformat': 
-        \ 'L %l (C %c): %*[a-zA-Z0-9]: %m' .
-        \ 'L %l (C %c-%*[0-9]): %*[a-zA-Z0-9]: %m' ,
-    \ }
-
+            \ 'exe': '/home/dmalt/code/bash/mlint_wrapper.sh',
+            \ 'errorformat':
+            \ '%f:L %l (C %c): %m,' .
+            \ '%f:L %l (C %c-%*[0-9]): %m,',
+            \ }
 " This was supposed to print W and E in gutter but doesn't work for now
-let g:neomake_warning_sign = {
-  \ 'text': 'W',
-  \ 'texthl': 'WarningMsg',
-  \ }
+" let g:neomake_warning_sign = {
+"   \ 'text': 'W',
+"   \ 'texthl': 'WarningMsg',
+"   \ }
 
-let g:neomake_error_sign = {
-  \ 'text': 'E',
-  \ 'texthl': 'ErrorMsg',
-  \ }
+" let g:neomake_error_sign = {
+"   \ 'text': 'E',
+"   \ 'texthl': 'ErrorMsg',
+"   \ }
+
+" let g:neomake_message_sign = {
+"       \   'text': '➤',
+"       \   'texthl': 'NeomakeMessageSign',
+"       \ }
 
 let g:neomake_matlab_enabled_makers = ['mlint']
+" let g:neomake_logfile='/tmp/error.log'
 
-let g:neomake_open_list = 2
+" let g:neomake_open_list = 2
+
+" Setup fugitive
+set diffopt+=vertical
