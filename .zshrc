@@ -3,6 +3,7 @@
 export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="pure_dmalt"
+# ZSH_THEME="pure"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git pip python web-search vi-mode cp colorize zsh-autosuggestions z safe-paste zsh-syntax-highlighting)
 
@@ -29,6 +30,7 @@ export PATH=$HOME/anaconda3/bin:$PATH
 
 export LD_LIBRARY_PATH=/opt/OpenBLAS/lib:/opt/OpenBLAS/lib
 export PATH=$HOME/anaconda/bin:$PATH
+export EDITOR=nvim
 
 # export TZ=Europe/Moscow
 # export TZ=America/Montreal
