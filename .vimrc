@@ -29,6 +29,8 @@ Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'rafi/awesome-vim-colorschemes'
+Plugin 'vim-scripts/CSApprox'
+Plugin 'kassio/neoterm'
 " -------------------------------------- "
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
@@ -87,19 +89,53 @@ let mapleader = ','
 
 
 "split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
+
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+inoremap <C-h> <C-\><C-N><C-w>h
+inoremap <C-j> <C-\><C-N><C-w>j
+inoremap <C-k> <C-\><C-N><C-w>k
+inoremap <C-l> <C-\><C-N><C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+tnoremap <Esc> <C-\><C-n>
+
+" -------------- neoterm config ---------- "
+let g:neoterm_position = 'horizontal'
+let g:neoterm_automap_keys = ',tt'
+
+nnoremap <silent> ,ef :TREPLSendFile<cr>
+nnoremap <silent> ,el :TREPLSendLine<cr>
+vnoremap <silent> ,es :TREPLSendSelection<cr>
+
+" Useful maps
+" hide/close terminal
+nnoremap <silent> ,th :call neoterm#close()<cr>
+" clear terminal
+nnoremap <silent> ,tl :call neoterm#clear()<cr>
+" kills the current job (send a <c-c>)
+nnoremap <silent> ,tc :call neoterm#kill()<cr>
+" ------------------------------------------------ "
 
 nnoremap gb :ls<CR>:b<Space>
 " nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 set t_Co=256
 " colorscheme gruvbox
-colorscheme afterglow
+" colorscheme afterglow
+colorscheme dracula
 " colorscheme Tomorrow-Night
 " colorscheme Tomorrow
+let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 
 
 " change cursor shape in different modes
@@ -136,7 +172,9 @@ endif
 
 " Define matlab linter mlint
 let g:neomake_matlab_mlint_maker = {
-            \ 'exe': '/home/dmalt/code/bash/mlint_wrapper.sh',
+            \ 'exe': 'mlint',
+            \ 'args': ['-id'],
+            \ 'mapexpr': "neomake_bufname.':'.v:val",
             \ 'errorformat':
             \ '%f:L %l (C %c): %m,' .
             \ '%f:L %l (C %c-%*[0-9]): %m,',
@@ -158,7 +196,7 @@ let g:neomake_matlab_mlint_maker = {
 "       \ }
 
 let g:neomake_matlab_enabled_makers = ['mlint']
-" let g:neomake_logfile='/tmp/error.log'
+let g:neomake_logfile='/tmp/error.log'
 
 " let g:neomake_open_list = 2
 
