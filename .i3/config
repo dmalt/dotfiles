@@ -236,6 +236,7 @@ assign [class="Sublime_text"] $workspace3
 assign [class="Google-chrome"] $workspace5
 assign [class="Pcmanfm"] $workspace6
 assign [class="MATLAB R2016a"] $workspace7
+assign [class="MATLAB R2017a"] $workspace7
 assign [class="Shutter"] $workspace8
 assign [class="Tomahawk"] $workspace9
 assign [class="Slack"] $workspace10
