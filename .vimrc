@@ -23,7 +23,7 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/MatlabFilesEdition'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'neomake/neomake'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'tpope/vim-repeat'
@@ -31,6 +31,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'vim-scripts/CSApprox'
 Plugin 'kassio/neoterm'
+Plugin 'Shougo/deoplete.nvim'
 " -------------------------------------- "
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
@@ -125,6 +126,12 @@ nnoremap <silent> ,tl :call neoterm#clear()<cr>
 " kills the current job (send a <c-c>)
 nnoremap <silent> ,tc :call neoterm#kill()<cr>
 " ------------------------------------------------ "
+
+" ---------- deoplete ----------- "
+call deoplete#enable()
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" ------------------------------- "
 
 nnoremap gb :ls<CR>:b<Space>
 " nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
