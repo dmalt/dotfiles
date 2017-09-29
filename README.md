@@ -31,3 +31,40 @@ Open vim/neovim and type
 ```
 :PluginInstall
 ```
+
+## Ubuntu installation steps
+
+### Rofi
+install rofi by
+```
+sudo apt-get install rofi
+```
+
+In .i3/config find rofi-launching command and  adjust padding and fontsize
+
+### vim-airline fonts
+
+first install pip:
+``` 
+sudo apt-get install python-pip
+```
+
+then install the fonts themselves
+Documentation can be found here:
+
+https://powerline.readthedocs.io/en/master/installation.html#patched-fonts
+
+then reboot for changes to take effect
+
+### Conky
+install lm-sensors with
+```
+sudo apt-get install lm-sensors
+```
+Also install fortune
+
+```
+sudo apt-get install fortune
+```
+
+Setup horizontal and vertical padding in .conkyrc
