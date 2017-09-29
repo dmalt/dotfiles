@@ -113,6 +113,7 @@ tnoremap <Esc> <C-\><C-n>
 " -------------- neoterm config ---------- "
 let g:neoterm_position = 'horizontal'
 let g:neoterm_automap_keys = ',tt'
+let g:neoterm_size=10
 
 nnoremap <silent> ,ef :TREPLSendFile<cr>
 nnoremap <silent> ,el :TREPLSendLine<cr>
@@ -120,11 +121,14 @@ vnoremap <silent> ,es :TREPLSendSelection<cr>
 
 " Useful maps
 " hide/close terminal
-nnoremap <silent> ,th :call neoterm#close()<cr>
+nnoremap <silent> ,h :call neoterm#close()<cr>
 " clear terminal
 nnoremap <silent> ,tl :call neoterm#clear()<cr>
 " kills the current job (send a <c-c>)
 nnoremap <silent> ,tc :call neoterm#kill()<cr>
+
+nnoremap <silent> ,o :Topen<cr>
+
 " ------------------------------------------------ "
 
 " ---------- deoplete ----------- "
@@ -209,3 +213,22 @@ let g:neomake_logfile='/tmp/error.log'
 
 " Setup fugitive
 set diffopt+=vertical
+
+
+" ----- Handle cyrillic input --------- "
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
+highlight lCursor guifg=None guibg=Cyan
+" setlocal spell spelllang=ru_yo,en_us
+setlocal spell spelllang=ru_ru,en_us
+syntax spell toplevel
+" ------------------------------------- "
+
+
+" focus on split right away "
+set splitbelow
+set splitright
+" ------------------------- "
+
+command Tsp 10sp | term
