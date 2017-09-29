@@ -32,8 +32,7 @@ Open vim/neovim and type
 :PluginInstall
 ```
 
-## Ubuntu
-----------------
+## Ubuntu installation steps
 
 ### Rofi
 install rofi by
