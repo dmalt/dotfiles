@@ -45,14 +45,23 @@ In .i3/config find rofi-launching command and  adjust padding and fontsize
 ### vim-airline fonts
 
 first install pip:
-``` 
-sudo apt-get install python-pip
-```
+> ``` 
+> sudo apt-get install python-pip
+> ```
 
-then install the fonts themselves
-Documentation can be found here:
+> then install the fonts themselves
 
-https://powerline.readthedocs.io/en/master/installation.html#patched-fonts
+git clone https://github.com/powerline/fonts.git --depth=1
+# install
+cd fonts
+./install.sh
+# clean-up a bit
+cd ..
+rm -rf fonts
+
+> documentation can be found here:
+
+> https://powerline.readthedocs.io/en/master/installation.html#patched-fonts
 
 then reboot for changes to take effect
 
@@ -68,3 +77,50 @@ sudo apt-get install fortune
 ```
 
 Setup horizontal and vertical padding in .conkyrc
+
+
+
+### Add ssh key to github
+
+#### Generating ssh key
+First, make sure ```openssh``` package is installed
+
+> In arch use:
+> ```bash
+> sudo pacman -S openssh
+> ```
+
+Run the following to generate the key:
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "dm.altukhov@ya.ru"
+```
+
+Then add key to ssh-agent:
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+```
+
+#### Adding ssh key to github account
+
+Copy key to clipboard:
+```bash
+xclip -sel clip < ~/.ssh/id_rsa.pub
+```
+
+Go to github ---> settings ---> SSH and GPG keys ---> new
+
+Matlab installation
+===================
+
+> To mount .iso images in arch use ```fuseiso```:
+> ```bash
+> mkdir ~/mountpoint
+> sudo fuseiso  image.iso ~/mountpoint
+> ```
+
+If there are two installation .iso images  mount the first image
+and then when prompted unmount the first image and mount the second to
+the same mounting point.
