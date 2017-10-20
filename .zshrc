@@ -3,7 +3,7 @@
 export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="pure_dmalt"
-# ZSH_THEME="pure"
+# ZSH_THEME="refined"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git pip python web-search vi-mode cp colorize zsh-autosuggestions z safe-paste zsh-syntax-highlighting)
 
@@ -15,8 +15,8 @@ bindkey '^[[B' down-line-or-search
 
 bindkey jk vi-cmd-mode
 
-export FREESURFER_HOME=/usr/local/freesurfer
-source $FREESURFER_HOME/SetUpFreeSurfer.sh >> /dev/null
+# export FREESURFER_HOME=/usr/local/freesurfer
+# source $FREESURFER_HOME/SetUpFreeSurfer.sh >> /dev/null
 
 source "$HOME/dotfiles/aliases.sh" # < ---- MY ALIASES
 source "$HOME/dotfiles/functions.sh"
@@ -32,7 +32,6 @@ export LD_LIBRARY_PATH=/opt/OpenBLAS/lib:/opt/OpenBLAS/lib
 export PATH=$HOME/anaconda/bin:$PATH
 export EDITOR=nvim
 
-# export TZ=Europe/Moscow
 # export TZ=America/Montreal
 export TZ=Europe/Moscow
 
@@ -59,6 +58,6 @@ zle -N zle-keymap-select
 zle -N zle-line-init
 # --------------------------------------------- #
 #
-if [ -f ~/.zshrc_local ]; then
-    source $HOME/.zshrc_local
+if [ -f ~/dotfiles_local/.zshrc_local ]; then
+    source $HOME/dotfiles_local/.zshrc_local
 fi
