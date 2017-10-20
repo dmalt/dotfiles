@@ -143,6 +143,7 @@ nnoremap gb :ls<CR>:b<Space>
 set t_Co=256
 " colorscheme gruvbox
 " colorscheme afterglow
+" colorscheme dracula
 colorscheme dracula
 " colorscheme Tomorrow-Night
 " colorscheme Tomorrow
@@ -221,8 +222,8 @@ set iminsert=0
 set imsearch=0
 highlight lCursor guifg=None guibg=Cyan
 " setlocal spell spelllang=ru_yo,en_us
-setlocal spell spelllang=ru_ru,en_us
-syntax spell toplevel
+" setlocal spell spelllang=ru_ru,en_us
+" syntax spell toplevel
 " ------------------------------------- "
 
 
