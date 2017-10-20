@@ -15,8 +15,8 @@ minimum_size 300
 
 # Alignment #
 alignment tr
-gap_x 50
-gap_y 200
+gap_x 250
+gap_y 400
 
 border_inner_margin 15
 border_outer_margin 0
@@ -55,10 +55,18 @@ ${color1}Core 1: ${freq 1} MHz        Temprature:  ${exec sensors|grep 'Core 0'|
 ${cpu cpu1}% ${color1}${cpubar cpu1}
 ${color1}Core 2: ${freq 2} MHz        Temprature:  ${exec sensors|grep 'Core 1'|awk '{print $3}'}
 ${cpu cpu2}% ${color1}${cpubar cpu2}
-${color1}Core 3: ${freq 3} MHz        
+${color1}Core 3: ${freq 3} MHz        Temprature:  ${exec sensors|grep 'Core 2'|awk '{print $3}'}
 ${cpu cpu3}% ${color1}${cpubar cpu3}
-${color1}Core 4: ${freq 4} MHz        
+${color1}Core 4: ${freq 4} MHz        Temprature:  ${exec sensors|grep 'Core 3'|awk '{print $3}'}
 ${cpu cpu4}% ${color1}${cpubar cpu4}
+${color1}Core 5: ${freq 5} MHz
+${cpu cpu4}% ${color1}${cpubar cpu5}
+${color1}Core 6: ${freq 6} MHz
+${cpu cpu4}% ${color1}${cpubar cpu6}
+${color1}Core 7: ${freq 7} MHz
+${cpu cpu4}% ${color1}${cpubar cpu7}
+${color1}Core 8: ${freq 8} MHz
+${cpu cpu4}% ${color1}${cpubar cpu8}
 
 RAM:   $memperc%   ${membar 6}
 Swap:  $swapperc%   ${swapbar 6}$color
