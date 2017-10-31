@@ -15,8 +15,9 @@ bindkey '^[[B' down-line-or-search
 
 bindkey jk vi-cmd-mode
 
-# export FREESURFER_HOME=/usr/local/freesurfer
-# source $FREESURFER_HOME/SetUpFreeSurfer.sh >> /dev/null
+export FREESURFER_HOME=/usr/local/freesurfer
+source $FREESURFER_HOME/SetUpFreeSurfer.sh 
+# >> /dev/null
 
 source "$HOME/dotfiles/aliases.sh" # < ---- MY ALIASES
 source "$HOME/dotfiles/functions.sh"
@@ -37,26 +38,26 @@ export TZ=Europe/Moscow
 
 export SCRIPTS_DIR=$HOME/Dropbox/scripts
 
-# ----- Change cursor in vi insert mode to vert. line --- #
-zle-keymap-select () {
-    if [ "$TERM" = "xterm-256color" ]; then
-        if [ $KEYMAP = vicmd ]; then
-            # the command mode for vi
-            echo -ne "\e[2 q"
-        else
-            # the insert mode for vi
-            echo -ne "\e[5 q"
-        fi
-    fi
-}
+# # ----- Change cursor in vi insert mode to vert. line --- #
+# zle-keymap-select () {
+#     if [ "$TERM" = "xterm-256color" ]; then
+#         if [ $KEYMAP = vicmd ]; then
+#             # the command mode for vi
+#             echo -ne "\e[2 q"
+#         else
+#             # the insert mode for vi
+#             echo -ne "\e[5 q"
+#         fi
+#     fi
+# }
 
-zle-line-init () {
-  zle -K viins
-  # echo -ne "\033]12;Grey\007"
-}
-zle -N zle-keymap-select
-zle -N zle-line-init
-# --------------------------------------------- #
+# zle-line-init () {
+#   zle -K viins
+#   # echo -ne "\033]12;Grey\007"
+# }
+# zle -N zle-keymap-select
+# zle -N zle-line-init
+# # --------------------------------------------- #
 #
 if [ -f ~/dotfiles_local/.zshrc_local ]; then
     source $HOME/dotfiles_local/.zshrc_local
