@@ -124,3 +124,15 @@ Matlab installation
 If there are two installation .iso images  mount the first image
 and then when prompted unmount the first image and mount the second to
 the same mounting point.
+
+
+Z-shell and plugins
+===================
+
+1) Install z-shell
+2) Install oh-my-zsh
+3) Install 3-d party plugins
+
+List of 3-d party plugins:
+
+* zsh-autosuggestions
