@@ -141,10 +141,10 @@ nnoremap gb :ls<CR>:b<Space>
 " nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 set t_Co=256
-" colorscheme gruvbox
+colorscheme gruvbox
 " colorscheme afterglow
 " colorscheme dracula
-colorscheme dracula
+" colorscheme dracula
 " colorscheme Tomorrow-Night
 " colorscheme Tomorrow
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
@@ -232,4 +232,3 @@ set splitbelow
 set splitright
 " ------------------------- "
 
-command Tsp 10sp | term
