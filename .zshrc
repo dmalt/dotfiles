@@ -16,8 +16,7 @@ bindkey '^[[B' down-line-or-search
 bindkey jk vi-cmd-mode
 
 export FREESURFER_HOME=/usr/local/freesurfer
-source $FREESURFER_HOME/SetUpFreeSurfer.sh 
-# >> /dev/null
+source $FREESURFER_HOME/SetUpFreeSurfer.sh  >> /dev/null
 
 source "$HOME/dotfiles/aliases.sh" # < ---- MY ALIASES
 source "$HOME/dotfiles/functions.sh"
