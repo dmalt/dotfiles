@@ -1,10 +1,10 @@
 export DOTFILES=$HOME/.dotfiles
 if ! [[ -d $HOME/.config/i3 ]]; then
-    ln -sv $DOTFILES/.i3 $HOME/.config/i3
+    ln -sv $DOTFILES/i3 $HOME/.config/i3
 fi
 
 mkdir -p $HOME/.config/rofi && ln -sfv $DOTFILES/rofi/config $HOME/.config/rofi/config
-mkdir -p $HOME/.config/conky && ln -sfv $DOTFILES/.conkyrc $HOME/.config/conky/conky.conf
+mkdir -p $HOME/.config/conky && ln -sfv $DOTFILES/conkyrc $HOME/.config/conky/conky.conf
 
 ln -sfv $DOTFILES/gitconfig             $HOME/.gitconfig
 ln -sfv $DOTFILES/zshrc                 $HOME/.zshrc
