@@ -1,6 +1,8 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+export DOTFILES=$HOME/.dotfiles
+export DOTFILES_LOCAL=$HOME/.dotfiles_local
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="pure_dmalt"
 # ZSH_THEME="refined"
@@ -18,8 +20,8 @@ bindkey jk vi-cmd-mode
 export FREESURFER_HOME=/usr/local/freesurfer
 source $FREESURFER_HOME/SetUpFreeSurfer.sh  >> /dev/null
 
-source "$HOME/dotfiles/aliases.sh" # < ---- MY ALIASES
-source "$HOME/dotfiles/functions.sh"
+source "$DOTFILES/aliases.sh" # < ---- MY ALIASES
+source "$DOTFILES/functions.sh"
 
 export PATH="/usr/local/MATLAB/R2017a/bin:$PATH"
 export PATH="/usr/local/MATLAB/R2017a/bin/glnxa64:$PATH"
@@ -58,6 +60,6 @@ export SCRIPTS_DIR=$HOME/Dropbox/scripts
 # zle -N zle-line-init
 # # --------------------------------------------- #
 #
-if [ -f ~/dotfiles_local/.zshrc_local ]; then
-    source $HOME/dotfiles_local/.zshrc_local
+if [ -f $DOTFILES_LOCAL/zshrc_local ]; then
+    source $DOTFILES_LOCAL/zshrc_local
 fi
