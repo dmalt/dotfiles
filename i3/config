@@ -224,8 +224,10 @@ bindsym F1 exec --no-startup-id amixer sset Master toggle # mute sound
 # bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 # bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
-bindsym XF86MonBrightnessUp exec xbright +5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbright -5 # decrease screen brightness
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+bindsym F11 exec  light -U 5 # increase screen brightness
+bindsym F12 exec light -A 5 # decrease screen brightness
 # Touchpad controls
 bindsym F7 exec $HOME/.dotfiles/scripts/toggle_touchpad.sh # toggle touchpad
 
