@@ -252,7 +252,7 @@ assign [class="TelegramDesktop"] $workspace10
 assign [class="Franz"] $workspace10
 # -------------------------------------------------------- # 
 
-# exec_always --no-startup-id compton
+exec_always --no-startup-id compton
 set $ALT Mod1
 bindsym Control+Shift+r exec setxkbmap ru
 bindsym Control+Shift+space exec setxkbmap us
