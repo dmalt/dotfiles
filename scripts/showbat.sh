@@ -9,12 +9,12 @@ state=`upower -i $bname | grep  'state' | sed -E 's/.*\s(charging|discharging|fu
 
 
 if [[ "$state" == "discharging" ]]; then
-    status_str=("$percentage" \("$time2empty" left\); discharge rate: "$energyrate")
+    status_str=("$percentage" \("$time2empty" left\); : "$energyrate")
 elif [[ "$state" == "charging" ]]; then 
     if [[ "$time2full" ]]; then
         ttf_str=(\("$time2full" to full\))
     fi
-    status_str=("$percentage" $ttf_str; charging rate: "$energyrate")
+    status_str=(⚡ "$percentage" $ttf_str; : "$energyrate")
 elif [[ "$state" == "fully-charged" ]]; then
     status_str=("$percentage" $ttf_str; "fully-charged")
 fi
