@@ -232,9 +232,9 @@ bindsym F7 exec $HOME/.dotfiles/scripts/toggle_touchpad.sh # toggle touchpad
 
 # ------ Language settings; CapsLock to ctrl remap ------- #
 # exec --no-startup-is setxkbmap -layout ru -option ctrl:nocaps
-exec --no-startup-id setxkbmap -layout us -option ctrl:nocaps
-exec --no-startup-id xmodmap ~/.Xdefaults
-exec --no-startup-id setxkbmap us
+# exec --no-startup-id setxkbmap -layout us -option ctrl:nocaps
+# exec --no-startup-id xmodmap ~/.Xmodmap
+# exec --no-startup-id setxkbmap us
 # -------------------------------------------------------- #
 
 # ---------- Windows to workspaces assignements ---------- # 
