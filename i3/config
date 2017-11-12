@@ -252,10 +252,14 @@ assign [class="TelegramDesktop"] $workspace10
 assign [class="Franz"] $workspace10
 # -------------------------------------------------------- # 
 
+
 exec_always --no-startup-id compton
+# ---------------------- switch layout ---------------------------- #
 set $ALT Mod1
-bindsym Control+Shift+r exec setxkbmap ru
-bindsym Control+Shift+space exec setxkbmap us
+bindsym Control+Shift+r exec setxkbmap ru -option ctrl:nocaps
+bindsym Control+Shift+space exec setxkbmap us -option ctrl:nocaps
+# ----------------------------------------------------------------- #
+
 
 # bindsym $mod+Shift+s exec subl
 bindsym $mod+Shift+d exec google-chrome-stable
