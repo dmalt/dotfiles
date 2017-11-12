@@ -74,7 +74,7 @@ set undofile
 set background=dark
 set list listchars=tab:>-,eol:¶
 
-inoremap jk <ESC>
+" inoremap jk <ESC>
 nnoremap / /\v
 vnoremap / /\v
 set ignorecase
