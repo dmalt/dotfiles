@@ -19,4 +19,8 @@ alias ipy2='/home/dmalt/anaconda/bin/ipython'
 alias vi=nvim
 alias history='fc -l -E 1'
 alias stats='cd ~/Dropbox/Documents/Education/MEG/Books && evince Statistical*'
+alias telegram='Telegram'
+alias vi='nvim'
+alias t='todo.sh'
+
 # alias vim='nvim'

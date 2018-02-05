@@ -15,7 +15,7 @@ source $ZSH/oh-my-zsh.sh
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
-bindkey jk vi-cmd-mode
+# bindkey jk vi-cmd-mode
 
 # export FREESURFER_HOME=/usr/local/freesurfer
 # source $FREESURFER_HOME/SetUpFreeSurfer.sh  >> /dev/null
@@ -25,13 +25,17 @@ source "$DOTFILES/functions.sh"
 
 export PATH="/usr/local/MATLAB/R2017a/bin:$PATH"
 export PATH="/usr/local/MATLAB/R2017a/bin/glnxa64:$PATH"
+export PATH="/home/dmalt/.gem/ruby/2.4.0/bin/:$PATH"
 
 export PATH=$PATH:/home/dmalt/Desktop/mendeleydesktop-1.16.3-linux-x86_64/bin
-export PATH=$HOME/.anaconda2/bin:$PATH
+export PATH=$HOME/anaconda2/bin:$PATH
 export PATH=$HOME/anaconda3/bin:$PATH
+export PATH=$HOME/Code/bash/todotxt:$PATH
+# export PATH=$HOME/miniconda3/bin:$PATH
 
 export LD_LIBRARY_PATH=/opt/OpenBLAS/lib:/opt/OpenBLAS/lib
 export PATH=$HOME/anaconda/bin:$PATH
+export PATH=$PATH:$HOME/.Programs/Telegram
 export EDITOR=nvim
 
 # export TZ=America/Montreal

@@ -1,4 +1,5 @@
 "My vimrc configuration
+" echom ":)"
 set nocompatible              " required
 filetype off                  " required
 
@@ -19,6 +20,8 @@ Plugin 'scrooloose/nerdtree'
 " Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -32,9 +35,42 @@ Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'vim-scripts/CSApprox'
 Plugin 'kassio/neoterm'
 Plugin 'Shougo/deoplete.nvim'
+Plugin 'zchee/deoplete-jedi'
+Plugin 'nelstrom/vim-visual-star-search'
+Plugin 'lervag/vimtex'
+Plugin 'ervandew/supertab'
+Plugin 'machakann/vim-highlightedyank'
+Plugin 'sudar/vim-arduino-syntax'
+Plugin 'sudar/vim-arduino-snippets'
+Plugin 'stevearc/vim-arduino'
+Plugin 'rhysd/vim-grammarous'
+Plugin 'Shougo/unite.vim'
+Plugin 'reedes/vim-wordy'
+Plugin 'tell-k/vim-autopep8'
+" Plugin 'Rykka/riv.vim'
+" Plugin 'Rykka/InstantRst'
+Plugin 'vim-scripts/vim-punto-switcher'
+Plugin 'dmalt/nvim-cyrillic'
+Plugin 'junegunn/goyo.vim'
+Plugin 'freitass/todo.txt-vim'
+
 " -------------------------------------- "
 
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+" ------------- ultisnips -------------- "
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+" ------------- ultisnips -------------- "
 
 
 " All of your Plugins must be added before the following line
@@ -75,18 +111,21 @@ set background=dark
 set list listchars=tab:>-,eol:¶
 
 " inoremap jk <ESC>
-nnoremap / /\v
-vnoremap / /\v
+" inoremap <C-p> <ESC>
+" nnoremap / /\v
+" vnoremap / /\v
 set ignorecase
 set smartcase
 
 "color gruvbox
 
-" set clipboard=unnamed
+set clipboard=unnamed
 
 nnoremap j gj
 nnoremap k gk
 let mapleader = ','
+let maplocalleader = "\<space>"
+noremap \ ,
 
 
 "split navigations
@@ -132,8 +171,9 @@ nnoremap <silent> ,o :Topen<cr>
 " ------------------------------------------------ "
 
 " ---------- deoplete ----------- "
-call deoplete#enable()
+" call deoplete#enable()
 " deoplete tab-complete
+let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " ------------------------------- "
 
@@ -159,7 +199,8 @@ autocmd BufEnter *.m    compiler mlint
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
-let g:python_host_prog='/home/dmalt/anaconda/bin/python'
+let g:python_host_prog='/usr/bin/python'
+let g:python3_host_prog='/usr/bin/python3'
 " let g:python3_host_prog='/home/dmalt/anaconda3/bin/python'
 
 let vim_markdown_preview_github=1
@@ -168,11 +209,26 @@ let vim_markdown_preview_github=1
 :nmap <c-s> :w<CR>
 :imap <c-s> <Esc>:w<CR>a
 
-" let g:neomake_python_flake8_maker = {
-"     \ 'exe': 'python2.7',
-"     \ 'errorformat': '%A%f: line %l\, col %v\, %m \ (%t%*\d\)',
-"     \ }
-" let g:neomake_python_enable_makers = ['flake8']
+let g:neomake_python_pylint_maker = {
+  \ 'args': [
+  \ '-d', 'W0613, R0913, C0103',
+  \ '-f', 'text',
+  \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg} [{msg_id}]"',
+  \ '-r', 'n'
+  \ ],
+  \ 'errorformat':
+  \ '%A%f:%l:%c:%t: %m,' .
+  \ '%A%f:%l: %m,' .
+  \ '%A%f:(%l): %m,' .
+  \ '%-Z%p^%.%#,' .
+  \ '%-G%.%#',
+  \ }
+
+let g:neomake_python_flake8_maker = {
+    \ 'exe': 'python2.7',
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \ (%t%*\d\)',
+    \ }
+let g:neomake_python_enabled_makers = ['pylint', 'pycodestyle']
 
 " autocmd InsertChange,TextChanged * update | Neomake
 autocmd BufWritePost,BufEnter * Neomake
@@ -216,15 +272,6 @@ let g:neomake_logfile='/tmp/error.log'
 set diffopt+=vertical
 
 
-" ----- Handle cyrillic input --------- "
-set keymap=russian-jcukenwin
-set iminsert=0
-set imsearch=0
-highlight lCursor guifg=None guibg=Cyan
-" setlocal spell spelllang=ru_yo,en_us
-" setlocal spell spelllang=ru_ru,en_us
-" syntax spell toplevel
-" ------------------------------------- "
 
 
 " focus on split right away "
@@ -232,3 +279,48 @@ set splitbelow
 set splitright
 " ------------------------- "
 
+" map latex commands from cyrillic {{{latex_cyr "
+" latex_cyr}}} "
+
+set inccommand=nosplit " don't open split window for interactive search
+set foldmethod=marker  " setup folding
+
+
+
+" setup arduino {{{arduino "
+" my_file.ino [arduino:avr:uno]
+function! MyStatusLine()
+  return '%f [' . g:arduino_board . ']'
+endfunction
+setl statusline=%!MyStatusLine()
+
+let g:arduino_cmd='/usr/bin/arduino'
+let g:arduino_dir='/usr/share/arduino'
+let g:arduino_board='archlinux-arduino:avr:uno'
+let g:arduino_programmer = 'archlinux-arduino:usbtinyisp'
+let g:arduino_args = '--verbose-upload'
+let g:arduino_serial_baud = 9600
+let g:arduino_serial_port = '/dev/ttyACM0'
+let g:arduino_auto_baud = 1
+nnoremap <leader>u :ArduinoUpload<CR>
+" arduino}}} "
+
+" Mappings to open and source vimrc
+nnoremap <LocalLeader>ev :vsplit $MYVIMRC<cr>
+nnoremap <LocalLeader>sv :source $MYVIMRC<cr>
+
+nnoremap <cr> a<cr><esc>
+nnoremap <Up> <C-W>+
+nnoremap <silent> <Down> <C-W>-
+nnoremap <Right> <C-W>>
+nnoremap <Left> <C-W><
+" let g:pswitcher_no_default_key_mappings = 1
+
+" iunmap <c-k>
+" imap <c-k> <esc>mma<c-^><Plug>(pswitcher-input-word)<esc>`ma
+
+
+" inoremap <c-k> <esc>mma<c-o>:exec MapLayout(@a)<CR><esc>`m"bp
+
+" config todo hotkeys
+nnoremap <localLeader>et : vsplit ~/Documents/Dropbox/Apps/Simpletask/todo.txt<cr> :lcd ~/Documents/Dropbox/Apps/Simpletask<cr>
