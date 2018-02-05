@@ -22,5 +22,6 @@ alias stats='cd ~/Dropbox/Documents/Education/MEG/Books && evince Statistical*'
 alias telegram='Telegram'
 alias vi='nvim'
 alias t='todo.sh'
+alias tmux='TERM=screen-256color-bce tmux'
 
 # alias vim='nvim'

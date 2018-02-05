@@ -199,7 +199,7 @@ autocmd BufEnter *.m    compiler mlint
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
-let g:python_host_prog='/usr/bin/python'
+let g:python_host_prog='/usr/bin/python2'
 let g:python3_host_prog='/usr/bin/python3'
 " let g:python3_host_prog='/home/dmalt/anaconda3/bin/python'
 
