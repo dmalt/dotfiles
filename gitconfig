@@ -1,6 +1,6 @@
 [user]
     email = dm.altukhov@ya.ru
-    name = Dmitriy Altukhov
+	name = dmalt
 [core]
     editor = nvim
 [alias]

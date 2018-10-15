@@ -14,3 +14,4 @@ ln -sfv $DOTFILES/tmux.conf             $HOME/.tmux.conf
 ln -sfv $DOTFILES/xinputrc              $HOME/.xinputrc
 ln -sfv $DOTFILES/vimrc                 $HOME/.config/nvim/init.vim
 ln -sfv $DOTFILES/zlogin                $HOME/.zlogin
+ln -sfv $DOTFILES/termiterc               $HOME/.config/termite/config

@@ -3,84 +3,20 @@
 set nocompatible              " required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=$HOME/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+source $HOME/.dotfiles/plugins.vim  " load plugins
 
-" let Vundle manage Vundle, required
-" ----------- Install plugins ------- "
-Plugin 'gmarik/Vundle.vim'
-" Plugin 'flazz/vim-colorschemes'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-" Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/MatlabFilesEdition'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'neomake/neomake'
-Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-fugitive'
-Plugin 'rafi/awesome-vim-colorschemes'
-Plugin 'vim-scripts/CSApprox'
-Plugin 'kassio/neoterm'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'zchee/deoplete-jedi'
-Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'lervag/vimtex'
-Plugin 'ervandew/supertab'
-Plugin 'machakann/vim-highlightedyank'
-Plugin 'sudar/vim-arduino-syntax'
-Plugin 'sudar/vim-arduino-snippets'
-Plugin 'stevearc/vim-arduino'
-Plugin 'rhysd/vim-grammarous'
-Plugin 'Shougo/unite.vim'
-Plugin 'reedes/vim-wordy'
-Plugin 'tell-k/vim-autopep8'
-" Plugin 'Rykka/riv.vim'
-" Plugin 'Rykka/InstantRst'
-Plugin 'vim-scripts/vim-punto-switcher'
-Plugin 'dmalt/nvim-cyrillic'
-Plugin 'junegunn/goyo.vim'
-Plugin 'freitass/todo.txt-vim'
-
-" -------------------------------------- "
-
-" ------------- ultisnips -------------- "
-" Track the engine.
-Plugin 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-
+" ultisnips folder configuration {{{ "
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-" ------------- ultisnips -------------- "
+" }}} ultisnips folder configuration "
 
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-filetype off
-
-"call pathogen#infect()
-" end of vundle configuration
-
+" basic configuration {{{ "
 filetype indent on
 
 set tabstop=4
@@ -110,217 +46,423 @@ set undofile
 set background=dark
 set list listchars=tab:>-,eol:¶
 
-" inoremap jk <ESC>
-" inoremap <C-p> <ESC>
-" nnoremap / /\v
-" vnoremap / /\v
-set ignorecase
-set smartcase
+nnoremap / /\v
+vnoremap / /\v
 
-"color gruvbox
+" set ignorecase
+set smartcase
 
 set clipboard=unnamed
 
 nnoremap j gj
 nnoremap k gk
-let mapleader = ','
+
+" focus on split right away "
+set splitbelow
+set splitright
+
+set inccommand=nosplit " don't open split window for interactive search
+set foldmethod=marker  " setup folding
+
+" nnoremap * *``
+" set leader {{{ "
+let mapleader = "\<space>"
+" let mapleader = ','
 let maplocalleader = "\<space>"
-noremap \ ,
+" }}} set leader "
 
+" Mappings to open and source vimrc
+nnoremap <LocalLeader>ev :edit $MYVIMRC<cr>
+nnoremap <LocalLeader>ep :edit $HOME/.dotfiles/plugins.vim<cr>
+nnoremap <LocalLeader>sv :source $MYVIMRC<cr>
 
-"split navigations
-" nnoremap <C-J> <C-W><C-J>
-" nnoremap <C-K> <C-W><C-K>
-" nnoremap <C-L> <C-W><C-L>
-" nnoremap <C-H> <C-W><C-H>
+inoremap <c-d> <Del>
+inoremap <c-h> <BS>
+" }}} basic configuration "
 
-tnoremap <C-h> <C-\><C-N><C-w>h
-tnoremap <C-j> <C-\><C-N><C-w>j
-tnoremap <C-k> <C-\><C-N><C-w>k
-tnoremap <C-l> <C-\><C-N><C-w>l
-inoremap <C-h> <C-\><C-N><C-w>h
-inoremap <C-j> <C-\><C-N><C-w>j
-inoremap <C-k> <C-\><C-N><C-w>k
-inoremap <C-l> <C-\><C-N><C-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap gp `[v`]  " select last paste
 
+" split navigations {{{ "
+tnoremap <M-h> <C-\><C-N><C-w>h
+tnoremap <M-j> <C-\><C-N><C-w>j
+tnoremap <M-k> <C-\><C-N><C-w>k
+tnoremap <M-l> <C-\><C-N><C-w>l
+tnoremap <M-q> <C-\><C-N><C-w>q
+inoremap <M-h> <C-\><C-N><C-w>h
+inoremap <M-j> <C-\><C-N><C-w>j
+inoremap <M-k> <C-\><C-N><C-w>k
+inoremap <M-l> <C-\><C-N><C-w>l
+inoremap <M-q> <C-\><C-N><C-w>q
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
+nnoremap <M-q> <C-w>q
+" nnoremap <Tab> <C-w><C-w>
+nnoremap <M-Tab> <C-w>W
+
+nnoremap <Up> <C-W>+
+nnoremap <silent> <Down> <C-W>-
+nnoremap <Right> <C-W>>
+nnoremap <Left> <C-W><
 tnoremap <Esc> <C-\><C-n>
+" }}} splilt navigations "
 
-" -------------- neoterm config ---------- "
-let g:neoterm_position = 'horizontal'
-let g:neoterm_automap_keys = ',tt'
-let g:neoterm_size=10
 
-nnoremap <silent> ,ef :TREPLSendFile<cr>
-nnoremap <silent> ,el :TREPLSendLine<cr>
-vnoremap <silent> ,es :TREPLSendSelection<cr>
+" if has('nvim') && executable('nvr')
+"     let $VISUAL="nvr -cc split --remote-wait + 'set bufhidden=wipe'"
+" endif
 
-" Useful maps
-" hide/close terminal
-nnoremap <silent> ,h :call neoterm#close()<cr>
-" clear terminal
-nnoremap <silent> ,tl :call neoterm#clear()<cr>
-" kills the current job (send a <c-c>)
-nnoremap <silent> ,tc :call neoterm#kill()<cr>
+" highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
+nnoremap <silent> <localleader>o :IronRepl<cr>
 
-nnoremap <silent> ,o :Topen<cr>
-
-" ------------------------------------------------ "
-
-" ---------- deoplete ----------- "
+" deoplete {{{ "
 " call deoplete#enable()
 " deoplete tab-complete
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" ------------------------------- "
+" }}} deoplete "
 
-nnoremap gb :ls<CR>:b<Space>
-" nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
-
+" colors {{{ "
 set t_Co=256
-colorscheme gruvbox
+set termguicolors
+" set t_Co=16
+" colorscheme gruvbox
+" colorscheme solarized8
+" colorscheme afterglow
+" colorscheme OceanicNext
+" colorscheme space-vim-dark
+colorscheme srcery
+" colorscheme archery
+" colorscheme solarized8_low
+" colorscheme anderson
+" Python3Syntax
 " colorscheme afterglow
 " colorscheme dracula
 " colorscheme dracula
 " colorscheme Tomorrow-Night
 " colorscheme Tomorrow
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
-
-
-" change cursor shape in different modes
-" let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" }}} colors "
 
 autocmd FileType matlab setlocal commentstring=%\ %s
 
 autocmd BufEnter *.m    compiler mlint
 
+" airline setup {{{ "
 let g:airline_powerline_fonts = 1
-let g:airline_theme='bubblegum'
+" let g:airline_theme='bubblegum'
+let g:airline_theme='luna'
+" }}} airline setup "
+
+" python host prog {{{ "
+" let g:python_host_prog='/usr/bin/python2'
 let g:python_host_prog='/usr/bin/python2'
 let g:python3_host_prog='/usr/bin/python3'
 " let g:python3_host_prog='/home/dmalt/anaconda3/bin/python'
+" }}} python host prog "
 
-let vim_markdown_preview_github=1
-
-"Map saving to ctrl+s
+" map saving to ctrl+s {{{ "
 :nmap <c-s> :w<CR>
 :imap <c-s> <Esc>:w<CR>a
+" }}} map saving to ctrl+s "
 
-let g:neomake_python_pylint_maker = {
-  \ 'args': [
-  \ '-d', 'W0613, R0913, C0103',
-  \ '-f', 'text',
-  \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg} [{msg_id}]"',
-  \ '-r', 'n'
-  \ ],
-  \ 'errorformat':
-  \ '%A%f:%l:%c:%t: %m,' .
-  \ '%A%f:%l: %m,' .
-  \ '%A%f:(%l): %m,' .
-  \ '%-Z%p^%.%#,' .
-  \ '%-G%.%#',
-  \ }
+" linting {{{ "
 
-let g:neomake_python_flake8_maker = {
-    \ 'exe': 'python2.7',
-    \ 'errorformat': '%A%f: line %l\, col %v\, %m \ (%t%*\d\)',
-    \ }
-let g:neomake_python_enabled_makers = ['pylint', 'pycodestyle']
+" let g:neomake_matlab_enabled_makers = ['mlint']
+" let g:neomake_logfile='/tmp/error.log'
 
-" autocmd InsertChange,TextChanged * update | Neomake
-autocmd BufWritePost,BufEnter * Neomake
+" let g:neomake_open_list = 2
+let g:ale_linters = {
+            \ 'python': [ 'flake8'],
+            \}
+" }}} linting "
+
+" Setup fugitive
+set diffopt+=vertical
+
+
+" map latex commands from cyrillic {{{latex_cyr "
+" latex_cyr}}} "
+
+" " setup arduino {{{arduino "
+" " my_file.ino [arduino:avr:uno]
+" function! MyStatusLine()
+"   return '%f [' . g:arduino_board . ']'
+" endfunction
+" setl statusline=%!MyStatusLine()
+
+" let g:arduino_cmd='/usr/bin/arduino'
+" let g:arduino_dir='/usr/share/arduino'
+" let g:arduino_board='archlinux-arduino:avr:uno'
+" let g:arduino_programmer = 'archlinux-arduino:usbtinyisp'
+" let g:arduino_args = '--verbose-upload'
+" let g:arduino_serial_baud = 9600
+" let g:arduino_serial_port = '/dev/ttyACM0'
+" let g:arduino_auto_baud = 1
+" nnoremap <leader>u :ArduinoUpload<CR>
+" " arduino}}} "
+
+nnoremap <cr> a<cr><esc>
+nnoremap <c-n> @n
+
+" handle brackets, parents and quotes {{{ "
+inoremap {} {}<C-G>U<Left>
+inoremap () ()<C-G>U<Left>
+inoremap [] []<C-G>U<Left>
+inoremap '' ''<C-G>U<Left>
+inoremap "" ""<C-G>U<Left>
+inoremap <> <><C-G>U<Left>
+inoremap $$ $$<C-G>U<Left>
+inoremap <C-l> <Esc>/[)}"'\]>$]<CR>:nohl<CR>a
+" }}} handle brackets, parents and quotes "
+
+" config todo hotkeys
+nnoremap <localLeader>et :edit ~/Documents/Dropbox/Apps/Simpletask/todo.txt<cr> :lcd ~/Documents/Dropbox/Apps/Simpletask<cr>
+
+" spelling settings {{{ "
+" setlocal spell spelllang=ru_yo,en_us
+" setlocal spell spelllang=ru_ru,en_us
+" syntax spell toplevel
+set nospell
+" }}} spelling settings "
+
+" ---------- ctrlp settings ---------- "
+" set wildignore+=*.aux,*.bcf,*/.git/*,*.log,*.out,*.toc,*.bbl,*.fls,*.blg,*.pdf,*.gz
+
+" latex settings {{{ "
+let g:tex_flavor = "latex"
+
+"  trailing whitespaces "
+" function! <SID>StripTrailingWhitespaces()
+"     " Preparation: save last search, and cursor position.
+"     let _s=@/
+"     let l = line(".")
+"     let c = col(".")
+"     " Do the business:
+"     %s/\s\+$//e
+"     " Clean up: restore previous search history, and cursor position
+"     let @/=_s
+"     call cursor(l, c)
+" endfunction
+
+" autocmd BufWritePre *.py,*.js,*.tex,*.m,*.sh,*.md,*.rst :call <SID>StripTrailingWhitespaces()
+" }}} latex settings "
+
+" setup ultisnips {{{ "
+let g:UltiSnipsSnippetsDir='/home/dmalt/.vim/mySnippets/UltiSnips'
+set runtimepath+=~/.vim/mySnippets
+" }}} setup ultisnips "
+
+" fzf {{{ "
+set rtp+=~/.fzf
+let g:ackprg = "ag --vimgrep"
+" " This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" In Neovim, you can set up fzf window using a Vim command
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_layout = { 'window': '10split enew' }
+
+nnoremap <LocalLeader>b :Buffers<CR>
+nnoremap <LocalLeader>/ :Files<CR>
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+" }}} fzf "
+
+" goyo {{{ "
+function! ProseMode()
+    call goyo#execute(0, [114])
+    set spell noci nosi noai nolist noshowmode noshowcmd
+    set complete+=s
+    set bg=light
+    if !has('gui_running')
+        let g:solarized_termcolors=256
+    endif
+    colors solarized8_flat
+endfunction
+
+command! ProseMode call ProseMode()
+nmap \p :ProseMode<CR>
+" }}} goyo "
+
+" terminal buffer colors {{{ "
+let g:terminal_color_0 = '#3f3f3f'
+let g:terminal_color_1 = '#705050'
+let g:terminal_color_2 = '#60b48a'
+let g:terminal_color_3 = '#dfaf8f'
+let g:terminal_color_4 = '#506070'
+let g:terminal_color_5 = '#dc8cc3'
+let g:terminal_color_6 = '#8cd0d3'
+let g:terminal_color_7 = '#dcdccc'
+let g:terminal_color_8 = '#709080'
+let g:terminal_color_9 = '#dca3a3'
+let g:terminal_color_10 = '#c3bf9f'
+let g:terminal_color_11 = '#f0dfaf'
+let g:terminal_color_12 = '#94bff3'
+let g:terminal_color_13 = '#ec93d3'
+let g:terminal_color_14 = '#93e0e3'
+let g:terminal_color_15 = '#ffffff'
+" }}} terminal buffer colors "
+
+" iron mappings {{{ "
+let g:iron_map_defaults=0
+augroup ironmapping
+        autocmd!
+        autocmd Filetype python nmap <buffer> <localleader>t <Plug>(iron-send-motion)
+        autocmd Filetype python nmap <buffer> <localleader>t <Plug>(iron-send-motion)
+        autocmd Filetype python nmap <buffer> <localleader>p <Plug>(iron-repeat-cmd)
+augroup END
+
+" deactivate default mappings
+" let g:iron_map_defaults=0
+" }}} iron mappings "
+
 " Execute local vimrc settings
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
     source $LOCALFILE
 endif
 
-" Define matlab linter mlint
-let g:neomake_matlab_mlint_maker = {
-            \ 'exe': 'mlint',
-            \ 'args': ['-id'],
-            \ 'mapexpr': "neomake_bufname.':'.v:val",
-            \ 'errorformat':
-            \ '%f:L %l (C %c): %m,' .
-            \ '%f:L %l (C %c-%*[0-9]): %m,',
-            \ }
-" This was supposed to print W and E in gutter but doesn't work for now
-" let g:neomake_warning_sign = {
-"   \ 'text': 'W',
-"   \ 'texthl': 'WarningMsg',
-"   \ }
+" Name: Star search
+" Author: Name5566 <name5566@gmail.com>
+" Version: 0.1.1
 
-" let g:neomake_error_sign = {
-"   \ 'text': 'E',
-"   \ 'texthl': 'ErrorMsg',
-"   \ }
+if exists('loaded_starsearch')
+    finish
+endif
+let loaded_starsearch = 1
 
-" let g:neomake_message_sign = {
-"       \   'text': '➤',
-"       \   'texthl': 'NeomakeMessageSign',
-"       \ }
+let s:savedCpo = &cpo
+set cpo&vim
 
-let g:neomake_matlab_enabled_makers = ['mlint']
-let g:neomake_logfile='/tmp/error.log'
+function! s:VStarsearch_searchCWord()
+    let wordStr = expand("<cword>")
+    if strlen(wordStr) == 0
+        echohl ErrorMsg
+        echo 'E348: No string under cursor'
+        echohl NONE
+        return
+    endif
 
-" let g:neomake_open_list = 2
+    if wordStr[0] =~ '\<'
+        let @/ = '\<' . wordStr . '\>'
+    else
+        let @/ = wordStr
+    endif
 
-" Setup fugitive
-set diffopt+=vertical
-
-
-
-
-" focus on split right away "
-set splitbelow
-set splitright
-" ------------------------- "
-
-" map latex commands from cyrillic {{{latex_cyr "
-" latex_cyr}}} "
-
-set inccommand=nosplit " don't open split window for interactive search
-set foldmethod=marker  " setup folding
-
-
-
-" setup arduino {{{arduino "
-" my_file.ino [arduino:avr:uno]
-function! MyStatusLine()
-  return '%f [' . g:arduino_board . ']'
+    let savedUnnamed = @"
+    let savedS = @s
+    normal! "syiw
+    if wordStr != @s
+        normal! w
+    endif
+    let @s = savedS
+    let @" = savedUnnamed
 endfunction
-setl statusline=%!MyStatusLine()
 
-let g:arduino_cmd='/usr/bin/arduino'
-let g:arduino_dir='/usr/share/arduino'
-let g:arduino_board='archlinux-arduino:avr:uno'
-let g:arduino_programmer = 'archlinux-arduino:usbtinyisp'
-let g:arduino_args = '--verbose-upload'
-let g:arduino_serial_baud = 9600
-let g:arduino_serial_port = '/dev/ttyACM0'
-let g:arduino_auto_baud = 1
-nnoremap <leader>u :ArduinoUpload<CR>
-" arduino}}} "
+" https://github.com/bronson/vim-visual-star-search/
+function! s:VStarsearch_searchVWord()
+    let savedUnnamed = @"
+    let savedS = @s
+    normal! gv"sy
+    let @/ = '\V' . substitute(escape(@s, '\'), '\n', '\\n', 'g')
+    let @s = savedS
+    let @" = savedUnnamed
+endfunction
 
-" Mappings to open and source vimrc
-nnoremap <LocalLeader>ev :vsplit $MYVIMRC<cr>
-nnoremap <LocalLeader>sv :source $MYVIMRC<cr>
+nnoremap <silent> * :call <SID>VStarsearch_searchCWord()<CR>:set hls<CR>
+vnoremap <silent> * :<C-u>call <SID>VStarsearch_searchVWord()<CR>:set hls<CR>
 
-nnoremap <cr> a<cr><esc>
-nnoremap <Up> <C-W>+
-nnoremap <silent> <Down> <C-W>-
-nnoremap <Right> <C-W>>
-nnoremap <Left> <C-W><
-" let g:pswitcher_no_default_key_mappings = 1
+let &cpo = s:savedCpo
 
-" iunmap <c-k>
-" imap <c-k> <esc>mma<c-^><Plug>(pswitcher-input-word)<esc>`ma
+nnoremap <localleader>* :%s/\<<C-r><C-w>\>/<C-r><C-w>/g
+
+let g:iron_repl_open_cmd = 'vsplit'
+let g:deoplete#sources#jedi#show_docstring = 1
 
 
-" inoremap <c-k> <esc>mma<c-o>:exec MapLayout(@a)<CR><esc>`m"bp
+" vim-which-key configuration {{{ "
+" nnoremap <silent><localleader> :WhichKey '<Space>'<CR>
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+" nnoremap <silent> g      :<c-u>WhichKey 'g'<CR>
 
-" config todo hotkeys
-nnoremap <localLeader>et : vsplit ~/Documents/Dropbox/Apps/Simpletask/todo.txt<cr> :lcd ~/Documents/Dropbox/Apps/Simpletask<cr>
+" nnoremap <silent> <C-W>      :<c-u>WhichKey '<C-W>'<CR>
+set timeoutlen=500
+
+let g:which_key_map = {}
+let g:which_key_map.w = {
+      \ 'name' : '+windows' ,
+      \ 'w' : ['<C-W>w'     , 'other-window']          ,
+      \ 'd' : ['<C-W>c'     , 'delete-window']         ,
+      \ '-' : ['<C-W>s'     , 'split-window-below']    ,
+      \ '|' : ['<C-W>v'     , 'split-window-right']    ,
+      \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
+      \ 'h' : ['<C-W>h'     , 'window-left']           ,
+      \ 'j' : ['<C-W>j'     , 'window-below']          ,
+      \ 'l' : ['<C-W>l'     , 'window-right']          ,
+      \ 'k' : ['<C-W>k'     , 'window-up']             ,
+      \ 'J' : ['<C-W>J'     , 'move-window-down']      ,
+      \ 'H' : ['<C-W>H'     , 'move-window-left']      ,
+      \ 'K' : ['<C-W>K'     , 'move-window-up']        ,
+      \ 'L' : ['<C-W>L>'    , 'move-window-right']     ,
+      \ '=' : ['<C-W>='     , 'balance-window']        ,
+      \ 's' : ['<C-W>s'     , 'split-window-below']    ,
+      \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
+      \ }
+
+nnoremap <silent><localleader>to :terminal<CR>i
+
+let g:which_key_map.g = {
+            \ 'name' : '+git',
+            \ 'w'    : ['Gwrite', 'git-write'],
+            \ 'r'    : ['Gread', 'git-read'],
+            \ 's'    : ['Gstatus', 'git-status'],
+            \}
+
+let g:which_key_map.f = {
+      \ 'name' : '+find',
+      \ 'f'    : ['Files', 'files'],
+      \ 'w'    : ['Windows', 'windows'],
+      \ 'b'    : ['Buffers', 'buffers'],
+      \ 'l'    : ['Ag', 'lines'],
+      \ 'g'    : ['GitFiles', 'git-files'],
+      \ }
+
+
+call which_key#register('<Space>', "g:which_key_map")
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+" }}} vim-which-key configuration "
+"
+iabbrev Argumnet Argument
+iabbrev argumnet argument
