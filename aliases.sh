@@ -29,12 +29,15 @@ alias bst='mnd -r brainstorm'
 # alias vim='nvim'
 alias viterm="nvim +star -c 'term' -c 'colorscheme twilight256'"
 alias du='echo REMINDER: USE ncdu!; du'
-alias ncdu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias ncdu="ncdu --color dark -x --exclude .git --exclude node_modules"
 alias man='echo echo REMINDER: USE tldr!; man'
 alias locate='echo REMINDER: USE fd!; locate'
 
 alias lf='ls -d `ls -1t | head -1`'
 alias lfd='echo ~/Downloads/`ls -1t ~/Downloads | head -1`'
+function mlfd(){
+    mv "`lfd`" $1
+}
 # alias cat='echo REMINDER: USE bat!; cat'
 
 alias cwd='pwd | xclip'
@@ -43,8 +46,8 @@ alias kk='ll'
 
 alias wpd='pwd'
 function mcd(){
-mkdir $1
-cd $1
+    mkdir $1
+    cd $1
 }
 
 alias archie='screenfetch'
@@ -54,3 +57,12 @@ function ev(){
 }
 
 alias untar='tar -xvf'
+alias агсл='fuck'
+
+alias cels='conda env list'
+function cerm(){
+    conda remove -n $1 --all --yes 1>/dev/null
+}
+alias ca='conda activate'
+alias cac='conda activate cogni; cd $HOME/Code/python/cognigraph'
+alias ra='ranger'
