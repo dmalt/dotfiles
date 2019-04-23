@@ -1,7 +1,6 @@
 # Description
 
-My collection of dotfiles. At some point this repo should become a
-semiautomatic tool to apply all the custom setups on a completely new machine
+My collection of dotfiles.
 
 # My tools
 
@@ -136,3 +135,17 @@ Z-shell and plugins
 List of 3-d party plugins:
 
 * zsh-autosuggestions
+
+Borg
+====
+
+Borg should be installed with /usr/bin/pip (not anaconda version);
+msgpack version should be 0.5.6
+
+```
+/usr/bin/pip3 install msgpack==0.5.6
+/usr/bin/pip3 install borgbackup[fuse]
+```
+
+
+
