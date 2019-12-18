@@ -52,7 +52,7 @@ vnoremap / /\v
 " set ignorecase
 set smartcase
 
-set clipboard=unnamed
+set clipboard=unnamed,unnamedplus
 
 nnoremap j gj
 nnoremap k gk
@@ -132,16 +132,17 @@ set termguicolors
 " colorscheme afterglow
 " colorscheme OceanicNext
 " colorscheme space-vim-dark
-colorscheme srcery
+" colorscheme srcery
 " colorscheme archery
+" colorscheme seoul256
 " colorscheme solarized8_low
 " colorscheme anderson
 " Python3Syntax
-" colorscheme afterglow
+colorscheme afterglow
 " colorscheme dracula
 " colorscheme dracula
 " colorscheme Tomorrow-Night
-" colorscheme Tomorrow
+" colorscheme base16-tomorrow-night
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 " }}} colors "
 
@@ -176,6 +177,7 @@ let g:python3_host_prog='/usr/bin/python3'
 let g:ale_linters = {
             \ 'python': [ 'flake8'],
             \}
+let g:ale_python_flake8_options='--ignore E203,W503'
 " }}} linting "
 
 " Setup fugitive
@@ -204,7 +206,6 @@ set diffopt+=vertical
 " " arduino}}} "
 
 nnoremap <cr> a<cr><esc>
-nnoremap <c-n> @n
 
 " handle brackets, parents and quotes {{{ "
 inoremap {} {}<C-G>U<Left>
@@ -339,8 +340,8 @@ let g:iron_map_defaults=0
 augroup ironmapping
         autocmd!
         autocmd Filetype python nmap <buffer> <localleader>t <Plug>(iron-send-motion)
-        autocmd Filetype python nmap <buffer> <localleader>t <Plug>(iron-send-motion)
         autocmd Filetype python nmap <buffer> <localleader>p <Plug>(iron-repeat-cmd)
+        autocmd Filetype python nmap <buffer> <localleader>r :call IronSend(join(["run", expand('%:p')]))<CR>
 augroup END
 
 " deactivate default mappings
@@ -466,3 +467,48 @@ vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
 "
 iabbrev Argumnet Argument
 iabbrev argumnet argument
+iabbrev sefl self
+
+" vim-easyclip settings {{{ "
+"let g:EasyClipUseCutDefaults = 0
+"let g:EasyClipAutoFormat = 1
+"let g:EasyClipShareYanks = 1
+"let g:EasyClipUseSubstituteDefaults = 1
+
+"nmap <localleader>m <Plug>MoveMotionPlug
+"xmap <localleader>m <Plug>MoveMotionXPlug
+"nmap <localleader>mm <Plug>MoveMotionLinePlug>m m
+"nmap <localleader>M <Plug>MoveMotionEndOfLinePlug
+
+"nmap <silent> <localleader>s <plug>SubstituteOverMotionMap
+"nmap <localleader>ss <plug>SubstituteLine
+"xmap <localleader>s <plug>XEasyClipPaste
+
+"imap <c-v> <plug>EasyClipInsertModePaste
+"" swap two characters with vim-exchange since x doesn't yank anymore
+"nmap xp cxllcxl
+
+""fix for yankring and neovim
+"let g:yankring_clipboard_monitor = 0
+" }}} vim-easyclip settings "
+
+
+nnoremap <localleader>sm i\mathbf{<ESC>la}<ESC>
+vnoremap <localleader>sm "ac\mathbf{<ESC>"apa}
+
+nnoremap <localleader>se i\emph{<ESC>la}<ESC>
+vnoremap <localleader>se "ac\emph{<ESC>"apa}
+
+
+" thesis abbreviations {{{ "
+" iabbrev R_X \mathbf{R}_\mathbf{X}
+" iabbrev R_S \mathbf{R}_\mathbf{S}
+" iabbrev G \mathbf{G}
+" iabbrev I \mathbf{I}
+" iabbrev A_k \mathbf{A}_k
+" }}} thesis abbreviations "
+
+" black {{{ "
+let g:black_linelength=79
+nnoremap <localleader>B :Black<CR>
+" }}} black "

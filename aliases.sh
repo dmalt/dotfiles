@@ -66,3 +66,8 @@ function cerm(){
 alias ca='conda activate'
 alias cac='conda activate cogni; cd $HOME/Code/python/cognigraph'
 alias ra='ranger'
+
+alias ipe='curl ipinfo.io/ip'
+alias ipi="ip addr show dev wlp2s0"
+
+alias mne_open="ipython -i ~/Code/python/CLI/open_raw.py"

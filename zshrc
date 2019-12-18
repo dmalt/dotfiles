@@ -87,3 +87,19 @@ eval $(thefuck --alias)
 # zplug "rupa/z", use:z.sh
 export BORG_REPO='/run/media/dmalt/my_passport/kulyoma1_home_backups/'
 export BORG_PASSPHRASE='aikbkj'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/dmalt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/dmalt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/dmalt/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/dmalt/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

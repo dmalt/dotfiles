@@ -48,6 +48,7 @@ Plugin 'dmalt/nvim-cyrillic'
 Plugin 'junegunn/goyo.vim'
 Plugin 'freitass/todo.txt-vim'
 Plugin 'tommcdo/vim-exchange'
+" Plugin 'svermeulen/vim-easyclip'
 " Plugin 'cjrh/vim-conda' 
 " Plugin 'bfredl/nvim-ipy'
 " ------------- ultisnips -------------- "
@@ -75,12 +76,14 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'bps/vim-textobj-python'
 " Plugin 'python-mode/python-mode', { 'branch': 'develop' }
 Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'fs111/pydoc.vim'
+" Plugin 'fs111/pydoc.vim'
 Plugin 'Shougo/echodoc.vim'
 Plugin 'kana/vim-metarw'
 Plugin 'mattn/vim-metarw-gdrive'
 Plugin 'mattn/webapi-vim'
 Plugin 'liuchengxu/vim-which-key'
+" Plugin 'chriskempson/base16-vim'
+Plugin 'python/black'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
