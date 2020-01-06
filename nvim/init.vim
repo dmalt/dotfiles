@@ -4,7 +4,7 @@ set nocompatible              " required
 filetype off                  " required
 
 
-source $HOME/.dotfiles/plugins.vim  " load plugins
+source $HOME/.dotfiles/nvim/plugins.vim  " load plugins
 
 " ultisnips folder configuration {{{ "
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -251,8 +251,8 @@ let g:tex_flavor = "latex"
 " }}} latex settings "
 
 " setup ultisnips {{{ "
-let g:UltiSnipsSnippetsDir='/home/dmalt/.vim/mySnippets/UltiSnips'
-set runtimepath+=~/.vim/mySnippets
+let g:UltiSnipsSnippetsDir="~/.dotfiles/nvim/mySnippets/UltiSnips"
+set runtimepath+=$HOME/.dotfiles/nvim/mySnippets
 " }}} setup ultisnips "
 
 " fzf {{{ "
