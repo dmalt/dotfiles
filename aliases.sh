@@ -71,3 +71,5 @@ alias ipe='curl ipinfo.io/ip'
 alias ipi="ip addr show dev wlp2s0"
 
 alias mne_open="ipython -i ~/Code/python/CLI/open_raw.py"
+alias ya="yandex-disk"
+alias yast="yandex-disk status"
