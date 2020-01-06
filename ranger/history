@@ -1,0 +1,50 @@
+open_with ipython -i /home/dmalt/Code/python/CLI/open_raw.py
+rename 003_MRI_data
+open_with h
+open_with
+open_with q
+mkdir 2print
+search vowels
+search SN
+open_with 
+mkdir sub-emptyroom
+rename tsss_er
+search K0024
+mkdir meg
+rename sub-emptyroom_ses-20130522_scans.tsv
+cd 
+search R0029
+search K0052
+search lin
+search sys
+search Matlab
+search tsv
+search R0026
+search R0046
+search R0036
+rename _sub-R0046
+search op
+search the
+search K0055
+rename opus.png
+open_with nvim
+rename PixInsight.sh
+search R0057
+rename Zvonka.jpg
+rename alpha_peak_utils.py
+open_with `jj
+bulkrename 
+rename Harmonic_series_to_32_hor.png
+
+cd ~/Downloads
+delete
+shell 
+search .con
+search .nvim
+search conf
+search dot
+search .vimr
+search loc
+search vim
+open_with vim
+q

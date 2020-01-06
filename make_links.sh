@@ -15,4 +15,10 @@ ln -sfv $DOTFILES/nvim/init.vim         $HOME/.config/nvim/init.vim
 ln -sfv $DOTFILES/nvim/init.vim         $HOME/.vimrc
 ln -sfv $DOTFILES/zlogin                $HOME/.zlogin
 ln -sfv $DOTFILES/termiterc             $HOME/.config/termite/config
-ln -sfv $DOTFILES/nvim/ftplugin         $HOME/.config/nvim/ftplugin
+if ! [[ -d $HOME/.config/nvim/ftplugin ]]; then
+    ln -sfv $DOTFILES/nvim/ftplugin         $HOME/.config/nvim/ftplugin
+fi
+
+if ! [[ -d $HOME/.config/nvim/ranger ]]; then
+    ln -sfv $DOTFILES/ranger             $HOME/.config/ranger
+fi
