@@ -9,9 +9,10 @@ mkdir -p $HOME/.config/conky && ln -sfv $DOTFILES/conkyrc $HOME/.config/conky/co
 ln -sfv $DOTFILES/gitconfig             $HOME/.gitconfig
 ln -sfv $DOTFILES/zshrc                 $HOME/.zshrc
 ln -sfv $DOTFILES/vimrc                 $HOME/.vimrc
-ln -sfv $DOTFILES/pure_dmalt.zsh-theme   $HOME/.oh-my-zsh/themes/pure_dmalt.zsh-theme
+ln -sfv $DOTFILES/pure_dmalt.zsh-theme  $HOME/.oh-my-zsh/themes/pure_dmalt.zsh-theme
 ln -sfv $DOTFILES/tmux.conf             $HOME/.tmux.conf
 ln -sfv $DOTFILES/xinputrc              $HOME/.xinputrc
 ln -sfv $DOTFILES/vimrc                 $HOME/.config/nvim/init.vim
 ln -sfv $DOTFILES/zlogin                $HOME/.zlogin
-ln -sfv $DOTFILES/termiterc               $HOME/.config/termite/config
+ln -sfv $DOTFILES/termiterc             $HOME/.config/termite/config
+ln -sfv $DOTFILES/mySnippets            $HOME/.vim/mySnippets

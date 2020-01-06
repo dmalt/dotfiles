@@ -1,0 +1,18 @@
+snippet #-
+${3:#} ${2:--------} ${1:some_text} $2 $3
+endsnippet
+
+snippet #--
+${3:#} ${2:--------} ${1:some_text} $2 $3
+${0:${VISUAL:# some_code}}
+$3 $2`!p
+a=''
+if t[2]:
+	b = t[2][0]
+else:
+	b=''
+for i in range(len(t[1]) + 2):
+	a += b
+snip.rv = a
+`$2 $3
+endsnippet
