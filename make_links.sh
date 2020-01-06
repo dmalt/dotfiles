@@ -16,3 +16,4 @@ ln -sfv $DOTFILES/vimrc                 $HOME/.config/nvim/init.vim
 ln -sfv $DOTFILES/zlogin                $HOME/.zlogin
 ln -sfv $DOTFILES/termiterc             $HOME/.config/termite/config
 ln -sfv $DOTFILES/mySnippets            $HOME/.vim/mySnippets
+ln -sfv $DOTFILES/ftplugin              $HOME/.config/nvim/ftplugin
