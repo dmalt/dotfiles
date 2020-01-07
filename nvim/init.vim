@@ -73,7 +73,7 @@ let maplocalleader = "\<space>"
 
 " Mappings to open and source vimrc
 nnoremap <LocalLeader>ev :edit $MYVIMRC<cr>
-nnoremap <LocalLeader>ep :edit $HOME/.dotfiles/plugins.vim<cr>
+nnoremap <LocalLeader>ep :edit $HOME/.dotfiles/nvim/plugins.vim<cr>
 nnoremap <LocalLeader>sv :source $MYVIMRC<cr>
 
 inoremap <c-d> <Del>
