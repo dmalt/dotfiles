@@ -219,6 +219,7 @@ inoremap <C-l> <Esc>/[)}"'\]>$]<CR>:nohl<CR>a
 
 " config todo hotkeys
 nnoremap <localLeader>et :edit ~/Documents/Dropbox/Apps/Simpletask/todo.txt<cr> :lcd ~/Documents/Dropbox/Apps/Simpletask<cr>
+nnoremap <localLeader>ei :edit ~/Documents/Dropbox/Apps/Simpletask/inbox.txt<cr> :lcd ~/Documents/Dropbox/Apps/Simpletask<cr>
 
 " spelling settings {{{ "
 " setlocal spell spelllang=ru_yo,en_us
