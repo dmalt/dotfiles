@@ -71,7 +71,7 @@ Plugin 'roosta/srcery'
 Plugin 'vim-python/python-syntax'
 
 Plugin 'w0rp/ale'
-Plugin 'hkupty/iron.nvim'
+Plugin 'Vigemus/iron.nvim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'bps/vim-textobj-python'
 " Plugin 'python-mode/python-mode', { 'branch': 'develop' }
