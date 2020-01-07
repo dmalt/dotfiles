@@ -233,6 +233,9 @@ set nospell
 
 " latex settings {{{ "
 let g:tex_flavor = "latex"
+" vimtex
+let g:vimtex_quickfix_autojump = 0 " jump to first error when quickfix opened
+let g:vimtex_quickfix_mode = 0 " dont open quickfix automatically
 
 "  trailing whitespaces "
 " function! <SID>StripTrailingWhitespaces()
