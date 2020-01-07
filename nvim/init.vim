@@ -114,7 +114,6 @@ tnoremap <Esc> <C-\><C-n>
 " endif
 
 " highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
-nnoremap <silent> <localleader>o :IronRepl<cr>
 
 " deoplete {{{ "
 " call deoplete#enable()
@@ -336,7 +335,9 @@ let g:terminal_color_15 = '#ffffff'
 " }}} terminal buffer colors "
 
 " iron mappings {{{ "
+luafile $HOME/.config/nvim/plugins.lua
 let g:iron_map_defaults=0
+nnoremap <silent> <localleader>o :IronRepl<cr><Esc>
 augroup ironmapping
         autocmd!
         autocmd Filetype python nmap <buffer> <localleader>t <Plug>(iron-send-motion)

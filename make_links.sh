@@ -13,6 +13,7 @@ ln -sfv $DOTFILES/tmux.conf             $HOME/.tmux.conf
 ln -sfv $DOTFILES/xinputrc              $HOME/.xinputrc
 ln -sfv $DOTFILES/nvim/init.vim         $HOME/.config/nvim/init.vim
 ln -sfv $DOTFILES/nvim/init.vim         $HOME/.vimrc
+ln -sfv $DOTFILES/nvim/plugins.lua      $HOME/.config/nvim/plugins.lua
 ln -sfv $DOTFILES/zlogin                $HOME/.zlogin
 ln -sfv $DOTFILES/termiterc             $HOME/.config/termite/config
 if ! [[ -d $HOME/.config/nvim/ftplugin ]]; then
