@@ -1,4 +1,6 @@
 alias sinstall='sudo apt-get install'
+alias supdate='sudo apt-get update'
+alias supgrade='sudo apt-get upgrade'
 alias sapt-get='sudo apt-get'
 alias l='ls -1F'
 alias lll='ls -alh'
