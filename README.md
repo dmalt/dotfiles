@@ -147,5 +147,8 @@ msgpack version should be 0.5.6
 /usr/bin/pip3 install borgbackup[fuse]
 ```
 
+Powerline font for vim-airline plugin
+=====================================
+Follow installation [instructions](https://github.com/powerline/fonts)
 
 
