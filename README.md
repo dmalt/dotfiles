@@ -152,3 +152,9 @@ Powerline font for vim-airline plugin
 Follow installation [instructions](https://github.com/powerline/fonts)
 
 
+i3 setup
+========
+Don't forget to install i3blocks package:
+```
+sudo apt-get install i3blocks
+```
