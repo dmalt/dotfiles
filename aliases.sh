@@ -43,7 +43,7 @@ function mlfd(){
 # alias cat='echo REMINDER: USE bat!; cat'
 
 alias cwd='pwd | xclip'
-alias pp='ping -c3 ya.ru'
+alias pp='ping -c3 -4 ya.ru'
 alias kk='ll'
 
 alias wpd='pwd'
