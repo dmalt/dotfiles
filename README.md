@@ -114,15 +114,38 @@ Go to github ---> settings ---> SSH and GPG keys ---> new
 Matlab installation
 ===================
 
-> To mount .iso images in arch use ```fuseiso```:
-> ```bash
-> mkdir ~/mountpoint
-> sudo fuseiso  image.iso ~/mountpoint
-> ```
+1. Mount the first image with
+    ```bash
+    mkdir ~/mountpoint
+    sudo mount image1.iso ~/mountpoint
+    ```
 
-If there are two installation .iso images  mount the first image
-and then when prompted unmount the first image and mount the second to
-the same mounting point.
+2. Run the installation script with
+
+    ```bash
+    sudo ~/mountpoint/install
+    ```
+
+3. When the installation from the first image is done, the popup window is shown.
+Unmount the first image and mount the second one to the same mounting point:
+
+    ```bash
+    sudo umount ~/mountpoint
+    sudo mount image2.iso ~/mountpoint
+    ```
+
+4. Click ok in the popup window to continue the installation.
+
+5. Copy files
+
+6. The first time run MATLAB with sudo to activate it.
+Sudo is required since the default installation locacation is `/usr/local`
+and regular user doesn't have has permissions to write there.
+
+```bash
+sudo `which matlab`
+```
+
 
 
 Z-shell and plugins
