@@ -146,7 +146,12 @@ and regular user doesn't have has permissions to write there.
 sudo `which matlab`
 ```
 
-
+#### After installation
+1.Matlab complains about fontconfig.
+```bash
+	cd /usr/local/MATLAB/<version>/bin/glnxa64
+	sudo mv libfreetype.so.6.11.1{,.bak}
+```
 
 Z-shell and plugins
 ===================
