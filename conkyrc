@@ -1,10 +1,10 @@
 # Window specifications
-own_window yes
-own_window_type override
-own_window_transparent yes
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+# own_window yes
+# own_window_type override
+# own_window_transparent yes
+# own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 
-own_window_colour 2D2D2D
+# own_window_colour 2D2D2D
 double_buffer yes
 update_interval 3
 
@@ -15,8 +15,8 @@ minimum_size 300
 
 # Alignment #
 alignment tr
-gap_x 150
-gap_y 100
+gap_x 50
+gap_y 50
 
 border_inner_margin 15
 border_outer_margin 0
@@ -30,7 +30,7 @@ draw_graph_borders no
 # Text settings #
 use_xft yes
 # xftalpha 0.8
-xftfont System San Francisco Display:size=10
+xftfont System San Francisco Display:size=6
 
 override_utf8_locale yes
 
@@ -48,14 +48,14 @@ color6 AAAAAA
 color7 484848
 
 TEXT
-${font Arial Black:size=26}${alignc}${time %H:%M}${font}
+${font Arial Black:size=14}${alignc}${time %H:%M}${font}
 ${alignc}${time %A, %B %d, %Y}
 
 ${voffset 8}${loadgraph F57900 FCAF3E}
 #
-${goto 6}${voffset 4}${font conkycolors:size=16}o${font}${voffset -6}${goto 62}Uptime: ${alignr}${uptime}
+${voffset 4}${font conkycolors:size=8}${font}${voffset -6}${alignr}Uptime: ${alignr}${uptime}
 #
-${goto 6}${voffset 6}${font conkycolors:size=16}1${font}${voffset -6}${goto 62}Battery: ${battery_short}\
+${voffset 6}${font conkycolors:size=8}${font}${voffset -6}${alignr}Battery: ${battery_short}\
 # Color battery bar based on percentage remaining.
 ${if_match ${battery_percent} < 15}${color red}${else}\
 ${if_match ${battery_percent} < 25}${color orange}${else}\
@@ -88,26 +88,26 @@ ${color1}${cpu cpu4}% ${cpubar cpu8}
 RAM:   $memperc%   ${membar 6}
 Swap:  $swapperc%   ${swapbar 6}$color
 
-${goto 32}${voffset 4}Highest: ${alignr 52}CPU${alignr}RAM
-${goto 32}${voffset -5.5}${hr 1}
-${voffset -1}${goto 62}${top name 1} ${alignr 32}${top cpu 1}${alignr}${top mem 1}
-${voffset -1}${goto 62}${top name 2} ${alignr 32}${top cpu 2}${alignr}${top mem 2}
-${voffset -1}${goto 62}${top name 3} ${alignr 32}${top cpu 3}${alignr}${top mem 3}
+${voffset 4}Highest: ${alignr 52}CPU${alignr}RAM
+${voffset -5.5}${hr 1}
+${voffset -1}${top name 1} ${alignr 32}${top cpu 1}${alignr}${top mem 1}
+${voffset -1}${top name 2} ${alignr 32}${top cpu 2}${alignr}${top mem 2}
+${voffset -1}${top name 3} ${alignr 32}${top cpu 3}${alignr}${top mem 3}
 
 Discrete GPU ${hr 2}
 ${if_match ${exec lsmod | grep 'nvidia' -c} > 0}\
-${goto 6}${voffset 5}${font conkycolorslogos:size=16}n${font}${voffset -6}${goto 62}${exec nvidia-smi --query-gpu=name --format=csv,noheader}
-${goto 6}${voffset 5}${font conkycolors:size=16}8${font}${voffset -6}${goto 62}\
+${voffset 5}${font conkycolorslogos:size=8}${font}${voffset -6}${exec nvidia-smi --query-gpu=name --format=csv,noheader}
+${voffset 5}${font conkycolors:size=8}${font}${voffset -6}\
 Temperature: ${alignr}${color4}${exec nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits} °C$color
-${goto 6}${voffset 5}${font conkycolors:size=16}e${font}${voffset -6}${goto 62}\
+${voffset 5}${font conkycolors:size=8}${font}${voffset -6}\
 Memory:${alignr}${exec nvidia-smi --query-gpu=memory.used --format=csv,noheader} / ${exec nvidia-smi --query-gpu=memory.total --format=csv,noheader}
 ${else}\
-${goto 6}${voffset 5}${font conkycolors:size=16}r${font}${voffset -6}${goto 62}OFF
+${voffset 5}${font conkycolors:size=8}r${font}${voffset -6}OFF
 ${endif}\
 
 Disk ${hr 2}
-${voffset 4}${font conkycolors:size=16}l${font}${voffset -6}${goto 82}I/O: ${diskio}${alignr}${diskiograph 8,60 F57900 FCAF3E}
-${voffset 4}${font conkycolors:size=16}i${font} ${voffset -5} ${fs_used /} / ${fs_size /} ${alignr}${fs_bar 8,60 /}
+${voffset 4}${font conkycolors:size=8}${font}${voffset -6}I/O: ${diskio}${alignr}${diskiograph 8,60 F57900 FCAF3E}
+${voffset 4}${font conkycolors:size=8}${font} ${voffset -5} ${fs_used /} / ${fs_size /} ${alignr}${fs_bar 8,60 /}
 
 ${if_up wlp2s0}${color1}WIRELESS IP: ${addr wlp2s0}  ${alignr}[${wireless_link_qual_perc wlp2s0}%] $color
 ${color1}Essid: ${wireless_essid wlp2s0} ${alignr}Rate: ${wireless_bitrate wlp2s0}${color}
