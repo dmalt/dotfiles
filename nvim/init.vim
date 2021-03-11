@@ -64,12 +64,21 @@ set splitright
 set inccommand=nosplit " don't open split window for interactive search
 set foldmethod=marker  " setup folding
 
+"
+
+
 " nnoremap * *``
 " set leader {{{ "
 let mapleader = "\<space>"
 " let mapleader = ','
 let maplocalleader = "\<space>"
 " }}} set leader "
+
+" space-j/k deletes blank line below/above, and Alt-j/k inserts.
+nnoremap <silent><LocalLeader>J m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><LocalLeader>K m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><LocalLeader>j :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><LocalLeader>k :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " Mappings to open and source vimrc
 nnoremap <LocalLeader>ev :edit $MYVIMRC<cr>
@@ -119,6 +128,10 @@ tnoremap <Esc> <C-\><C-n>
 " call deoplete#enable()
 " deoplete tab-complete
 let g:deoplete#enable_at_startup = 1
+" let g:deoplete#sources#jedi#ignore_errors = 1
+let g:deoplete#sources#jedi#enable_typeinfo = 0
+let g:deoplete#sources#jedi#show_docstring = 0
+" let g:deoplete#sources#jedi#python_path = "/usr/bin/python3"
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " }}} deoplete "
 
@@ -132,12 +145,12 @@ set termguicolors
 " colorscheme OceanicNext
 " colorscheme space-vim-dark
 " colorscheme srcery
-" colorscheme archery
+colorscheme archery
 " colorscheme seoul256
 " colorscheme solarized8_low
 " colorscheme anderson
 " Python3Syntax
-colorscheme afterglow
+" colorscheme afterglow
 " colorscheme dracula
 " colorscheme dracula
 " colorscheme Tomorrow-Night
@@ -157,9 +170,9 @@ let g:airline_theme='luna'
 
 " python host prog {{{ "
 " let g:python_host_prog='/usr/bin/python2'
-let g:python_host_prog='/usr/bin/python2'
+let g:python_host_prog='/usr/bin/python'
 let g:python3_host_prog='/usr/bin/python3'
-" let g:python3_host_prog='/home/dmalt/anaconda3/bin/python'
+" let g:python3_host_prog='/home/dmalt/.miniconda3/bin/python'
 " }}} python host prog "
 
 " map saving to ctrl+s {{{ "
@@ -207,14 +220,16 @@ set diffopt+=vertical
 nnoremap <cr> a<cr><esc>
 
 " handle brackets, parents and quotes {{{ "
-inoremap {} {}<C-G>U<Left>
-inoremap () ()<C-G>U<Left>
-inoremap [] []<C-G>U<Left>
-inoremap '' ''<C-G>U<Left>
-inoremap "" ""<C-G>U<Left>
-inoremap <> <><C-G>U<Left>
-inoremap $$ $$<C-G>U<Left>
-inoremap <C-l> <Esc>/[)}"'\]>$]<CR>:nohl<CR>a
+" inoremap {} {}<C-G>U<Left>
+" inoremap () ()<C-G>U<Left>
+" inoremap [] []<C-G>U<Left>
+" inoremap '' ''<C-G>U<Left>
+" inoremap "" ""<C-G>U<Left>
+" inoremap <> <><C-G>U<Left>
+" inoremap $$ $$<C-G>U<Left>
+" inoremap %% %%<C-G>U<Left>
+" inoremap <C-l> <C-G>U<Esc>/[)}"'\]>$]<CR>:nohl<CR>a
+inoremap <C-l> <C-G>U<Right>
 " }}} handle brackets, parents and quotes "
 
 " config todo hotkeys
@@ -339,81 +354,84 @@ let g:terminal_color_15 = '#ffffff'
 " }}} terminal buffer colors "
 
 " iron mappings {{{ "
-luafile $HOME/.config/nvim/plugins.lua
-let g:iron_map_defaults=0
-nnoremap <silent> <localleader>o :IronRepl<cr><Esc>
-augroup ironmapping
-        autocmd!
-        autocmd Filetype python nmap <buffer> <localleader>t <Plug>(iron-send-motion)
-        autocmd Filetype python nmap <buffer> <localleader>p <Plug>(iron-repeat-cmd)
-        autocmd Filetype python nmap <buffer> <localleader>r :call IronSend(join(["run", expand('%:p')]))<CR>
-augroup END
+" luafile $HOME/.config/nvim/plugins.lua
+" let g:iron_map_defaults=0
+" nnoremap <silent> <localleader>o :IronRepl<cr><Esc>
+" augroup ironmapping
+"         autocmd!
+"         autocmd Filetype python nmap <buffer> <localleader>t <Plug>(iron-send-motion)
+"         autocmd Filetype python nmap <buffer> <localleader>p <Plug>(iron-repeat-cmd)
+"         autocmd Filetype python nmap <buffer> <localleader>r :call IronSend(join(["run", expand('%:p')]))<CR>
+" augroup END
+" augroup ironmapping
+"         autocmd!
+"         autocmd Filetype matlab nmap <buffer> <localleader>t <Plug>(iron-send-motion)
+"         autocmd Filetype matlab nmap <buffer> <localleader>p <Plug>(iron-repeat-cmd)
+"         autocmd Filetype matlab nmap <buffer> <localleader>r :call IronSend(join(["run", expand('%:p')]))<CR>
+" augroup END
 
 " deactivate default mappings
 " let g:iron_map_defaults=0
 " }}} iron mappings "
 
-" Execute local vimrc settings
-let $LOCALFILE=expand("~/.vimrc_local")
-if filereadable($LOCALFILE)
-    source $LOCALFILE
-endif
 
-" Name: Star search
-" Author: Name5566 <name5566@gmail.com>
-" Version: 0.1.1
+" visual star search {{{ "
+" " Name: Star search
+" " Author: Name5566 <name5566@gmail.com>
+" " Version: 0.1.1
 
-if exists('loaded_starsearch')
-    finish
-endif
-let loaded_starsearch = 1
+" if exists('loaded_starsearch')
+"     finish
+" endif
+" let loaded_starsearch = 1
 
-let s:savedCpo = &cpo
-set cpo&vim
+" let s:savedCpo = &cpo
+" set cpo&vim
 
-function! s:VStarsearch_searchCWord()
-    let wordStr = expand("<cword>")
-    if strlen(wordStr) == 0
-        echohl ErrorMsg
-        echo 'E348: No string under cursor'
-        echohl NONE
-        return
-    endif
+" function! s:VStarsearch_searchCWord()
+"     let wordStr = expand("<cword>")
+"     if strlen(wordStr) == 0
+"         echohl ErrorMsg
+"         echo 'E348: No string under cursor'
+"         echohl NONE
+"         return
+"     endif
 
-    if wordStr[0] =~ '\<'
-        let @/ = '\<' . wordStr . '\>'
-    else
-        let @/ = wordStr
-    endif
+"     if wordStr[0] =~ '\<'
+"         let @/ = '\<' . wordStr . '\>'
+"     else
+"         let @/ = wordStr
+"     endif
 
-    let savedUnnamed = @"
-    let savedS = @s
-    normal! "syiw
-    if wordStr != @s
-        normal! w
-    endif
-    let @s = savedS
-    let @" = savedUnnamed
-endfunction
+"     let savedUnnamed = @"
+"     let savedS = @s
+"     normal! "syiw
+"     if wordStr != @s
+"         normal! w
+"     endif
+"     let @s = savedS
+"     let @" = savedUnnamed
+" endfunction
 
-" https://github.com/bronson/vim-visual-star-search/
-function! s:VStarsearch_searchVWord()
-    let savedUnnamed = @"
-    let savedS = @s
-    normal! gv"sy
-    let @/ = '\V' . substitute(escape(@s, '\'), '\n', '\\n', 'g')
-    let @s = savedS
-    let @" = savedUnnamed
-endfunction
+" " https://github.com/bronson/vim-visual-star-search/
+" function! s:VStarsearch_searchVWord()
+"     let savedUnnamed = @"
+"     let savedS = @s
+"     normal! gv"sy
+"     let @/ = '\V' . substitute(escape(@s, '\'), '\n', '\\n', 'g')
+"     let @s = savedS
+"     let @" = savedUnnamed
+" endfunction
 
-nnoremap <silent> * :call <SID>VStarsearch_searchCWord()<CR>:set hls<CR>
-vnoremap <silent> * :<C-u>call <SID>VStarsearch_searchVWord()<CR>:set hls<CR>
+" nnoremap <silent> * :call <SID>VStarsearch_searchCWord()<CR>:set hls<CR>
+" vnoremap <silent> * :<C-u>call <SID>VStarsearch_searchVWord()<CR>:set hls<CR>
 
-let &cpo = s:savedCpo
+" let &cpo = s:savedCpo
 
-nnoremap <localleader>* :%s/\<<C-r><C-w>\>/<C-r><C-w>/g
+" nnoremap <localleader>* :%s/\<<C-r><C-w>\>/<C-r><C-w>/g
+" }}} visual star search "
 
-let g:iron_repl_open_cmd = 'vsplit'
+" let g:iron_repl_open_cmd = 'vsplit'
 let g:deoplete#sources#jedi#show_docstring = 1
 
 
@@ -453,6 +471,7 @@ let g:which_key_map.g = {
             \ 'w'    : ['Gwrite', 'git-write'],
             \ 'r'    : ['Gread', 'git-read'],
             \ 's'    : ['Gstatus', 'git-status'],
+            \ 'd'    : ['Gdiff', 'git-diff'],
             \}
 
 let g:which_key_map.f = {
@@ -498,22 +517,104 @@ iabbrev sefl self
 " }}} vim-easyclip settings "
 
 
-nnoremap <localleader>sm i\mathbf{<ESC>la}<ESC>
-vnoremap <localleader>sm "ac\mathbf{<ESC>"apa}
+" latex thesis mappings {{{ "
+" nnoremap <localleader>sm i\mathbf{<ESC>la}<ESC>
+" vnoremap <localleader>sm "ac\mathbf{<ESC>"apa}
 
-nnoremap <localleader>se i\emph{<ESC>la}<ESC>
-vnoremap <localleader>se "ac\emph{<ESC>"apa}
+" nnoremap <localleader>se i\emph{<ESC>la}<ESC>
+" vnoremap <localleader>se "ac\emph{<ESC>"apa}
+" }}} latex thesis mappings "
 
-
-" thesis abbreviations {{{ "
+" latex thesis abbreviations {{{ "
 " iabbrev R_X \mathbf{R}_\mathbf{X}
 " iabbrev R_S \mathbf{R}_\mathbf{S}
 " iabbrev G \mathbf{G}
 " iabbrev I \mathbf{I}
 " iabbrev A_k \mathbf{A}_k
-" }}} thesis abbreviations "
+" }}} latex thesis abbreviations "
 
 " black {{{ "
 let g:black_linelength=79
 nnoremap <localleader>B :Black<CR>
 " }}} black "
+
+" C mappings handling enter with brackets {{{ "
+" adapted from https://stackoverflow.com/questions/6066372/make-vim-curly-braces-square-braces-parens-act-like-textmate
+" fun! MyCR()
+"     if strpart(getline('.'), col('.') - 2, 2) == '{}'
+"         return "\<CR>\<CR>\<Up>\<Tab>"
+"     endif
+"     return "\<CR>"
+" endfun
+" autocmd FileType c,cpp,html,java inoremap <CR> <C-R>=MyCR()<CR>
+" }}} C mappings "
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
+" scratch buffer
+let g:scratch_filetype = 'python'
+" let g:scratch_top = 0
+" let g:scratch_horizontal = 0
+let g:scratch_persistence_file = '/tmp/scratch.vim'
+nnoremap <localleader>n :Scratch<cr>:set filetype=python<cr>
+
+nnoremap <localleader>; :
+nnoremap <localleader>q; q:
+
+" autocmd CompleteDone * if !pumvisible() | pclose | endif
+" nmap <silent> <buffer> gK <Plug>(kite-docs)
+"
+" Execute local vimrc settings
+let $LOCALFILE=expand("~/.vimrc_local")
+if filereadable($LOCALFILE)
+    source $LOCALFILE
+endif
+
+
+" asterisk mappings {{{ "
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
+let g:asterisk#keeppos = 1
+" }}} asterisk mappings "
+
+" neoterm configuration {{{ "
+" let g:neoterm_repl_python = ['conda activate mne', 'clear', 'ipython --no-autoindent']
+let g:neoterm_repl_python = ['conda activate mne_bids_latest', 'clear', 'ipython --no-autoindent']
+" let g:neoterm_repl_python = ['ipython --no-autoindent']
+let g:neoterm_direct_open_repl = 0
+let g:neoterm_eof = "\r"
+" }}} neoterm configuration "
+
+
+" vim-markdown-preview {{{ "
+let vim_markdown_preview_github=1
+" }}} vim-markdown-preview "
+
+" CamelCaseMotion {{{ "
+" map <silent> w <Plug>CamelCaseMotion_w
+" map <silent> b <Plug>CamelCaseMotion_b
+" map <silent> e <Plug>CamelCaseMotion_e
+" map <silent> ge <Plug>CamelCaseMotion_ge
+" sunmap w
+" sunmap b
+" sunmap e
+" sunmap ge
+" omap <silent> iw <Plug>CamelCaseMotion_iw
+" xmap <silent> iw <Plug>CamelCaseMotion_iw
+" omap <silent> ib <Plug>CamelCaseMotion_ib
+" xmap <silent> ib <Plug>CamelCaseMotion_ib
+" omap <silent> ie <Plug>CamelCaseMotion_ie
+" xmap <silent> ie <Plug>CamelCaseMotion_ie
+" imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_b
+" imap <silent> <S-Right> <C-o><Plug>CamelCaseMotion_w
+" }}} CamelCaseMotion "
