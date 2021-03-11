@@ -5,8 +5,6 @@ fwd_jupyter () {
 }
 
 
-
-
 showbat () {
     upower -i `upower -e | grep BAT` | grep percentage
     upower -i `upower -e | grep BAT` | grep 'time to full'
@@ -22,3 +20,8 @@ toggle_touchpad() {
     fi
 }
 
+
+set_brightness() {
+    monitor=`xrandr | grep " connected" | cut -f1 -d " "`
+    xrandr --output $monitor --brightness $1
+}
