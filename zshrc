@@ -18,8 +18,10 @@ bindkey '^[[B' down-line-or-search
 
 # bindkey jk vi-cmd-mode
 
-export FREESURFER_HOME=$HOME/freesurfer
-source $FREESURFER_HOME/SetUpFreeSurfer.sh  >> /dev/null
+export FREESURFER_HOME=/usr/local/freesurfer
+if [[ -d $FREESURFER_HOME ]]; then
+	source $FREESURFER_HOME/SetUpFreeSurfer.sh  >> /dev/null
+fi
 
 source "$DOTFILES/aliases.sh" # < ---- MY ALIASES
 source "$DOTFILES/functions.sh"
@@ -86,20 +88,6 @@ eval $(thefuck --alias)
 export BORG_REPO='/media/dmalt/my_passport/kulyoma1_home_backups/'
 export BORG_PASSPHRASE='aikbkj'
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/home/dmalt/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/home/dmalt/.miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/home/dmalt/.miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/home/dmalt/.miniconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# <<< conda initialize <<<
 
 # >>> conda initialize >>>
 export PYTHONNOUSERSITE=True  # dont include local packages to virtual envs
@@ -115,6 +103,8 @@ else
     fi
 fi
 unset __conda_setup
+# export PATH="/usr/share/terminfo/l:$PATH"
+# export PATH="/usr/share/terminfo/x:$PATH"
 # <<< conda initialize <<<
 setxkbmap -option caps:ctrl_modifier
 

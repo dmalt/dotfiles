@@ -170,9 +170,9 @@ let g:airline_theme='luna'
 
 " python host prog {{{ "
 " let g:python_host_prog='/usr/bin/python2'
-let g:python_host_prog='/usr/bin/python'
-let g:python3_host_prog='/usr/bin/python3'
-" let g:python3_host_prog='/home/dmalt/.miniconda3/bin/python'
+let g:python_host_prog='/usr/bin/python2'
+let g:python3_host_prog='/usr/bin/python'
+" let g:python3_host_prog='/home/dmalt/anaconda3/bin/python'
 " }}} python host prog "
 
 " map saving to ctrl+s {{{ "
