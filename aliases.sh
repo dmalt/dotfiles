@@ -1,3 +1,4 @@
+#!/bin/bash
 alias sinstall='sudo apt-get install'
 alias supdate='sudo apt-get update'
 alias supgrade='sudo apt-get upgrade'
@@ -37,9 +38,11 @@ alias locate='echo REMINDER: USE fd!; locate'
 
 alias lf='ls -d `ls -1t | head -1`'
 alias lfd='echo ~/Downloads/`ls -1t ~/Downloads | head -1`'
-function mlfd(){
+
+function mlfd {
     mv "`lfd`" $1
 }
+
 # alias cat='echo REMINDER: USE bat!; cat'
 
 alias cwd='pwd | xclip'
@@ -55,7 +58,7 @@ function mcd(){
 alias archie='screenfetch'
 
 function ev(){
-    evince $1 &
+    nohup evince $1 &
 }
 
 alias untar='tar -xvf'
@@ -72,6 +75,8 @@ alias ra='ranger'
 alias ipe='curl ipinfo.io/ip'
 alias ipi="ip addr show dev wlp2s0"
 
-alias mne_open="ipython -i ~/Code/python/CLI/open_raw.py"
+alias mne_open="python ~/Code/python/MNE-power/open_raw.py"
 alias ya="yandex-disk"
 alias yast="yandex-disk status"
+alias unmute="amixer -D pulse set Master 1+ unmute"
+alias beep="paplay /usr/share/sounds/sound-icons/trumpet-12.wav"
