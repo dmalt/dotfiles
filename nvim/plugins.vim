@@ -5,10 +5,11 @@ set rtp+=$HOME/.vim/bundle/Vundle.vim
 "call vundle#begin('~/some/path/here')
 call vundle#begin()
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim' " plugins management
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
+
+Plugin 'gmarik/Vundle.vim'                  " plugins management
+Plugin 'scrooloose/nerdtree'                " nerdtree file browser
+Plugin 'tpope/vim-surround'                 " deal with surrounding brackets, quotes etc.
+Plugin 'tpope/vim-commentary'               " comment with gcc
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'michaeljsmith/vim-indent-object'
@@ -17,41 +18,39 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/MatlabFilesEdition'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'                 " git commands
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'vim-scripts/CSApprox'
 Plugin 'vim-scripts/mayansmoke'
 Plugin 'kassio/neoterm'
 " Plugin 'Shougo/deoplete.nvim'
 " Plugin 'deoplete-plugins/deoplete-jedi'
-Plugin 'ncm2/ncm2'
+Plugin 'ncm2/ncm2'                          " autocompletion
 Plugin 'roxma/nvim-yarp'
-Plugin 'ncm2/ncm2-jedi'
-
+Plugin 'ncm2/ncm2-jedi'                     " python autocompletion
+Plugin 'ncm2/ncm2-bufword'                  " autocomplete from buffers
+Plugin 'ncm2/ncm2-path'                     " autocomplete paths
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'lervag/vimtex'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'dmalt/nvim-cyrillic'
 Plugin 'freitass/todo.txt-vim'
-Plugin 'tommcdo/vim-exchange'
-" ------------- ultisnips -------------- "
+Plugin 'tommcdo/vim-exchange'               " exchange selection with C-x in visual mode
+" ------------- ultisnips --------------                             "
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
-
 " Plugin to make :Gbrowse work
 Plugin 'tpope/vim-rhubarb'
 Plugin 'godlygeek/tabular'
 Plugin 'mileszs/ack.vim'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf'
-
 Plugin 'roosta/srcery'
 Plugin 'vim-python/python-syntax'
-
-Plugin 'w0rp/ale'
-" Plugin 'Vigemus/iron.nvim'
+Plugin 'w0rp/ale'                           " linting
+" Plugin 'Vigemus/iron.nvim'                " REPL
 Plugin 'kana/vim-textobj-user'
 Plugin 'bps/vim-textobj-python'
 Plugin 'Vimjas/vim-python-pep8-indent'
@@ -69,6 +68,9 @@ Plugin 'mtth/scratch.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'haya14busa/is.vim'
 Plugin 'haya14busa/vim-asterisk'
+Plugin 'yuttie/comfortable-motion.vim'      " nice scroll with C-d, C-u
+Plugin 'fisadev/vim-isort'                  " sort python imports with C-i; [dep] /usr/bin/pip install isort
+
 " Plugin 'bkad/CamelCaseMotion'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
