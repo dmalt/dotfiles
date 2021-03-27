@@ -241,7 +241,9 @@ bindsym F7 exec $HOME/.dotfiles/scripts/toggle_touchpad.sh # toggle touchpad
 
 bindsym $mod+Shift+s exec termite -e nvim
 bindsym $mod+Shift+a exec termite -e ranger
-
+no_focus [instance="termite" title="htop"]
+for_window [instance="termite" title="htop"] floating enable, move scratchpad, scratchpad show, resize set width 100 ppt, resize set height 40 ppt, move position 0 ppt 60 ppt
+bindsym $mod+Shift+i [instance="termite" title="htop"] scratchpad show
 # ------ Language settings; CapsLock to ctrl remap ------- #
 # exec --no-startup-is setxkbmap -layout ru -option ctrl:nocaps
 # exec --no-startup-id setxkbmap -layout us -option ctrl:nocaps
