@@ -53,7 +53,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf'
 Plugin 'roosta/srcery'
 Plugin 'vim-python/python-syntax'
-Plugin 'w0rp/ale'                           " linting
+Plugin 'dense-analysis/ale'                 " linting
 " Plugin 'Vigemus/iron.nvim'                " REPL
 Plugin 'kana/vim-textobj-user'
 Plugin 'bps/vim-textobj-python'
