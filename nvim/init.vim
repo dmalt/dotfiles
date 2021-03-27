@@ -196,8 +196,6 @@ let g:ale_python_flake8_options='--ignore E203,W503'
 set diffopt+=vertical
 
 
-" map latex commands from cyrillic {{{latex_cyr "
-" latex_cyr}}} "
 
 " " setup arduino {{{arduino "
 " " my_file.ino [arduino:avr:uno]
@@ -246,27 +244,6 @@ set nospell
 " ---------- ctrlp settings ---------- "
 " set wildignore+=*.aux,*.bcf,*/.git/*,*.log,*.out,*.toc,*.bbl,*.fls,*.blg,*.pdf,*.gz
 
-" latex settings {{{ "
-let g:tex_flavor = "latex"
-" vimtex
-let g:vimtex_quickfix_autojump = 0 " jump to first error when quickfix opened
-let g:vimtex_quickfix_mode = 0 " dont open quickfix automatically
-
-"  trailing whitespaces "
-" function! <SID>StripTrailingWhitespaces()
-"     " Preparation: save last search, and cursor position.
-"     let _s=@/
-"     let l = line(".")
-"     let c = col(".")
-"     " Do the business:
-"     %s/\s\+$//e
-"     " Clean up: restore previous search history, and cursor position
-"     let @/=_s
-"     call cursor(l, c)
-" endfunction
-
-" autocmd BufWritePre *.py,*.js,*.tex,*.m,*.sh,*.md,*.rst :call <SID>StripTrailingWhitespaces()
-" }}} latex settings "
 
 " setup ultisnips {{{ "
 let g:UltiSnipsSnippetsDir="~/.dotfiles/nvim/mySnippets/UltiSnips"
@@ -317,23 +294,6 @@ let g:fzf_colors =
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 " }}} fzf "
-
-" goyo {{{ "
-function! ProseMode()
-    call goyo#execute(0, [114])
-    set spell noci nosi noai nolist noshowmode noshowcmd
-    set complete+=s
-    set bg=light
-    if !has('gui_running')
-        let g:solarized_termcolors=256
-    endif
-    colors solarized8_flat
-endfunction
-
-command! ProseMode call ProseMode()
-nmap \p :ProseMode<CR>
-" }}} goyo "
-
 " terminal buffer colors {{{ "
 let g:terminal_color_0 = '#3f3f3f'
 let g:terminal_color_1 = '#705050'
@@ -517,21 +477,6 @@ iabbrev sefl self
 " }}} vim-easyclip settings "
 
 
-" latex thesis mappings {{{ "
-" nnoremap <localleader>sm i\mathbf{<ESC>la}<ESC>
-" vnoremap <localleader>sm "ac\mathbf{<ESC>"apa}
-
-" nnoremap <localleader>se i\emph{<ESC>la}<ESC>
-" vnoremap <localleader>se "ac\emph{<ESC>"apa}
-" }}} latex thesis mappings "
-
-" latex thesis abbreviations {{{ "
-" iabbrev R_X \mathbf{R}_\mathbf{X}
-" iabbrev R_S \mathbf{R}_\mathbf{S}
-" iabbrev G \mathbf{G}
-" iabbrev I \mathbf{I}
-" iabbrev A_k \mathbf{A}_k
-" }}} latex thesis abbreviations "
 
 " black {{{ "
 let g:black_linelength=79
