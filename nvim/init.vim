@@ -6,9 +6,9 @@ filetype off                  " required
 
 source $HOME/.dotfiles/nvim/plugins.vim  " load plugins
 
-" basic configuration {{{ basic"
+" basic configuration {{{"
 
-" basic configuration {{{ "
+" set configuration variables {{{ "
 filetype indent on
 
 set tabstop=4
@@ -38,33 +38,32 @@ set undofile
 set background=dark
 set list listchars=tab:>-,eol:¶
 
-nnoremap / /\v
-vnoremap / /\v
-
 " set ignorecase
 set smartcase
-
 set clipboard=unnamed,unnamedplus
-
-nnoremap j gj
-nnoremap k gk
 
 " focus on split right away "
 set splitbelow
 set splitright
 
-set inccommand=nosplit " don't open split window for interactive search
+if has('nvim')
+    set inccommand=nosplit " don't open split window for interactive search
+endif
 set foldmethod=marker  " setup folding
 
-"
+syntax on  " vim doesn't turn syntax on by default compared to neovim
+" }}} set configuration variables "
 
+" set mappings {{{ "
+nnoremap / /\v
+vnoremap / /\v
 
-" nnoremap * *``
-" set leader {{{ "
+nnoremap j gj
+nnoremap k gk
+
 let mapleader = "\<space>"
 " let mapleader = ','
 let maplocalleader = "\<space>"
-" }}} set leader "
 
 " space-j/k deletes blank line below/above, and Alt-j/k inserts.
 nnoremap <silent><LocalLeader>J m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
@@ -79,9 +78,31 @@ nnoremap <LocalLeader>sv :source $MYVIMRC<cr>
 
 inoremap <c-d> <Del>
 inoremap <c-h> <BS>
-" }}} basic configuration "
+nnoremap gp `[v`] " select last paste
 
-nnoremap gp `[v`]  " select last paste
+nnoremap <localleader>; :
+nnoremap <localleader>q; q:
+
+nnoremap <cr> a<cr><esc>  " move to next line everything after enter
+
+inoremap <C-l> <C-G>U<Right> " Ctrl-l moves cursor right in insert mode
+
+" map saving to ctrl+s
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>a
+" }}} set mappings "
+
+" abbreviations {{{ "
+iabbrev Argumnet Argument
+iabbrev argumnet argument
+iabbrev sefl self
+" }}} abbreviations "
+
+" spelling settings
+" setlocal spell spelllang=ru_yo,en_us
+" setlocal spell spelllang=ru_ru,en_us
+" syntax spell toplevel
+set nospell
 
 " split navigations {{{ "
 tnoremap <M-h> <C-\><C-N><C-w>h
@@ -110,23 +131,7 @@ tnoremap <Esc> <C-\><C-n>
 " }}} splilt navigations "
 
 
-" if has('nvim') && executable('nvr')
-"     let $VISUAL="nvr -cc split --remote-wait + 'set bufhidden=wipe'"
-" endif
-
-" highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
-
-" deoplete {{{ "
-" call deoplete#enable()
-" deoplete tab-complete
-let g:deoplete#enable_at_startup = 1
-" let g:deoplete#sources#jedi#ignore_errors = 1
-let g:deoplete#sources#jedi#enable_typeinfo = 0
-let g:deoplete#sources#jedi#show_docstring = 0
-" let g:deoplete#sources#jedi#python_path = "/usr/bin/python3"
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" }}} deoplete "
-
+" }}} basic configuration "
 " colors {{{ "
 set t_Co=256
 set termguicolors
@@ -149,47 +154,21 @@ colorscheme archery
 " colorscheme base16-tomorrow-night
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 " }}} colors "
-
-autocmd FileType matlab setlocal commentstring=%\ %s
-
-autocmd BufEnter *.m    compiler mlint
-
 " airline setup {{{ "
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='bubblegum'
 let g:airline_theme='luna'
 " }}} airline setup "
-
 " python host prog {{{ "
 " let g:python_host_prog='/usr/bin/python2'
 let g:python_host_prog='/usr/bin/python2'
 let g:python3_host_prog='/usr/bin/python'
 " let g:python3_host_prog='/home/dmalt/anaconda3/bin/python'
 " }}} python host prog "
-
-" map saving to ctrl+s {{{ "
-:nmap <c-s> :w<CR>
-:imap <c-s> <Esc>:w<CR>a
-" }}} map saving to ctrl+s "
-
-" linting {{{ "
-
-" let g:neomake_matlab_enabled_makers = ['mlint']
-" let g:neomake_logfile='/tmp/error.log'
-
-" let g:neomake_open_list = 2
-let g:ale_linters = {
-            \ 'python': [ 'flake8'],
-            \}
-let g:ale_python_flake8_options='--ignore E203,W503'
-" }}} linting "
-
-" Setup fugitive
+" fugitive {{{ "
 set diffopt+=vertical
-
-
-
-" " setup arduino {{{arduino "
+" }}} fugitive "
+" " {{{arduino "
 " " my_file.ino [arduino:avr:uno]
 " function! MyStatusLine()
 "   return '%f [' . g:arduino_board . ']'
@@ -206,25 +185,11 @@ set diffopt+=vertical
 " let g:arduino_auto_baud = 1
 " nnoremap <leader>u :ArduinoUpload<CR>
 " " arduino}}} "
-
-nnoremap <cr> a<cr><esc>
-
-" handle brackets, parents and quotes {{{ "
-" inoremap {} {}<C-G>U<Left>
-" inoremap () ()<C-G>U<Left>
-" inoremap [] []<C-G>U<Left>
-" inoremap '' ''<C-G>U<Left>
-" inoremap "" ""<C-G>U<Left>
-" inoremap <> <><C-G>U<Left>
-" inoremap $$ $$<C-G>U<Left>
-" inoremap %% %%<C-G>U<Left>
-" inoremap <C-l> <C-G>U<Esc>/[)}"'\]>$]<CR>:nohl<CR>a
-inoremap <C-l> <C-G>U<Right>
-" }}} handle brackets, parents and quotes "
-
+" todo.txt hotkeys {{{ "
 " config todo hotkeys
 nnoremap <localLeader>et :edit ~/Documents/Dropbox/Apps/Simpletask/todo.txt<cr> :lcd ~/Documents/Dropbox/Apps/Simpletask<cr>
 nnoremap <localLeader>ei :edit ~/Documents/Dropbox/Apps/Simpletask/inbox.txt<cr> :lcd ~/Documents/Dropbox/Apps/Simpletask<cr>
+" }}} todo.txt hotkeys "
 " setup ultisnips {{{ "
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -299,11 +264,6 @@ let g:terminal_color_13 = '#ec93d3'
 let g:terminal_color_14 = '#93e0e3'
 let g:terminal_color_15 = '#ffffff'
 " }}} terminal buffer colors "
-
-" let g:iron_repl_open_cmd = 'vsplit'
-let g:deoplete#sources#jedi#show_docstring = 1
-
-
 " vim-which-key configuration {{{ "
 " nnoremap <silent><localleader> :WhichKey '<Space>'<CR>
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
@@ -358,78 +318,22 @@ call which_key#register('<Space>', "g:which_key_map")
 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
 " }}} vim-which-key configuration "
-"
-iabbrev Argumnet Argument
-iabbrev argumnet argument
-iabbrev sefl self
+" ncm2 settings {{{ "
+if has('nvim')
+    " enable ncm2 for all buffers
+    autocmd BufEnter * call ncm2#enable_for_buffer()
 
-" vim-easyclip settings {{{ "
-"let g:EasyClipUseCutDefaults = 0
-"let g:EasyClipAutoFormat = 1
-"let g:EasyClipShareYanks = 1
-"let g:EasyClipUseSubstituteDefaults = 1
-
-"nmap <localleader>m <Plug>MoveMotionPlug
-"xmap <localleader>m <Plug>MoveMotionXPlug
-"nmap <localleader>mm <Plug>MoveMotionLinePlug>m m
-"nmap <localleader>M <Plug>MoveMotionEndOfLinePlug
-
-"nmap <silent> <localleader>s <plug>SubstituteOverMotionMap
-"nmap <localleader>ss <plug>SubstituteLine
-"xmap <localleader>s <plug>XEasyClipPaste
-
-"imap <c-v> <plug>EasyClipInsertModePaste
-"" swap two characters with vim-exchange since x doesn't yank anymore
-"nmap xp cxllcxl
-
-""fix for yankring and neovim
-"let g:yankring_clipboard_monitor = 0
-" }}} vim-easyclip settings "
-
-
-
-" black {{{ "
-let g:black_linelength=79
-nnoremap <localleader>B :Black<CR>
-" }}} black "
-
-" C mappings handling enter with brackets {{{ "
-" adapted from https://stackoverflow.com/questions/6066372/make-vim-curly-braces-square-braces-parens-act-like-textmate
-" fun! MyCR()
-"     if strpart(getline('.'), col('.') - 2, 2) == '{}'
-"         return "\<CR>\<CR>\<Up>\<Tab>"
-"     endif
-"     return "\<CR>"
-" endfun
-" autocmd FileType c,cpp,html,java inoremap <CR> <C-R>=MyCR()<CR>
-" }}} C mappings "
-
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-
-" IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
-
-" scratch buffer
+    " IMPORTANT: :help Ncm2PopupOpen for more information
+    set completeopt=noinsert,menuone,noselect
+endif
+" }}} ncm2 settings "
+" scratch buffer {{{ "
 let g:scratch_filetype = 'python'
 " let g:scratch_top = 0
 " let g:scratch_horizontal = 0
 let g:scratch_persistence_file = '/tmp/scratch.vim'
 nnoremap <localleader>n :Scratch<cr>:set filetype=python<cr>
-
-nnoremap <localleader>; :
-nnoremap <localleader>q; q:
-
-" autocmd CompleteDone * if !pumvisible() | pclose | endif
-" nmap <silent> <buffer> gK <Plug>(kite-docs)
-"
-" Execute local vimrc settings
-let $LOCALFILE=expand("~/.vimrc_local")
-if filereadable($LOCALFILE)
-    source $LOCALFILE
-endif
-
-
+" }}} scratch buffer "
 " asterisk mappings {{{ "
 map *   <Plug>(asterisk-*)
 map #   <Plug>(asterisk-#)
@@ -441,35 +345,12 @@ map z#  <Plug>(asterisk-z#)
 map gz# <Plug>(asterisk-gz#)
 let g:asterisk#keeppos = 1
 " }}} asterisk mappings "
-
-" neoterm configuration {{{ "
-" let g:neoterm_repl_python = ['conda activate mne', 'clear', 'ipython --no-autoindent']
-let g:neoterm_repl_python = ['conda activate mne_bids_latest', 'clear', 'ipython --no-autoindent']
-" let g:neoterm_repl_python = ['ipython --no-autoindent']
-let g:neoterm_direct_open_repl = 0
-let g:neoterm_eof = "\r"
-" }}} neoterm configuration "
-
-
 " vim-markdown-preview {{{ "
 let vim_markdown_preview_github=1
 " }}} vim-markdown-preview "
 
-" CamelCaseMotion {{{ "
-" map <silent> w <Plug>CamelCaseMotion_w
-" map <silent> b <Plug>CamelCaseMotion_b
-" map <silent> e <Plug>CamelCaseMotion_e
-" map <silent> ge <Plug>CamelCaseMotion_ge
-" sunmap w
-" sunmap b
-" sunmap e
-" sunmap ge
-" omap <silent> iw <Plug>CamelCaseMotion_iw
-" xmap <silent> iw <Plug>CamelCaseMotion_iw
-" omap <silent> ib <Plug>CamelCaseMotion_ib
-" xmap <silent> ib <Plug>CamelCaseMotion_ib
-" omap <silent> ie <Plug>CamelCaseMotion_ie
-" xmap <silent> ie <Plug>CamelCaseMotion_ie
-" imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_b
-" imap <silent> <S-Right> <C-o><Plug>CamelCaseMotion_w
-" }}} CamelCaseMotion "
+" Execute local vimrc settings
+let $LOCALFILE=expand("~/.vimrc_local")
+if filereadable($LOCALFILE)
+    source $LOCALFILE
+endif

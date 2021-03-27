@@ -22,3 +22,7 @@ nnoremap <silent> <LocalLeader>o :vertical Topen<cr>
 
 nnoremap <silent> <LocalLeader>tf :TREPLSendFile<cr>
 " " }}} neoterm config "
+
+setlocal commentstring=%\ %s
+
+autocmd BufEnter *.m    compiler mlint
