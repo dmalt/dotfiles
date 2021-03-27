@@ -8,7 +8,7 @@ ZSH_THEME="pure_dmalt"
 # ZSH_THEME="refined"
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git pip python web-search vi-mode cp colorize zsh-autosuggestions z safe-paste zsh-syntax-highlighting)
-plugins=(git pip python web-search cp colorize zsh-autosuggestions z safe-paste zsh-syntax-highlighting)
+plugins=(tmux git pip python web-search cp colorize zsh-autosuggestions z safe-paste zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
