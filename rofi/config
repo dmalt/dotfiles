@@ -5,8 +5,8 @@ rofi.color-active:      #fdf6e3,#268bd2,#eee8d5,#268bd2,#fdf6e3
 rofi.color-window:      #912f343f,#912f343f
 rofi.separator-style:   none
 rofi.width:             100
-rofi.padding:           800
+rofi.padding:           200
 rofi.lines:             7
 rofi.bw:                0
 rofi.eh:                2
-rofi.font:              System San Francisco Display 32
+rofi.font:              System San Francisco Display 12
