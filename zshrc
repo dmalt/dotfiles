@@ -106,7 +106,6 @@ unset __conda_setup
 # export PATH="/usr/share/terminfo/l:$PATH"
 # export PATH="/usr/share/terminfo/x:$PATH"
 # <<< conda initialize <<<
-setxkbmap -option caps:ctrl_modifier
 
 bindkey '^l' autosuggest-accept # map ctrl+l to accept zsh autosuggestions
 

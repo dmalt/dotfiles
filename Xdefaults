@@ -76,3 +76,4 @@ Rxvt.url-select.underline: true
 ! white
 *.color7:       #e2e2e8
 *.color15:      #4accdf
+setxkbmap -option caps:ctrl_modifier
