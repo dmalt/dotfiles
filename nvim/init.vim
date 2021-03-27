@@ -341,6 +341,7 @@ let g:which_key_map.g = {
             \ 'r'    : ['Gread', 'git-read'],
             \ 's'    : ['Gstatus', 'git-status'],
             \ 'd'    : ['Gdiff', 'git-diff'],
+            \ 'c'    : [":Git commit", 'git-commit'],
             \}
 
 let g:which_key_map.f = {
