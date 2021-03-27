@@ -313,26 +313,6 @@ let g:terminal_color_14 = '#93e0e3'
 let g:terminal_color_15 = '#ffffff'
 " }}} terminal buffer colors "
 
-" iron mappings {{{ "
-" luafile $HOME/.config/nvim/plugins.lua
-" let g:iron_map_defaults=0
-" nnoremap <silent> <localleader>o :IronRepl<cr><Esc>
-" augroup ironmapping
-"         autocmd!
-"         autocmd Filetype python nmap <buffer> <localleader>t <Plug>(iron-send-motion)
-"         autocmd Filetype python nmap <buffer> <localleader>p <Plug>(iron-repeat-cmd)
-"         autocmd Filetype python nmap <buffer> <localleader>r :call IronSend(join(["run", expand('%:p')]))<CR>
-" augroup END
-" augroup ironmapping
-"         autocmd!
-"         autocmd Filetype matlab nmap <buffer> <localleader>t <Plug>(iron-send-motion)
-"         autocmd Filetype matlab nmap <buffer> <localleader>p <Plug>(iron-repeat-cmd)
-"         autocmd Filetype matlab nmap <buffer> <localleader>r :call IronSend(join(["run", expand('%:p')]))<CR>
-" augroup END
-
-" deactivate default mappings
-" let g:iron_map_defaults=0
-" }}} iron mappings "
 
 
 " visual star search {{{ "
