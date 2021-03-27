@@ -114,12 +114,6 @@ if [ -f $DOTFILES_LOCAL/zshrc_local ]; then
 fi
 
 
-# fix not working delete key for st terminal
-function zle-line-init () { echoti smkx }
-function zle-line-finish () { echoti rmkx }
-zle -N zle-line-init
-zle -N zle-line-finish
-
 # PATH="/home/dmalt/perl5/bin${PATH:+:${PATH}}"; export PATH;
 # PERL5LIB="/home/dmalt/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 # PERL_LOCAL_LIB_ROOT="/home/dmalt/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
