@@ -335,11 +335,11 @@ let g:scratch_persistence_file = '/tmp/scratch.vim'
 nnoremap <localleader>n :Scratch<cr>:set filetype=python<cr>
 " }}} scratch buffer "
 " asterisk mappings {{{ "
-map *   <Plug>(asterisk-*)
+map *   <Plug>(asterisk-z*)
 map #   <Plug>(asterisk-#)
 map g*  <Plug>(asterisk-g*)
 map g#  <Plug>(asterisk-g#)
-map z*  <Plug>(asterisk-z*)
+map z*  <Plug>(asterisk-*)
 map gz* <Plug>(asterisk-gz*)
 map z#  <Plug>(asterisk-z#)
 map gz# <Plug>(asterisk-gz#)
