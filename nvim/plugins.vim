@@ -25,15 +25,19 @@ Plugin 'vim-scripts/mayansmoke'
 Plugin 'kassio/neoterm'
 " Plugin 'Shougo/deoplete.nvim'
 " Plugin 'deoplete-plugins/deoplete-jedi'
-Plugin 'ncm2/ncm2'                          " autocompletion
-Plugin 'roxma/nvim-yarp'
-Plugin 'ncm2/ncm2-jedi'                     " python autocompletion
-Plugin 'ncm2/ncm2-bufword'                  " autocomplete from buffers
-Plugin 'ncm2/ncm2-path'                     " autocomplete paths
+if has('nvim')
+    Plugin 'ncm2/ncm2'                          " autocompletion
+    Plugin 'roxma/nvim-yarp'                    " required by ncm2
+    Plugin 'ncm2/ncm2-jedi'                     " python autocompletion
+    Plugin 'ncm2/ncm2-bufword'                  " autocomplete from buffers
+    Plugin 'ncm2/ncm2-path'                     " autocomplete paths
+endif
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'lervag/vimtex'
 Plugin 'machakann/vim-highlightedyank'
-Plugin 'dmalt/nvim-cyrillic'
+if has('nvim')
+    Plugin 'dmalt/nvim-cyrillic'
+endif
 Plugin 'freitass/todo.txt-vim'
 Plugin 'tommcdo/vim-exchange'               " exchange selection with C-x in visual mode
 " ------------- ultisnips --------------                             "
