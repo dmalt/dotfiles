@@ -136,13 +136,13 @@ tnoremap <Esc> <C-\><C-n>
 set t_Co=256
 set termguicolors
 " set t_Co=16
-" colorscheme gruvbox
+colorscheme gruvbox
 " colorscheme solarized8
 " colorscheme afterglow
 " colorscheme OceanicNext
 " colorscheme space-vim-dark
 " colorscheme srcery
-colorscheme archery
+" colorscheme archery
 " colorscheme seoul256
 " colorscheme solarized8_low
 " colorscheme anderson
