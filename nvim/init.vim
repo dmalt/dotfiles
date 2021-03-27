@@ -6,15 +6,7 @@ filetype off                  " required
 
 source $HOME/.dotfiles/nvim/plugins.vim  " load plugins
 
-" ultisnips folder configuration {{{ "
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-" }}} ultisnips folder configuration "
+" basic configuration {{{ basic"
 
 " basic configuration {{{ "
 filetype indent on
@@ -233,23 +225,18 @@ inoremap <C-l> <C-G>U<Right>
 " config todo hotkeys
 nnoremap <localLeader>et :edit ~/Documents/Dropbox/Apps/Simpletask/todo.txt<cr> :lcd ~/Documents/Dropbox/Apps/Simpletask<cr>
 nnoremap <localLeader>ei :edit ~/Documents/Dropbox/Apps/Simpletask/inbox.txt<cr> :lcd ~/Documents/Dropbox/Apps/Simpletask<cr>
-
-" spelling settings {{{ "
-" setlocal spell spelllang=ru_yo,en_us
-" setlocal spell spelllang=ru_ru,en_us
-" syntax spell toplevel
-set nospell
-" }}} spelling settings "
-
-" ---------- ctrlp settings ---------- "
-" set wildignore+=*.aux,*.bcf,*/.git/*,*.log,*.out,*.toc,*.bbl,*.fls,*.blg,*.pdf,*.gz
-
-
 " setup ultisnips {{{ "
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 let g:UltiSnipsSnippetsDir="~/.dotfiles/nvim/mySnippets/UltiSnips"
 set runtimepath+=$HOME/.dotfiles/nvim/mySnippets
 " }}} setup ultisnips "
-
 " fzf {{{ "
 set rtp+=~/.fzf
 let g:ackprg = "ag --vimgrep"
