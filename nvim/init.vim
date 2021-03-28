@@ -83,9 +83,11 @@ nnoremap gp `[v`] " select last paste
 nnoremap <localleader>; :
 nnoremap <localleader>q; q:
 
-nnoremap <cr> a<cr><esc>  " move to next line everything after enter
-
-inoremap <C-l> <C-G>U<Right> " Ctrl-l moves cursor right in insert mode
+" move to next line everything after enter
+nnoremap <cr> a<cr><esc>
+"
+" Ctrl-l moves cursor right in insert mode
+inoremap <C-l> <C-G>U<Right>
 
 " map saving to ctrl+s
 :nmap <c-s> :w<CR>
@@ -105,11 +107,13 @@ iabbrev sefl self
 set nospell
 
 " split navigations {{{ "
-tnoremap <M-h> <C-\><C-N><C-w>h
-tnoremap <M-j> <C-\><C-N><C-w>j
-tnoremap <M-k> <C-\><C-N><C-w>k
-tnoremap <M-l> <C-\><C-N><C-w>l
-tnoremap <M-q> <C-\><C-N><C-w>q
+if has('nvim')
+    tnoremap <M-h> <C-\><C-N><C-w>h
+    tnoremap <M-j> <C-\><C-N><C-w>j
+    tnoremap <M-k> <C-\><C-N><C-w>k
+    tnoremap <M-l> <C-\><C-N><C-w>l
+    tnoremap <M-q> <C-\><C-N><C-w>q
+endif
 inoremap <M-h> <C-\><C-N><C-w>h
 inoremap <M-j> <C-\><C-N><C-w>j
 inoremap <M-k> <C-\><C-N><C-w>k
@@ -127,7 +131,9 @@ nnoremap <Up> <C-W>+
 nnoremap <silent> <Down> <C-W>-
 nnoremap <Right> <C-W>>
 nnoremap <Left> <C-W><
-tnoremap <Esc> <C-\><C-n>
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+endif
 " }}} splilt navigations "
 
 
@@ -239,6 +245,10 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
 " previous-history instead of down and up. If you don't like the change,
