@@ -19,6 +19,7 @@ Plugin 'vim-scripts/MatlabFilesEdition'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'                 " git commands
+Plugin 'tpope/vim-rhubarb'                  " open git files in browser with :Gbrowse
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'vim-scripts/CSApprox'
 Plugin 'vim-scripts/mayansmoke'
@@ -33,7 +34,7 @@ if has('nvim')
     Plugin 'ncm2/ncm2-path'                     " autocomplete paths
 endif
 Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'lervag/vimtex'
+Plugin 'lervag/vimtex'                          " latex plugin
 Plugin 'machakann/vim-highlightedyank'
 if has('nvim')
     Plugin 'dmalt/nvim-cyrillic'
@@ -41,22 +42,18 @@ endif
 Plugin 'freitass/todo.txt-vim'
 Plugin 'tommcdo/vim-exchange'               " exchange selection with C-x in visual mode
 " ------------- ultisnips --------------                             "
-" Track the engine.
-Plugin 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-" Plugin to make :Gbrowse work
-Plugin 'tpope/vim-rhubarb'
+Plugin 'SirVer/ultisnips'                   " the engine
+Plugin 'honza/vim-snippets'                 " snippets
+" --------------------------------------
 Plugin 'godlygeek/tabular'
 Plugin 'mileszs/ack.vim'
-Plugin 'junegunn/fzf.vim'
-Plugin 'junegunn/fzf'
-Plugin 'roosta/srcery'
+Plugin 'junegunn/fzf'                       " fuzzy finder
+Plugin 'roosta/srcery'                      " colorscheme
 Plugin 'vim-python/python-syntax'
 Plugin 'dense-analysis/ale'                 " linting
 " Plugin 'Vigemus/iron.nvim'                " REPL
 Plugin 'kana/vim-textobj-user'
-Plugin 'bps/vim-textobj-python'
+Plugin 'bps/vim-textobj-python'             " af, if, ac, ic -- around/inside function/class
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'Shougo/echodoc.vim'
 Plugin 'kana/vim-metarw'
