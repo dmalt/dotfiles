@@ -10,13 +10,13 @@ Plugin 'gmarik/Vundle.vim'                  " plugins management
 Plugin 'scrooloose/nerdtree'                " nerdtree file browser
 Plugin 'tpope/vim-surround'                 " deal with surrounding brackets, quotes etc.
 Plugin 'tpope/vim-commentary'               " comment with gcc
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-abolish'                  " abbreviation patterns
+Plugin 'tpope/vim-unimpaired'               " hotkey combinations on [, ]
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/MatlabFilesEdition'
-Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'JamshedVesuna/vim-markdown-preview' " preview markdown on <C-p> depends on xdotool, grip
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'                 " git commands
 Plugin 'tpope/vim-rhubarb'                  " open git files in browser with :Gbrowse
@@ -33,7 +33,6 @@ if has('nvim')
     Plugin 'ncm2/ncm2-bufword'                  " autocomplete from buffers
     Plugin 'ncm2/ncm2-path'                     " autocomplete paths
 endif
-Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'lervag/vimtex'                          " latex plugin
 Plugin 'machakann/vim-highlightedyank'
 if has('nvim')
