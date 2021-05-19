@@ -47,6 +47,7 @@ Plugin 'honza/vim-snippets'                 " snippets
 Plugin 'godlygeek/tabular'
 Plugin 'mileszs/ack.vim'
 Plugin 'junegunn/fzf'                       " fuzzy finder
+Plugin 'junegunn/fzf.vim'                   " fzf commands provider
 Plugin 'roosta/srcery'                      " colorscheme
 Plugin 'vim-python/python-syntax'
 Plugin 'dense-analysis/ale'                 " linting
