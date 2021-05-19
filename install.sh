@@ -1,4 +1,25 @@
 #!/bin/bash
+linux_packages=(neovim git wget curl tmux ranger bat ripgrep)
+python_packages=(neovim flake8 jedi)
+
+distro=`lsb_release -i | sed -r 's/Distributor ID:\t([A-Z][a-z]+)/\1/'` 
+
+if [[ $distro == Arch ]]; then
+    installer="pacman -S"
+elif [[ $distro == Ubuntu ]]; then
+    installer="apt install"
+else
+    echo "Unknown distro"
+    exit 1
+fi
+
+for p in ${linux_packages[@]}; do
+    /usr/bin/bash -c "sudo $installer $p"
+done
+
+for p in ${python_packages[@]}; do
+     /usr/bin/bash -c "sudo /usr/bin/pip3 install $p"
+done
 
 # ---------- install oh-my-zsh and plugins ----------- #
 bash -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
