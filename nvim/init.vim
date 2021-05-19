@@ -360,6 +360,24 @@ let vim_markdown_preview_github=1
 " }}} vim-markdown-preview "
 
 " Execute local vimrc settings
+" neoterm configuration {{{ "
+" nnoremap <silent> <LocalLeader>ef :TREPLSendFile<cr>
+nnoremap <silent> <LocalLeader><LocalLeader> :TREPLSendLine<cr>
+vnoremap <silent> <LocalLeader><LocalLeader> :TREPLSendSelection<cr>
+
+" Useful maps
+" hide/close terminal
+nnoremap <silent> <LocalLeader>h :Tclose<cr>
+" clear terminal
+nnoremap <silent> <LocalLeader>tl :call neoterm#clear()<cr>
+" kills the current job (send a <c-c>)
+nnoremap <silent> <LocalLeader>tc :call neoterm#kill()<cr>
+nnoremap <silent> <LocalLeader>th :T <C-R><C-W>?<CR>
+
+nnoremap <silent> <LocalLeader>o :below Topen<cr>
+
+nnoremap <silent> <LocalLeader>tf :TREPLSendFile<cr>
+" }}} neoterm configuration "
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
     source $LOCALFILE
