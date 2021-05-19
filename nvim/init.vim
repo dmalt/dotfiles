@@ -358,7 +358,21 @@ let g:asterisk#keeppos = 1
 " vim-markdown-preview {{{ "
 let vim_markdown_preview_github=1
 " }}} vim-markdown-preview "
+" automatically remove trailing whitespaces {{{ "
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
 
+autocmd BufWritePre *.py,*.js,*.tex,*.m,*.sh,*.md,*.rst :call <SID>StripTrailingWhitespaces()
+" }}} automatically remove trailing whitespaces "
 " Execute local vimrc settings
 " neoterm configuration {{{ "
 " nnoremap <silent> <LocalLeader>ef :TREPLSendFile<cr>
