@@ -339,10 +339,15 @@ endif
 " }}} ncm2 settings "
 " scratch buffer {{{ "
 let g:scratch_filetype = 'python'
-" let g:scratch_top = 0
+let g:scratch_top = 0
+let g:scratch_height = 10
 " let g:scratch_horizontal = 0
 let g:scratch_persistence_file = '/tmp/scratch.vim'
-nnoremap <localleader>n :Scratch<cr>:set filetype=python<cr>
+if has('nvim')
+    tnoremap <M-s> <C-\><C-N>:Scratch<cr>:set filetype=python<cr>
+endif
+nnoremap <M-s> :Scratch<cr>:set filetype=python<cr>
+inoremap <M-s> <C-\><C-N>:Scratch<cr>:set filetype=python<cr>
 " }}} scratch buffer "
 " asterisk mappings {{{ "
 map *   <Plug>(asterisk-z*)
