@@ -38,7 +38,7 @@ Then logout and log back in
 
 ## Alacritty
 
-For Ubuntu just add repo and install:
+For Ubuntu just add repo and install ([source](https://ubuntuhandbook.org/index.php/2020/12/install-alacritty-ppa-ubuntu-20-04/)):
 
 ```
 sudo add-apt-repository ppa:aslatter/ppa
