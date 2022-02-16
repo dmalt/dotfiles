@@ -4,47 +4,67 @@ My collection of dotfiles.
 
 # My tools
 
-| Category        | Tool     | Dotfile           |
-|-----------------|----------|-------------------|
-| Windows manager | i3       | .i3/config        |
-| Status bar      | i3blocks | .i3/i3blocks.conf |
-| Text editor     | neovim   | .vimrc            |
-| Shell           | zsh      | .zshrc, .zlogin   |
-| Version control | git      | .gitconfig        |
-| System monitor  | conky    | .conkyrc          |
+| Category          | Tool      | Dotfile           |
+|-------------------|-----------|-------------------|
+| Windows manager   | i3        | i3/config         |
+| Status bar        | i3blocks  | i3/i3blocks.conf  |
+| Text editor       | neovim    | nvim/init.vim     |
+| Shell             | zsh       | zshrc, zlogin     |
+| Version control   | git       | gitconfig         |
+| System monitor    | conky     | conkyrc           |
+| Terminal emulator | alacritty |                   |
 
 # Installation
 
+Clone dotfiles to the home folder and run the installation script:
 ```bash
-git clone git@github.com:dmalt/dotfiles.git
+git clone git@github.com:dmalt/dotfiles.git .dotfiles
 cd dotfiles
 ./install.sh
 ```
 
-# Manual steps
+### Installed components
+- Python packages: neovim flake8 jedi black
+- System packages: neovim wget curl tmux ranger bat fzf htop
+- oh-my-zsh, zsh-syntax-highlighting
+- Vundle (vim plugin manager)
+Additionally the script makes symbolic links to destination dotfiles
 
-### Vim / Neovim
+### Change default terminal to zsh
+`chsh -s $(which zsh)`
+Then logout and log back in
 
-Open vim/neovim and type 
+## Alacritty
+
+For Ubuntu just add repo and install:
+
+```
+sudo add-apt-repository ppa:aslatter/ppa
+sudo apt install alacritty
+```
+
+### Vim / Neovim plugins
+
+Open vim/neovim and type
 
 ```
 :PluginInstall
 ```
 
-## Ubuntu installation steps
 
 ### Rofi
-install rofi by
+
+Ubuntu:
 ```
 sudo apt-get install rofi
 ```
 
-In .i3/config find rofi-launching command and  adjust padding and fontsize
+In i3/config find rofi-launching command and  adjust padding and fontsize
 
 ### vim-airline fonts
 
 first install pip:
-> ``` 
+> ```
 > sudo apt-get install python-pip
 > ```
 
