@@ -1,8 +1,5 @@
-# Description
-
-My collection of dotfiles.
-
-# My tools
+My tools
+========
 
 | Category          | Tool      | Dotfile           |
 |-------------------|-----------|-------------------|
@@ -14,10 +11,11 @@ My collection of dotfiles.
 | System monitor    | conky     | conkyrc           |
 | Terminal emulator | alacritty |                   |
 
-# Installation
+Installation
+============
 
 Essentials
-==========
+----------
 Clone dotfiles to the home folder and run the installation script:
 ```bash
 git clone git@github.com:dmalt/dotfiles.git .dotfiles
@@ -39,7 +37,7 @@ Additionally the script makes symbolic links to destination dotfiles
 Then logout and log back in
 
 Alacritty
-=========
+---------
 
 For Ubuntu just add repo and install ([imported from here](https://ubuntuhandbook.org/index.php/2020/12/install-alacritty-ppa-ubuntu-20-04/)):
 
@@ -49,7 +47,7 @@ sudo apt install alacritty
 ```
 
 Vim / Neovim plugins
-====================
+--------------------
 
 Open vim/neovim and type
 
@@ -59,7 +57,7 @@ Open vim/neovim and type
 
 
 Rofi
-====
+----
 
 Ubuntu:
 ```
@@ -69,7 +67,7 @@ sudo apt-get install rofi
 In i3/config find rofi-launching command and  adjust padding and fontsize
 
 vim-airline fonts
-=================
+-----------------
 
 first install pip:
 ```
@@ -97,7 +95,7 @@ rm -rf fonts
 then reboot for changes to take effect
 
 Conky
-=====
+-----
 
 install lm-sensors with
 ```
@@ -113,7 +111,7 @@ Setup horizontal and vertical padding in .conkyrc
 
 
 Add ssh key to github
-=====================
+---------------------
 
 #### Generating ssh key
 First, make sure ```openssh``` package is installed
@@ -146,7 +144,7 @@ xclip -sel clip < ~/.ssh/id_ed25519.pub
 Go to github ---> settings ---> SSH and GPG keys ---> new
 
 MATLAB
-======
+------
 
 1. Mount the first image with
     ```bash
@@ -188,7 +186,7 @@ sudo `which matlab`
 ```
 
 Borg
-====
+----
 
 Borg should be installed with /usr/bin/pip (not anaconda version);
 msgpack version should be 0.5.6
@@ -199,12 +197,12 @@ msgpack version should be 0.5.6
 ```
 
 Powerline font for vim-airline plugin
-=====================================
+-------------------------------------
 Follow installation [instructions](https://github.com/powerline/fonts)
 
 
 i3 setup
-========
+--------
 Don't forget to install i3blocks package:
 ```
 sudo apt-get install i3blocks
