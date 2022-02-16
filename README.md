@@ -28,10 +28,12 @@ cd dotfiles
 - System packages: neovim wget curl tmux ranger bat fzf htop
 - oh-my-zsh, zsh-syntax-highlighting
 - Vundle (vim plugin manager)
+
 Additionally the script makes symbolic links to destination dotfiles
 
 ### Change default terminal to zsh
 `chsh -s $(which zsh)`
+
 Then logout and log back in
 
 ## Alacritty
