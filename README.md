@@ -24,7 +24,7 @@ cd dotfiles
 ```
 
 ### Installed components
-- Python packages: neovim flake8 jedi black
+- Python packages: pynvim neovim flake8 jedi black
 - System packages: neovim wget curl tmux ranger fzf htop zsh
 - oh-my-zsh, zsh-syntax-highlighting
 - Vundle (vim plugin manager)
@@ -68,31 +68,9 @@ In i3/config find rofi-launching command and  adjust padding and fontsize
 
 vim-airline fonts
 -----------------
+`sudo apt-get install fonts-powerline`
 
-first install pip:
-```
-sudo apt-get install python-pip
-```
-
-then install the fonts themselves
-
-git clone https://github.com/powerline/fonts.git --depth=1
-### install
-```bash
-cd fonts
-./install.sh
-```
-### clean-up
-```bash
-cd ..
-rm -rf fonts
-```
-
-> documentation can be found here:
-
-> https://powerline.readthedocs.io/en/master/installation.html#patched-fonts
-
-then reboot for changes to take effect
+Repo [here](https://github.com/powerline/fonts)
 
 Conky
 -----
