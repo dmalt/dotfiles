@@ -16,6 +16,8 @@ My collection of dotfiles.
 
 # Installation
 
+Essentials
+==========
 Clone dotfiles to the home folder and run the installation script:
 ```bash
 git clone git@github.com:dmalt/dotfiles.git .dotfiles
@@ -25,7 +27,7 @@ cd dotfiles
 
 ### Installed components
 - Python packages: neovim flake8 jedi black
-- System packages: neovim wget curl tmux ranger bat fzf htop zsh
+- System packages: neovim wget curl tmux ranger fzf htop zsh
 - oh-my-zsh, zsh-syntax-highlighting
 - Vundle (vim plugin manager)
 
@@ -36,7 +38,8 @@ Additionally the script makes symbolic links to destination dotfiles
 
 Then logout and log back in
 
-## Alacritty
+Alacritty
+=========
 
 For Ubuntu just add repo and install ([imported from here](https://ubuntuhandbook.org/index.php/2020/12/install-alacritty-ppa-ubuntu-20-04/)):
 
@@ -45,7 +48,8 @@ sudo add-apt-repository ppa:aslatter/ppa
 sudo apt install alacritty
 ```
 
-### Vim / Neovim plugins
+Vim / Neovim plugins
+====================
 
 Open vim/neovim and type
 
@@ -141,8 +145,8 @@ xclip -sel clip < ~/.ssh/id_ed25519.pub
 
 Go to github ---> settings ---> SSH and GPG keys ---> new
 
-Matlab installation
-===================
+MATLAB
+======
 
 1. Mount the first image with
     ```bash
