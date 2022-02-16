@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # include git in case it's not already installed, i.e. dotfiles were downloaded as zip
-linux_packages=(neovim git wget curl tmux ranger bat python3-pip htop)
+linux_packages=(neovim git wget curl tmux ranger bat python3-pip htop zsh)
 python_packages=(neovim flake8 jedi black)
 
 # ---------- get distribution plugin manager -------- #

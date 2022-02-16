@@ -25,7 +25,7 @@ cd dotfiles
 
 ### Installed components
 - Python packages: neovim flake8 jedi black
-- System packages: neovim wget curl tmux ranger bat fzf htop
+- System packages: neovim wget curl tmux ranger bat fzf htop zsh
 - oh-my-zsh, zsh-syntax-highlighting
 - Vundle (vim plugin manager)
 
@@ -54,7 +54,8 @@ Open vim/neovim and type
 ```
 
 
-### Rofi
+Rofi
+====
 
 Ubuntu:
 ```
@@ -63,22 +64,27 @@ sudo apt-get install rofi
 
 In i3/config find rofi-launching command and  adjust padding and fontsize
 
-### vim-airline fonts
+vim-airline fonts
+=================
 
 first install pip:
-> ```
-> sudo apt-get install python-pip
-> ```
+```
+sudo apt-get install python-pip
+```
 
-> then install the fonts themselves
+then install the fonts themselves
 
 git clone https://github.com/powerline/fonts.git --depth=1
-# install
+### install
+```bash
 cd fonts
 ./install.sh
-# clean-up a bit
+```
+### clean-up
+```bash
 cd ..
 rm -rf fonts
+```
 
 > documentation can be found here:
 
@@ -86,7 +92,9 @@ rm -rf fonts
 
 then reboot for changes to take effect
 
-### Conky
+Conky
+=====
+
 install lm-sensors with
 ```
 sudo apt-get install lm-sensors
@@ -100,8 +108,8 @@ sudo apt-get install fortune
 Setup horizontal and vertical padding in .conkyrc
 
 
-
-### Add ssh key to github
+Add ssh key to github
+=====================
 
 #### Generating ssh key
 First, make sure ```openssh``` package is installed
@@ -114,21 +122,21 @@ First, make sure ```openssh``` package is installed
 Run the following to generate the key:
 
 ```bash
-ssh-keygen -t rsa -b 4096 -C "dm.altukhov@ya.ru"
+ssh-keygen -t ed25519 -c "email@example.com"
 ```
 
 Then add key to ssh-agent:
 
 ```bash
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
+ssh-add ~/.ssh/id_ed25519
 ```
 
 #### Adding ssh key to github account
 
 Copy key to clipboard:
 ```bash
-xclip -sel clip < ~/.ssh/id_rsa.pub
+xclip -sel clip < ~/.ssh/id_ed25519.pub
 ```
 
 Go to github ---> settings ---> SSH and GPG keys ---> new
@@ -174,17 +182,6 @@ sudo `which matlab`
 	cd /usr/local/MATLAB/<version>/bin/glnxa64
 	sudo mv libfreetype.so.6.11.1{,.bak}
 ```
-
-Z-shell and plugins
-===================
-
-1) Install z-shell
-2) Install oh-my-zsh
-3) Install 3-d party plugins
-
-List of 3-d party plugins:
-
-* zsh-autosuggestions
 
 Borg
 ====
