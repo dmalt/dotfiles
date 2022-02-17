@@ -65,6 +65,8 @@ unset __conda_setup
 
 bindkey '^l' autosuggest-accept # map ctrl+l to accept zsh autosuggestions
 
+export PATH="/home/altukhov/.local/bin:$PATH"
+
 if [ -f $DOTFILES_LOCAL/zshrc_local ]; then
     source $DOTFILES_LOCAL/zshrc_local
 fi
