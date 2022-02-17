@@ -2,7 +2,7 @@
 
 # include git in case it's not already installed, i.e. dotfiles were downloaded as zip
 linux_packages=(neovim git wget curl tmux ranger python3-pip htop zsh)
-python_packages=(neovim flake8 jedi black)
+python_packages=(pynvim neovim flake8 jedi black)
 
 # ---------- get distribution plugin manager -------- #
 distro=`lsb_release -i | sed -r 's/Distributor ID:\t([A-Z][a-z]+)/\1/'`
