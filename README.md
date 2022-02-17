@@ -55,6 +55,12 @@ Open vim/neovim and type
 :PluginInstall
 ```
 
+### The silver searcher
+
+```bash
+sudo apt instal silversearcher-ag
+```
+
 
 Rofi
 ----
