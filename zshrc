@@ -15,7 +15,7 @@ bindkey '^[[B' down-line-or-search
 
 # bindkey jk vi-cmd-mode
 
-export FREESURFER_HOME=/usr/local/freesurfer
+export FREESURFER_HOME=$HOME/.local/freesurfer
 if [[ -d $FREESURFER_HOME ]]; then
 	source $FREESURFER_HOME/SetUpFreeSurfer.sh  >> /dev/null
 fi
