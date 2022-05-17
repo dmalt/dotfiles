@@ -142,8 +142,8 @@ endif
 set t_Co=256
 set termguicolors
 " set t_Co=16
-colorscheme gruvbox
-" colorscheme solarized8
+" colorscheme gruvbox
+colorscheme solarized8_low
 " colorscheme afterglow
 " colorscheme OceanicNext
 " colorscheme space-vim-dark
@@ -309,7 +309,7 @@ let g:which_key_map.g = {
             \ 'name' : '+git',
             \ 'w'    : ['Gwrite', 'git-write'],
             \ 'r'    : ['Gread', 'git-read'],
-            \ 's'    : ['Gstatus', 'git-status'],
+            \ 's'    : ['Git', 'git-status'],
             \ 'd'    : ['Gdiff', 'git-diff'],
             \ 'c'    : [":Git commit", 'git-commit'],
             \}
@@ -377,6 +377,7 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 autocmd BufWritePre *.py,*.js,*.tex,*.m,*.sh,*.md,*.rst :call <SID>StripTrailingWhitespaces()
+
 " }}} automatically remove trailing whitespaces "
 " Execute local vimrc settings
 " neoterm configuration {{{ "

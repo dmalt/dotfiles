@@ -1,7 +1,7 @@
 setlocal nospell
 " echom 'SUCCESS!'
 let g:python_highlight_all=1
-set cc=80
+set cc=100
 
 " define custom mappings for the python filetype
 
@@ -22,12 +22,17 @@ let g:neoterm_eof = "\r"
 " " }}} neoterm config "
 
 " black {{{ "
-let g:black_linelength=79
+let g:black_linelength=99
 nnoremap <localleader>B :Black<CR>
 " }}} black "
 " linting {{{ "
 let g:ale_linters = {
-            \ 'python': ['flake8'],
+            \ 'python': ['flake8', 'mypy'],
             \}
-let g:ale_python_flake8_options='--ignore E203,W503'
+let g:ale_python_flake8_options='--ignore E203,W503 --max-line-length 99'
 " }}} linting "
+" sort python imports {{{ "
+autocmd BufWritePre *.py :Isort
+let g:vim_isort_config_overrides = {
+  \ 'include_trailing_comma': 1, 'multi_line_output': 3}
+" }}} sort python imports "
