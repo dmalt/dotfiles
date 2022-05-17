@@ -45,7 +45,8 @@ export TZ=Europe/Moscow
 export SCRIPTS_DIR=$HOME/Dropbox/scripts
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf/shell/key-bindings.zsh ] && source ~/.fzf/shell/key-bindings.zsh
+[ -f ~/.fzf/shell/completion.zsh ] && source ~/.fzf/shell/completion.zsh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
