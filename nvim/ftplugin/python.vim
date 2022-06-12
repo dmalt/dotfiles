@@ -23,16 +23,16 @@ let g:neoterm_eof = "\r"
 
 " black {{{ "
 let g:black_linelength=99
-nnoremap <localleader>B :Black<CR>
+nnoremap <Leader>B :Black<CR>
 " }}} black "
 " linting {{{ "
 let g:ale_linters = {
             \ 'python': ['flake8', 'mypy'],
             \}
-let g:ale_python_flake8_options='--ignore E203,W503 --max-line-length 99'
+let g:ale_python_flake8_options='--ignore E203,W503,E704 --max-line-length 99'
 " }}} linting "
 " sort python imports {{{ "
 autocmd BufWritePre *.py :Isort
 let g:vim_isort_config_overrides = {
-  \ 'include_trailing_comma': 1, 'multi_line_output': 3}
+  \ 'include_trailing_comma': 1, 'multi_line_output': 3, 'line_length': 99}
 " }}} sort python imports "
