@@ -86,6 +86,14 @@ wk.register({
       o = {"<cmd>terminal<cr>", "Open terminal"},
       v = {"<cmd>vsplit | terminal<cr>", "Open terminal in a vertical split"},
       h = {"<cmd>split | terminal<cr>", "Open terminal in a horizontal split"},
-    }
+    },
+    g = {
+      name = "+git",
+      w = {"<cmd>Gwrite<cr>", "Add current buffer changes (Gwrite)"},
+      r = {"<cmd>Gread<cr>", "Read the last commited state (Gread)"},
+      s = {"<cmd>Git<cr>", "Git status"},
+      d = {"<cmd>Gdiff<cr>", "Show difference with the last commit"},
+      c = {"<cmd>Git commit<cr>", "Commit changes"},
+    },
   },
 })
