@@ -88,15 +88,8 @@ return require('packer').startup(function(use)
   }
   use { 'nvim-treesitter/nvim-treesitter' }
   -- use { 'neovim/nvim-lspconfig' }
-  use {
-        {
-            "williamboman/nvim-lsp-installer",
-            config = function ()
-                require("nvim-lsp-installer").setup {}
-            end
-        },
-        { "neovim/nvim-lspconfig" }
-  }
+  use { "williamboman/nvim-lsp-installer" }
+  use { "neovim/nvim-lspconfig" }
   -- use { 'williamboman/nvim-lsp-installer' }
   use { 'lervag/vimtex', ft = { "latex" } }
   use { 'psf/black' }

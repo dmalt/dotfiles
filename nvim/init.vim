@@ -182,9 +182,13 @@ vim.keymap.set('n', '<localleader>d', vim.diagnostic.open_float, opts)
 EOF
 
 
+
+lua require("nvim-lsp-installer").setup()
 lua require("plugins_config/cmp_config")
 lua require("plugins_config/diagnostic_signs")
 
+lua require('lspconfig')['yamlls'].setup {}
+lua require('lspconfig')['sumneko_lua'].setup {}
 
 function OpenMarkdownPreview (url)
     execute "silent ! google-chrome --new-window " . a:url

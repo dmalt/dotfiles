@@ -72,5 +72,3 @@ require('lspconfig')['pyright'].setup {
   capabilities = capabilities,
   on_attach = on_attach
 }
-require('lspconfig')['yamlls'].setup {}
-require('lspconfig')['sumneko_lua'].setup {}

@@ -94,6 +94,7 @@ wk.register({
       s = {"<cmd>Git<cr>", "Git status"},
       d = {"<cmd>Gdiff<cr>", "Show difference with the last commit"},
       c = {"<cmd>Git commit<cr>", "Commit changes"},
+      a = {"<cmd>Git commit --amend<cr>", "commit --amend"},
     },
   },
 })
