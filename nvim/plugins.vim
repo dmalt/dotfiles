@@ -36,52 +36,49 @@ if has('nvim')
     " Plugin 'nvim-treesitter/nvim-treesitter'
     " Plugin 'neovim/nvim-lspconfig'
     " Plugin 'williamboman/nvim-lsp-installer'
-    Plugin 'hrsh7th/cmp-nvim-lsp'
-    Plugin 'hrsh7th/cmp-buffer'
-    Plugin 'hrsh7th/cmp-path'
-    Plugin 'hrsh7th/cmp-cmdline'
-    Plugin 'kyazdani42/nvim-web-devicons' " for file icons
-    Plugin 'kyazdani42/nvim-tree.lua'
-    Plugin 'hrsh7th/nvim-cmp'
+    " Plugin 'hrsh7th/cmp-nvim-lsp'
+    " Plugin 'hrsh7th/cmp-buffer'
+    " Plugin 'hrsh7th/cmp-path'
+    " Plugin 'hrsh7th/cmp-cmdline'
+    " Plugin 'kyazdani42/nvim-web-devicons' " for file icons
+    " Plugin 'kyazdani42/nvim-tree.lua'
+    " Plugin 'hrsh7th/nvim-cmp'
 endif
-Plugin 'lervag/vimtex'                          " latex plugin
-Plugin 'machakann/vim-highlightedyank'
-if has('nvim')
-    Plugin 'dmalt/nvim-cyrillic'
-endif
-Plugin 'freitass/todo.txt-vim'
-Plugin 'tommcdo/vim-exchange'               " exchange selection with C-x in visual mode
+" Plugin 'lervag/vimtex'                          " latex plugin
+" Plugin 'machakann/vim-highlightedyank'
+" Plugin 'freitass/todo.txt-vim'
+" Plugin 'tommcdo/vim-exchange'               " exchange selection with C-x in visual mode
 " ------------- ultisnips --------------                             "
-Plugin 'SirVer/ultisnips'                   " the engine
-Plugin 'honza/vim-snippets'                 " snippets
+" Plugin 'SirVer/ultisnips'                   " the engine
+" Plugin 'honza/vim-snippets'                 " snippets
 " --------------------------------------
-Plugin 'godlygeek/tabular'
-Plugin 'mileszs/ack.vim'
-Plugin 'junegunn/fzf'                       " fuzzy finder
-Plugin 'junegunn/fzf.vim'                   " fzf commands provider
-Plugin 'roosta/srcery'                      " colorscheme
+" Plugin 'godlygeek/tabular'
+" Plugin 'mileszs/ack.vim'
+" Plugin 'junegunn/fzf'                       " fuzzy finder
+" Plugin 'junegunn/fzf.vim'                   " fzf commands provider
+" Plugin 'roosta/srcery'                      " colorscheme
 " Plugin 'vim-python/python-syntax'
 Plugin 'dense-analysis/ale'                 " linting
 " Plugin 'Vigemus/iron.nvim'                " REPL
-Plugin 'kana/vim-textobj-user'
-Plugin 'bps/vim-textobj-python'             " af, if, ac, ic -- around/inside function/class
-Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'Shougo/echodoc.vim'
-Plugin 'kana/vim-metarw'
-Plugin 'mattn/vim-metarw-gdrive'
-Plugin 'mattn/webapi-vim'
+" Plugin 'kana/vim-textobj-user'
+" Plugin 'bps/vim-textobj-python'             " af, if, ac, ic -- around/inside function/class
+" Plugin 'Vimjas/vim-python-pep8-indent'
+" Plugin 'Shougo/echodoc.vim'
+" Plugin 'kana/vim-metarw'
+" Plugin 'mattn/vim-metarw-gdrive'
+" Plugin 'mattn/webapi-vim'
 " Plugin 'liuchengxu/vim-which-key'
-Plugin 'psf/black'
-Plugin 'junegunn/goyo.vim'
-Plugin 'junegunn/limelight.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'kana/vim-textobj-entire'
-Plugin 'mtth/scratch.vim'
+" Plugin 'psf/black'
+" Plugin 'junegunn/goyo.vim'
+" Plugin 'junegunn/limelight.vim'
+" Plugin 'mattn/emmet-vim'
+" Plugin 'kana/vim-textobj-entire'
+" Plugin 'mtth/scratch.vim'
 " Plugin 'jiangmiao/auto-pairs'
-Plugin 'haya14busa/is.vim'
-Plugin 'haya14busa/vim-asterisk'
-Plugin 'yuttie/comfortable-motion.vim'      " nice scroll with C-d, C-u
-Plugin 'fisadev/vim-isort'                  " sort python imports with C-i; [dep] /usr/bin/pip install isort
+" Plugin 'haya14busa/is.vim'
+" Plugin 'haya14busa/vim-asterisk'
+" Plugin 'yuttie/comfortable-motion.vim'      " nice scroll with C-d, C-u
+" Plugin 'fisadev/vim-isort'                  " sort python imports with C-i; [dep] /usr/bin/pip install isort
 
 " Plugin 'bkad/CamelCaseMotion'
 " All of your Plugins must be added before the following line
