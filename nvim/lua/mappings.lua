@@ -73,6 +73,10 @@ wk.register({
       p = { "<cmd>edit $HOME/.dotfiles/nvim/lua/plugins.lua<cr>", "Edit plugins"},
       m = { "<cmd>edit $HOME/.dotfiles/nvim/lua/mappings.lua<cr>", "Edit mappings"},
       s = { "<cmd>edit $HOME/.dotfiles/nvim/lua/settings.lua<cr>", "Edit settings"},
+      t = {
+        "<cmd>edit $HOME/.dotfiles/nvim/lua/plugins_config/treesitter_config.lua<cr>",
+        "Edit treesitter settings"
+      },
       y = { "<cmd>edit $HOME/.dotfiles/nvim/ftplugin/python.vim<cr>", "Edit python settings"},
       l = { "<cmd>edit $HOME/.dotfiles/nvim/ftplugin/lua.vim<cr>", "Edit lua settings"},
       c = { "<cmd>edit $HOME/.dotfiles/nvim/lua/colors.lua<cr>", "Edit colors"},
@@ -80,6 +84,7 @@ wk.register({
     n = {
       name = "+nvim-tree",
       o = { "<cmd>NvimTreeOpen<cr>", "Open tree"},
+      f = { "<cmd>NvimTreeFindFile<cr>", "Find current file in tree"},
     },
     t = {
       name = "+terminal",
