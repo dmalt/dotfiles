@@ -80,3 +80,4 @@ alias ya="yandex-disk"
 alias yast="yandex-disk status"
 alias unmute="amixer -D pulse set Master 1+ unmute"
 alias beep="paplay /usr/share/sounds/sound-icons/trumpet-12.wav"
+alias df='df -x"squashfs"'
