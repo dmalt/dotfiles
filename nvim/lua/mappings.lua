@@ -101,5 +101,10 @@ wk.register({
       c = {"<cmd>Git commit<cr>", "Commit changes"},
       a = {"<cmd>Git commit --amend<cr>", "commit --amend"},
     },
+    r = {
+      name = "+ranger",
+      a = {"<cmd>RnvimrToggle<cr>", "Open ranger"},
+      r = {"<cmd>RnvimrResize<cr>", "Resize ranger"},
+    },
   },
 })

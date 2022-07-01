@@ -96,4 +96,5 @@ return require('packer').startup(function(use)
     'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end
     -- tag = 'release' -- To use the latest release
   }
+  use { 'kevinhwang91/rnvimr' }
 end)
