@@ -2,3 +2,4 @@
 *.swp
 ranger/bookmarks
 ranger/history
+__pycache__
