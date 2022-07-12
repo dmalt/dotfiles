@@ -81,10 +81,10 @@ case "$extension" in
     pdf)
         try pdftotext -l 10 -nopgbrk -q "$path" - && \
             { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
-    # BitTorrent Files
+    # MNE-python .fif files
     fif)
-        try python -c "from mne.io import Raw; r = Raw('$path', verbose='ERROR'); print(r, '\n', r.info); " && \
-            { dump | trim; exit 0; } || exit 1;;
+        try mct $path && { dump | trim; exit 0; } || exit 1;;
+    # BitTorrent Files
     torrent)
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;
     # ODT Files
