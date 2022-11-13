@@ -14,7 +14,13 @@ return require('packer').startup(function(use)
   use { 'machakann/vim-highlightedyank' }
   use { 'SirVer/ultisnips' }
   use { 'honza/vim-snippets' }
-  use { 'jiangmiao/auto-pairs' }
+  -- use { 'jiangmiao/auto-pairs' }
+  use {
+    'windwp/nvim-autopairs',
+    config = function() require("nvim-autopairs").setup {
+      fast_wrap = {},
+    } end
+  }
   use { 'haya14busa/is.vim' }
   ---@diagnostic disable-next-line: undefined-global
   use { 'haya14busa/vim-asterisk', config = function() vim.g["asterisk#keeppos"] = 1 end}
@@ -23,7 +29,7 @@ return require('packer').startup(function(use)
   use { 'bps/vim-textobj-python', ft = { "python" }, requires = { "kana/vim-textobj-user" } }
   use { 'junegunn/goyo.vim' }
   use { 'junegunn/limelight.vim' }
-  use { 'dense-analysis/ale' }
+  -- use { 'dense-analysis/ale' }
 
   use {
     'hrsh7th/cmp-nvim-lsp',
@@ -82,10 +88,8 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use { 'nvim-treesitter/nvim-treesitter' }
-  -- use { 'neovim/nvim-lspconfig' }
   use { "williamboman/nvim-lsp-installer" }
   use { "neovim/nvim-lspconfig" }
-  -- use { 'williamboman/nvim-lsp-installer' }
   use { 'lervag/vimtex', ft = { "latex" } }
   use { 'psf/black' }
   use {
@@ -96,5 +100,6 @@ return require('packer').startup(function(use)
     'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end
     -- tag = 'release' -- To use the latest release
   }
+  use { 'glepnir/dashboard-nvim' }
   use { 'kevinhwang91/rnvimr' }
 end)

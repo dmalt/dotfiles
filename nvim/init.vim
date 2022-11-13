@@ -169,6 +169,8 @@ nnoremap <silent> <Leader>tf :TREPLSendFile<cr>
 
 " let g:pylsp.plugins.flake8.maxLineLength=99
 
+autocmd CursorHold * lua vim.diagnostic.open_float()
+
 lua << EOF
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -186,6 +188,7 @@ EOF
 lua require("nvim-lsp-installer").setup()
 lua require("plugins_config/cmp_config")
 lua require("plugins_config/diagnostic_signs")
+lua require("plugins_config/treesitter_config")
 
 lua require('lspconfig')['yamlls'].setup {}
 lua require('lspconfig')['sumneko_lua'].setup {}
@@ -195,6 +198,68 @@ function OpenMarkdownPreview (url)
 endfunction
 let g:mkdp_browserfunc = 'OpenMarkdownPreview'
 
+lua << EOF
+local home = os.getenv('HOME')
+local db = require('dashboard')
+db.custom_header = {
+[[ ___________________________________________]],
+[[|  _______________________________________  |]],
+[[| / .-----------------------------------. \ |]],
+[[| | | /\ :                        90 min| | |]],
+[[| | |/--\:....................... NR [ ]| | |]],
+[[| | `-----------------------------------' | |]],
+[[| |      //-\\   |         |   //-\\      | |]],
+[[| |     ||( )||  |_________|  ||( )||     | |]],
+[[| |      \\-//   :....:....:   \\-//      | |]],
+[[| |       _ _ ._  _ _ .__|_ _.._  _       | |]],
+[[| |      (_(_)| |(_(/_|  |_(_||_)(/_      | |]],
+[[| |               low noise   |           | |]],
+[[| `______ ____________________ ____ ______' |]],
+[[|        /    []             []    \        |]],
+[[|       /  ()                   ()  \       |]],
+[[!______/_____________________________\______!]],
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+}
+db.custom_center = {
+  {icon = '  ',
+  desc = 'Recently opened files                   ',
+  action =  'Telescope oldfiles',
+  shortcut = 'SPC f r'},
+  {icon = '  ',
+  desc = 'Find  File                              ',
+  action = 'Telescope find_files find_command=rg,--hidden,--files',
+  shortcut = 'SPC f f'},
+  {icon = '  ',
+  desc = 'Find  lines                             ',
+  action = 'Telescope live_grep',
+  shortcut = 'SPC f l'},
+}
+EOF
+
+lua << EOF
+-- If you want insert `(` after select function or method item
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp = require('cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+
+EOF
 
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)

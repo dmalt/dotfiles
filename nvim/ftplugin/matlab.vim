@@ -25,4 +25,4 @@ nnoremap <silent> <LocalLeader>tf :TREPLSendFile<cr>
 
 setlocal commentstring=%\ %s
 
-autocmd BufEnter *.m    compiler mlint
+" autocmd BufEnter *.m    compiler mlint

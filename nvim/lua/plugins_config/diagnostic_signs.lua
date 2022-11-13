@@ -8,6 +8,7 @@ end
 vim.diagnostic.config({
   update_in_insert = false,
   ---@diagnostic disable-next-line: undefined-global
-  virtual_text = {source = true, severity = {min = vim.diagnostic.severity.INFO}},
+  -- virtual_text = {source = false, severity = {min = vim.diagnostic.severity.INFO}},
+  virtual_text = false,
   signs = true,
 })

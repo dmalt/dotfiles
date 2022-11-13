@@ -58,7 +58,7 @@ endif
 " Plugin 'junegunn/fzf.vim'                   " fzf commands provider
 " Plugin 'roosta/srcery'                      " colorscheme
 " Plugin 'vim-python/python-syntax'
-Plugin 'dense-analysis/ale'                 " linting
+" Plugin 'dense-analysis/ale'                 " linting
 " Plugin 'Vigemus/iron.nvim'                " REPL
 " Plugin 'kana/vim-textobj-user'
 " Plugin 'bps/vim-textobj-python'             " af, if, ac, ic -- around/inside function/class

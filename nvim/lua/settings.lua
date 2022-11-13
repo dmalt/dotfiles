@@ -30,6 +30,7 @@ set.autoindent = true
 
 set.colorcolumn = "100"
 set.timeoutlen=500
+set.updatetime=300  -- to trigger `vim.diagnostic.open_float` in autocmd in a reasonable time
 
 g.python_host_prog='/usr/bin/python2'
 g.python3_host_prog='/usr/bin/python'

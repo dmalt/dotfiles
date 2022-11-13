@@ -1,5 +1,5 @@
 -- Setup nvim-cmp.
-local cmp = require'cmp'
+local cmp = require 'cmp'
 
 ---@diagnostic disable-next-line: undefined-global
 vim.opt.completeopt={"menu", "menuone", "noselect", "preview"}
@@ -17,13 +17,52 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<localleader>n'] = cmp.mapping.complete(),
-    ['<localleader>e'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<C-e>'] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
+    -- ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<C-n>'] = cmp.mapping({
+        c = function()
+            if cmp.visible() then
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+            else
+                cmp.complete()
+            end
+        end,
+        i = function()
+            if cmp.visible() then
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+            else
+                cmp.complete()
+            end
+        end
+    }),
+    ['<C-p>'] = cmp.mapping({
+        c = function()
+            if cmp.visible() then
+                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+            else
+              cmp.complete()
+            end
+        end,
+        i = function()
+            if cmp.visible() then
+                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+            else
+                cmp.complete()
+            end
+        end
+    }),
   }),
   sources = cmp.config.sources(
-  { { name = 'nvim_lsp' }, { name = 'ultisnips' }, },
-  { { name = 'buffer' }, })
+    {
+      { name = 'nvim_lsp' },
+      { name = 'ultisnips' },
+    },
+    {
+      { name = 'buffer' },
+      { name = 'path' }
+    }
+  )
 })
 
 -- Set configuration for specific filetype.
@@ -63,12 +102,28 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 end
   -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
+local capabilities = require('cmp_nvim_lsp').default_capabilities(
   ---@diagnostic disable-next-line: undefined-global
   vim.lsp.protocol.make_client_capabilities()
 )
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 require('lspconfig')['pyright'].setup {
   capabilities = capabilities,
-  on_attach = on_attach
+  on_attach = on_attach,
+  filetypes = { "python" }
+}
+require'lspconfig'.pylsp.setup{
+  settings = {
+    pylsp = {
+      configurationSources = { "flake8" },
+      plugins = {
+        pycodestyle = { enabled = false },
+        flake8 = {
+          enabled = true,
+          ignore = {},
+          maxLineLength = 99
+        },
+      },
+    }
+  }
 }
