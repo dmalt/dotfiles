@@ -75,7 +75,6 @@ alias ra='ranger'
 alias ipe='curl ipinfo.io/ip'
 alias ipi="ip addr show dev wlp2s0"
 
-alias mne_open="python ~/Code/python/MNE-power/open_raw.py"
 alias ya="yandex-disk"
 alias yast="yandex-disk status"
 alias unmute="amixer -D pulse set Master 1+ unmute"
