@@ -2,7 +2,7 @@ local g = vim.g  ---@diagnostic disable-line: undefined-global
 
 ---@diagnostic disable-next-line: undefined-global
 -- vim.cmd("colorscheme solarized8_low")
-vim.cmd("colorscheme seoul256")
+-- vim.cmd("colorscheme seoul256")
 ---@diagnostic disable-next-line: undefined-global
 vim.cmd("highlight VertSplit ctermbg=NONE guibg=NONE")
 

@@ -115,6 +115,9 @@
 " let g:arduino_auto_baud = 1
 " nnoremap <leader>u :ArduinoUpload<CR>
 " " arduino}}} "
+
+let g:tex_flavor = "latex"
+
 "
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -169,86 +172,21 @@ nnoremap <silent> <Leader>tf :TREPLSendFile<cr>
 
 " let g:pylsp.plugins.flake8.maxLineLength=99
 
-autocmd CursorHold * lua vim.diagnostic.open_float()
-
-lua << EOF
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
-
-vim.keymap.set('n', '<localleader>d', vim.diagnostic.open_float, opts)
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-EOF
+" autocmd CursorHold * lua vim.diagnostic.open_float()
 
 
 
-lua require("nvim-lsp-installer").setup()
-lua require("plugins_config/cmp_config")
-lua require("plugins_config/diagnostic_signs")
+" lua require("plugins_config/diagnostic_signs")
 lua require("plugins_config/treesitter_config")
 
-lua require('lspconfig')['yamlls'].setup {}
-lua require('lspconfig')['sumneko_lua'].setup {}
+" lua require('lspconfig')['yamlls'].setup {}
+" lua require('lspconfig')['sumneko_lua'].setup {}
 
 function OpenMarkdownPreview (url)
     execute "silent ! google-chrome --new-window " . a:url
 endfunction
 let g:mkdp_browserfunc = 'OpenMarkdownPreview'
 
-lua << EOF
-local home = os.getenv('HOME')
-local db = require('dashboard')
-db.custom_header = {
-[[ ___________________________________________]],
-[[|  _______________________________________  |]],
-[[| / .-----------------------------------. \ |]],
-[[| | | /\ :                        90 min| | |]],
-[[| | |/--\:....................... NR [ ]| | |]],
-[[| | `-----------------------------------' | |]],
-[[| |      //-\\   |         |   //-\\      | |]],
-[[| |     ||( )||  |_________|  ||( )||     | |]],
-[[| |      \\-//   :....:....:   \\-//      | |]],
-[[| |       _ _ ._  _ _ .__|_ _.._  _       | |]],
-[[| |      (_(_)| |(_(/_|  |_(_||_)(/_      | |]],
-[[| |               low noise   |           | |]],
-[[| `______ ____________________ ____ ______' |]],
-[[|        /    []             []    \        |]],
-[[|       /  ()                   ()  \       |]],
-[[!______/_____________________________\______!]],
-"",
-"",
-"",
-"",
-"",
-"",
-"",
-"",
-"",
-"",
-"",
-"",
-"",
-"",
-"",
-}
-db.custom_center = {
-  {icon = '  ',
-  desc = 'Recently opened files                   ',
-  action =  'Telescope oldfiles',
-  shortcut = 'SPC f r'},
-  {icon = '  ',
-  desc = 'Find  File                              ',
-  action = 'Telescope find_files find_command=rg,--hidden,--files',
-  shortcut = 'SPC f f'},
-  {icon = '  ',
-  desc = 'Find  lines                             ',
-  action = 'Telescope live_grep',
-  shortcut = 'SPC f l'},
-}
-EOF
 
 lua << EOF
 -- If you want insert `(` after select function or method item
@@ -259,7 +197,18 @@ cmp.event:on(
   cmp_autopairs.on_confirm_done()
 )
 
+require('nvim-treesitter.configs').setup {
+  playground = { enable = true },
+  query_linter = {
+    enable = true,
+    use_virtual_text = false,
+    lint_events = { "BufWrite", "CursorHold" },
+  },
+  highlight = { enable = true },
+}
 EOF
+
+nmap <localleader>x <Plug>JupyterExecute
 
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)

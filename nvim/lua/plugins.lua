@@ -27,17 +27,31 @@ return require('packer').startup(function(use)
   use { 'yuttie/comfortable-motion.vim' }
   use { 'fisadev/vim-isort', ft = { "python" } }
   use { 'bps/vim-textobj-python', ft = { "python" }, requires = { "kana/vim-textobj-user" } }
-  use { 'junegunn/goyo.vim' }
+  use { 'junegunn/goyo.vim', ft = "markdown" }
   use { 'junegunn/limelight.vim' }
-  -- use { 'dense-analysis/ale' }
-
   use {
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
-    'quangnguyen30192/cmp-nvim-ultisnips',
-    'hrsh7th/nvim-cmp',
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v1.x',
+    config = function()
+      require("config.lsp").setup()
+      require("config.cmp").setup()
+    end,
+    -- wants = { "LuaSnip" },
+    requires = {
+      "hrsh7th/nvim-cmp",
+      "neovim/nvim-lspconfig",
+      'williamboman/mason.nvim',           -- Optional
+      'williamboman/mason-lspconfig.nvim', -- Optional
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lua",
+      "ray-x/cmp-treesitter",
+      "hrsh7th/cmp-cmdline",
+      'quangnguyen30192/cmp-nvim-ultisnips',
+      "hrsh7th/cmp-nvim-lsp",
+      "ray-x/lsp_signature.nvim",
+    },
+    disable = false,
   }
   use {
     "folke/which-key.nvim",
@@ -85,12 +99,14 @@ return require('packer').startup(function(use)
   use { 'nvim-lua/plenary.nvim' }
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires =  'nvim-lua/plenary.nvim'
   }
   use { 'nvim-treesitter/nvim-treesitter' }
-  use { "williamboman/nvim-lsp-installer" }
-  use { "neovim/nvim-lspconfig" }
-  use { 'lervag/vimtex', ft = { "latex" } }
+  use {
+    'lervag/vimtex',
+    -- config = function() require('vimtex').setup()  end,
+    -- ft = { "tex" }
+  }
   use { 'psf/black' }
   use {
     "lukas-reineke/indent-blankline.nvim",
@@ -100,6 +116,15 @@ return require('packer').startup(function(use)
     'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end
     -- tag = 'release' -- To use the latest release
   }
-  use { 'glepnir/dashboard-nvim' }
+  -- use { 'glepnir/dashboard-nvim' }
   use { 'kevinhwang91/rnvimr' }
+  use { "untitled-ai/jupyter_ascending.vim" }
+  use { "nvim-treesitter/playground" }
+  use { "Integralist/vim-mypy" }
+  use {
+    "sainnhe/everforest",
+    config = function()
+      vim.cmd "colorscheme everforest"
+    end,
+  }
 end)
