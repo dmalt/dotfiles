@@ -14,12 +14,9 @@ return require('packer').startup(function(use)
   use { 'machakann/vim-highlightedyank' }
   use { 'SirVer/ultisnips' }
   use { 'honza/vim-snippets' }
-  -- use { 'jiangmiao/auto-pairs' }
   use {
     'windwp/nvim-autopairs',
-    config = function() require("nvim-autopairs").setup {
-      fast_wrap = {},
-    } end
+    config = function() require("nvim-autopairs").setup { fast_wrap = {} } end
   }
   use { 'haya14busa/is.vim' }
   ---@diagnostic disable-next-line: undefined-global
@@ -53,15 +50,10 @@ return require('packer').startup(function(use)
     },
     disable = false,
   }
-  use {
-    "folke/which-key.nvim",
-    config = function() require("which-key").setup {} end
-  }
+  use { "folke/which-key.nvim", config = function() require("which-key").setup {} end }
 
   use {
-    'kyazdani42/nvim-web-devicons',
-    config = function() require('nvim-web-devicons').setup {}
-    end
+    'kyazdani42/nvim-web-devicons', config = function() require('nvim-web-devicons').setup {} end
   }
   use {
     'nvim-lualine/lualine.nvim',
@@ -85,7 +77,7 @@ return require('packer').startup(function(use)
   use {
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons' }, -- optional, for file icon
-    tag = 'nightly', -- optional, updated every week. (see issue #1193)
+    -- tag = 'nightly', -- optional, updated every week. (see issue #1193)
     config = function() require('nvim-tree').setup { view = {width = 50} } end
   }
 
