@@ -1,4 +1,3 @@
----@diagnostic disable-next-line: undefined-global
 local map = vim.keymap.set
 
 ---@diagnostic disable-next-line: undefined-global

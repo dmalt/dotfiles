@@ -1,9 +1,8 @@
-local g = vim.g  ---@diagnostic disable-line: undefined-global
+local g = vim.g
 
 ---@diagnostic disable-next-line: undefined-global
 -- vim.cmd("colorscheme solarized8_low")
 -- vim.cmd("colorscheme seoul256")
----@diagnostic disable-next-line: undefined-global
 vim.cmd("highlight VertSplit ctermbg=NONE guibg=NONE")
 
 g.terminal_color_0 = '#3f3f3f'

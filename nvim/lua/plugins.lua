@@ -46,7 +46,10 @@ return require('packer').startup(function(use)
       "hrsh7th/cmp-cmdline",
       'quangnguyen30192/cmp-nvim-ultisnips',
       "hrsh7th/cmp-nvim-lsp",
-      "ray-x/lsp_signature.nvim",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
+      -- "ray-x/lsp_signature.nvim",
+      "folke/neodev.nvim",
     },
     disable = false,
   }

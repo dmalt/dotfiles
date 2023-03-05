@@ -5,12 +5,12 @@ local M = {}
 local cmp = require 'cmp'
 
 local function my_select(direction)
-  map = {next = cmp.select_next_item, prev = cmp.select_prev_item}
+  local map = {next = cmp.select_next_item, prev = cmp.select_prev_item}
   return function()
     if cmp.visible() then
-        map[direction]({ behavior = cmp.SelectBehavior.Insert })
+      map[direction]({ behavior = cmp.SelectBehavior.Insert })
     else
-        cmp.complete()
+      cmp.complete()
     end
   end
 end
@@ -44,6 +44,8 @@ function M.setup()
     sources = cmp.config.sources(
       {
         { name = 'nvim_lsp' },
+        { name = 'nvim_lua'},
+        { name = 'nvim_lsp_signature_help' },
         { name = 'ultisnips' },
         { name = 'buffer' },
         { name = 'path' }
