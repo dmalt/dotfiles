@@ -22,7 +22,7 @@ return require('packer').startup(function(use)
   ---@diagnostic disable-next-line: undefined-global
   use { 'haya14busa/vim-asterisk', config = function() vim.g["asterisk#keeppos"] = 1 end}
   use { 'yuttie/comfortable-motion.vim' }
-  use { 'fisadev/vim-isort', ft = { "python" } }
+  -- use { 'fisadev/vim-isort', ft = { "python" } }
   use { 'bps/vim-textobj-python', ft = { "python" }, requires = { "kana/vim-textobj-user" } }
   use { 'junegunn/goyo.vim', ft = "markdown" }
   use { 'junegunn/limelight.vim' }
@@ -50,6 +50,13 @@ return require('packer').startup(function(use)
       "hrsh7th/cmp-nvim-lsp-signature-help",
       -- "ray-x/lsp_signature.nvim",
       "folke/neodev.nvim",
+      "jose-elias-alvarez/null-ls.nvim",
+      {
+        "j-hui/fidget.nvim",
+        config = function()
+          require("fidget").setup {}
+        end,
+      },
     },
     disable = false,
   }
@@ -61,21 +68,23 @@ return require('packer').startup(function(use)
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-    config = function() require("lualine").setup{
-      options = {
-        component_separators = { left = '', right = ''},
-        section_separators = { left = '', right = ''},
-        globalstatus = true,
-      },
-      sections = {
-          lualine_a = {'mode'},
-          lualine_b = {'branch', 'diff', 'diagnostics'},
-          lualine_c = {'filename', 'tabs'},
-          lualine_x = {'encoding', 'fileformat', 'filetype'},
-          lualine_y = {'progress'},
-          lualine_z = {'location'}
-      },
-    } end
+    config = function() require("config.lualine").setup()
+      -- {
+      -- options = {
+      --   component_separators = { left = '', right = ''},
+      --   section_separators = { left = '', right = ''},
+      --   globalstatus = true,
+      -- },
+      -- sections = {
+      --     lualine_a = {'mode'},
+      --     lualine_b = {'branch', 'diff', 'diagnostics'},
+      --     lualine_c = {'filename', 'tabs'},
+      --     lualine_x = {'encoding', 'fileformat', 'filetype'},
+      --     lualine_y = {'progress'},
+      --     lualine_z = {'location'}
+      -- },
+    -- }
+    end
   }
   use {
     'kyazdani42/nvim-tree.lua',
@@ -102,7 +111,7 @@ return require('packer').startup(function(use)
     -- config = function() require('vimtex').setup()  end,
     -- ft = { "tex" }
   }
-  use { 'psf/black' }
+  -- use { 'psf/black' }
   use {
     "lukas-reineke/indent-blankline.nvim",
     config = function() require('indent_blankline').setup {show_current_context = true} end

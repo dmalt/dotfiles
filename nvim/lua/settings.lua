@@ -1,5 +1,6 @@
 local set = vim.opt  ---@diagnostic disable-line: undefined-global
 local g = vim.g  ---@diagnostic disable-line: undefined-global
+Line_length = 99
 
 set.tabstop = 4
 set.shiftwidth = 4
@@ -28,7 +29,8 @@ set.expandtab = true
 set.undofile = true
 set.autoindent = true
 
-set.colorcolumn = "100"
+-- set.colorcolumn = "100"
+set.colorcolumn = { tostring(Line_length), }
 set.timeoutlen=500
 set.updatetime=300  -- to trigger `vim.diagnostic.open_float` in autocmd in a reasonable time
 

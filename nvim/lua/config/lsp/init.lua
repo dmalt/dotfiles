@@ -1,12 +1,16 @@
 local M = {}
 
-
 function M.setup()
   require("neodev").setup({})
+
   local lsp = require('lsp-zero').preset({
     name = 'minimal', set_lsp_keymaps = false, manage_nvim_cmp = true, suggest_lsp_servers = false
   })
-  lsp.on_attach(function(client, bufnr) require("config.lsp.keymaps").setup(client, bufnr) end)
+  lsp.on_attach(
+    function(client, bufnr)
+      require("config.lsp.keymaps").setup(client, bufnr)
+      require("config.lsp.null-ls.formatters").setup(client, bufnr)
+    end)
   -- (Optional) Configure lua language server for neovim
   lsp.nvim_workspace()
   lsp.setup()
@@ -20,7 +24,7 @@ function M.setup()
     "lua_ls", {
       settings = {
         Lua = {
-          runtime = { version = "LuaJIT", path = vim.split(package.path, ";") },
+          runtime = { version = "LuaJIT", path = vim.split(package.path, ";", {}) },
           diagnostics = { globals = { "vim" } }, -- Ensure `vim` global recognized 
           workspace = {
             -- Make the server aware of Neovim runtime files
@@ -33,6 +37,8 @@ function M.setup()
       }
     }
   )
-end
+
+  require("config.lsp.null-ls").setup()
+  end
 
 return M

@@ -149,7 +149,7 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-autocmd BufWritePre *.py,*.js,*.tex,*.m,*.sh,*.md,*.rst :call <SID>StripTrailingWhitespaces()
+" autocmd BufWritePre *.py,*.js,*.tex,*.m,*.sh,*.md,*.rst :call <SID>StripTrailingWhitespaces()
 
 nnoremap <silent> <LocalLeader><LocalLeader> :TREPLSendLine<cr>
 vnoremap <silent> <LocalLeader><LocalLeader> :TREPLSendSelection<cr>
