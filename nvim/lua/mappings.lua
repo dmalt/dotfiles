@@ -41,6 +41,10 @@ map('n', "<Right>",  "<C-W>>", {desc = 'Increase pane size horizontally'})
 map('n', "<Left>",  "<C-W><", {desc = 'Decrease pane size horizontally'})
 map('t', "<Esc>",  "<C-\\><C-n>", {desc = 'Exit to normal mode'})
 
+map('n', "<LocalLeader><LocalLeader>", "<cmd>ToggleTermSendCurrentLine<cr>")
+map('v', "<LocalLeader><LocalLeader>", ":ToggleTermSendVisualLines<cr>")
+-- require("toggleterm").exec
+
 map(
   {'n', 'v', 'o'}, '*', '<Plug>(asterisk-z*)',
   {noremap = false, desc = 'Star-search for word under cursor'}
@@ -87,9 +91,10 @@ wk.register({
     },
     t = {
       name = "+terminal",
-      o = {"<cmd>terminal<cr>", "Open terminal"},
-      v = {"<cmd>vsplit | terminal<cr>", "Open terminal in a vertical split"},
-      h = {"<cmd>split | terminal<cr>", "Open terminal in a horizontal split"},
+      f = {"<cmd>ToggleTerm direction=float<cr>", "Floating terminal"},
+      v = {"<cmd>ToggleTerm direction=vertical size=40<cr>", "Terminal in a vertical split"},
+      h = {"<cmd>ToggleTerm direction=horizontal size=10<cr>", "Terminal in a horizontal split"},
+      p = {[[<cmd>TermExec cmd='conda activate kalman; ipython -i -c "import numpy as np"'<cr>]], "Open ipython"},
     },
     g = {
       name = "+git",
@@ -104,6 +109,21 @@ wk.register({
       name = "+ranger",
       a = {"<cmd>RnvimrToggle<cr>", "Open ranger"},
       r = {"<cmd>RnvimrResize<cr>", "Resize ranger"},
+    },
+    o = {
+      name = "+obsidian",
+      b = {"<cmd>ObsidianBackLinks<cr>", "Show links to this buffer"},
+      t = {"<cmd>ObsidianToday<cr>", "Create today's note"},
+      y = {"<cmd>ObsidianYesterday<cr>", "Open yesterday's note"},
+      o = {"<cmd>ObsidianOpen<cr>", "Open note in Obsidian"},
+      n = {"<cmd>ObsidianNew<cr>", "New note"},
+      f = {"<cmd>ObsidianSearch<cr>", "Find note"},
+      q = {"<cmd>ObsidianQuickSwitch<cr>", "Quick switch"},
+      l = {"<cmd>ObsidianLink<cr>", "Link visual selection to a note"},
+      L = {"<cmd>ObsidianLinkNew<cr>", "Link visual selection to a new note"},
+      g = {"<cmd>ObsidianFollowLink<cr>", "Go to link (follow)"},
+      T = {"<cmd>ObsidianTemplate<cr>", "Insert a template"},
+      e = {'<cmd>lua require("nabla").popup()<cr>', "Equation"}
     },
   },
 })

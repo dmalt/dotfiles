@@ -68,23 +68,7 @@ return require('packer').startup(function(use)
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-    config = function() require("config.lualine").setup()
-      -- {
-      -- options = {
-      --   component_separators = { left = '', right = ''},
-      --   section_separators = { left = '', right = ''},
-      --   globalstatus = true,
-      -- },
-      -- sections = {
-      --     lualine_a = {'mode'},
-      --     lualine_b = {'branch', 'diff', 'diagnostics'},
-      --     lualine_c = {'filename', 'tabs'},
-      --     lualine_x = {'encoding', 'fileformat', 'filetype'},
-      --     lualine_y = {'progress'},
-      --     lualine_z = {'location'}
-      -- },
-    -- }
-    end
+    config = function() require("config.lualine").setup() end
   }
   use {
     'kyazdani42/nvim-tree.lua',
@@ -130,5 +114,28 @@ return require('packer').startup(function(use)
     config = function()
       vim.cmd "colorscheme everforest"
     end,
+  }
+  use {
+   "epwalsh/obsidian.nvim",
+    event =  "BufReadPre " .. vim.fn.expand "~" .. "/Documents/my_knowledge_base/**.md" ,
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+      "nvim-telescope/telescope.nvim",
+      -- "preservim/vim-markdown",
+    },
+    config = function() require("config.obsidian").setup() end
+  }
+  use { 'jbyuki/nabla.nvim' }
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = '*',
+    config = function()
+      require("toggleterm").setup {
+        open_mapping = [[<c-\>]],
+        size = 10,
+        direction = "horizontal",
+      }
+    end
   }
 end)

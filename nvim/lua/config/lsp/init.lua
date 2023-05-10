@@ -9,11 +9,13 @@ function M.setup()
   lsp.on_attach(
     function(client, bufnr)
       require("config.lsp.keymaps").setup(client, bufnr)
-      require("config.lsp.null-ls.formatters").setup(client, bufnr)
+      local fmt = require("config.lsp.null-ls.formatters")
+      fmt.setup(client, bufnr)
     end)
   -- (Optional) Configure lua language server for neovim
   lsp.nvim_workspace()
   lsp.setup()
+
 
   require("config.lsp.handlers").setup()
 
@@ -38,7 +40,10 @@ function M.setup()
     }
   )
 
-  require("config.lsp.null-ls").setup()
+  -- require("config.lsp.null-ls").setup()
+  local null_opts = lsp.build_options('null-ls', {})
+  require("config.lsp.null-ls").setup(null_opts)
+
   end
 
 return M

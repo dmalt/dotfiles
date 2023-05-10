@@ -21,8 +21,7 @@ local function lsp_client(msg)
   end
 
   -- add formatter
-  local formatters = require "config.lsp.null-ls.formatters"
-  local supported_formatters = formatters.list_registered(buf_ft)
+  local supported_formatters = require("config.lsp.null-ls.formatters").list_registered(buf_ft)
   vim.list_extend(buf_client_names, supported_formatters)
 
   -- add linter

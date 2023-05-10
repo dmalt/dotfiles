@@ -137,36 +137,22 @@ lua require("plugins")
 lua require("colors")
 
 
-function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
-
-" autocmd BufWritePre *.py,*.js,*.tex,*.m,*.sh,*.md,*.rst :call <SID>StripTrailingWhitespaces()
-
-nnoremap <silent> <LocalLeader><LocalLeader> :TREPLSendLine<cr>
-vnoremap <silent> <LocalLeader><LocalLeader> :TREPLSendSelection<cr>
-let g:neoterm_automap_keys="<LocalLeader>tt"
+" nnoremap <silent> <LocalLeader><LocalLeader> :TREPLSendLine<cr>
+" vnoremap <silent> <LocalLeader><LocalLeader> :TREPLSendSelection<cr>
+" let g:neoterm_automap_keys="<LocalLeader>tt"
 
 " Useful maps
 " hide/close terminal
-nnoremap <silent> <Leader>h :Tclose<cr>
+" nnoremap <silent> <Leader>h :Tclose<cr>
 " clear terminal
-nnoremap <silent> <Leader>tl :call neoterm#clear()<cr>
+" nnoremap <silent> <Leader>tl :call neoterm#clear()<cr>
 " kills the current job (send a <c-c>)
-nnoremap <silent> <Leader>tc :call neoterm#kill()<cr>
-nnoremap <silent> <Leader>th :T <C-R><C-W>?<CR>
+" nnoremap <silent> <Leader>tc :call neoterm#kill()<cr>
+" nnoremap <silent> <Leader>th :T <C-R><C-W>?<CR>
 
-nnoremap <silent> <Leader>o :below Topen<cr>
+" nnoremap <silent> <Leader>o :below Topen<cr>
 
-nnoremap <silent> <Leader>tf :TREPLSendFile<cr>
+" nnoremap <silent> <Leader>tf :TREPLSendFile<cr>
 
 
 
@@ -179,8 +165,6 @@ nnoremap <silent> <Leader>tf :TREPLSendFile<cr>
 " lua require("plugins_config/diagnostic_signs")
 lua require("plugins_config/treesitter_config")
 
-" lua require('lspconfig')['yamlls'].setup {}
-" lua require('lspconfig')['sumneko_lua'].setup {}
 
 function OpenMarkdownPreview (url)
     execute "silent ! google-chrome --new-window " . a:url
