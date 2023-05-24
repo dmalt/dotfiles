@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
   use { 'tpope/vim-fugitive' }
   use { 'kassio/neoterm' }
   use { 'michaeljsmith/vim-indent-object' }
-  use { 'rafi/awesome-vim-colorschemes' }
+  -- use { 'rafi/awesome-vim-colorschemes' }
   use { 'kana/vim-textobj-entire' }
   use { 'tommcdo/vim-exchange' }
   use { 'machakann/vim-highlightedyank' }
@@ -117,7 +117,7 @@ return require('packer').startup(function(use)
   }
   use {
    "epwalsh/obsidian.nvim",
-    event =  "BufReadPre " .. vim.fn.expand "~" .. "/Documents/my_knowledge_base/**.md" ,
+    event =  "BufReadPre " .. vim.fn.expand "~" .. "/Documents/notes/**.md" ,
     requires = {
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",
@@ -138,4 +138,5 @@ return require('packer').startup(function(use)
       }
     end
   }
+  use { "christoomey/vim-tmux-navigator" }
 end)

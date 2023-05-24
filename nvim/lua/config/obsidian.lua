@@ -2,8 +2,8 @@ local M = {}
 
 function M.setup()
   require("obsidian").setup({
-    dir = "~/Documents/my_knowledge_base/",  -- no need to call 'vim.fn.expand' here
-    notes_subdir = "Zettelkasten",
+    dir = "~/Documents/notes/",  -- no need to call 'vim.fn.expand' here
+    notes_subdir = "zk",
 
     -- Optional, completion.
     completion = {nvim_cmp = true},
@@ -16,14 +16,14 @@ function M.setup()
       local suffix = ""
       if title ~= nil then
         -- If title is given, transform it into valid file name.
-        suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+        suffix = title:gsub(" ", "_"):gsub("[^A-Za-z0-9_]", ""):lower()
       else
         -- If title is nil, just add 4 random uppercase letters to the suffix.
         for _ = 1, 4 do
           suffix = suffix .. string.char(math.random(65, 90))
         end
       end
-      return tostring(os.time()) .. "-" .. suffix
+      return suffix
     end,
 
     -- Optional, set to true if you don't want Obsidian to manage frontmatter.
