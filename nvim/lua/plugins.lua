@@ -24,8 +24,6 @@ return require('packer').startup(function(use)
   use { 'yuttie/comfortable-motion.vim' }
   -- use { 'fisadev/vim-isort', ft = { "python" } }
   use { 'bps/vim-textobj-python', ft = { "python" }, requires = { "kana/vim-textobj-user" } }
-  use { 'junegunn/goyo.vim', ft = "markdown" }
-  use { 'junegunn/limelight.vim' }
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
