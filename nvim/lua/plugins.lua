@@ -8,7 +8,6 @@ return require('packer').startup(function(use)
   use { 'tpope/vim-fugitive' }
   use { 'kassio/neoterm' }
   use { 'michaeljsmith/vim-indent-object' }
-  -- use { 'rafi/awesome-vim-colorschemes' }
   use { 'kana/vim-textobj-entire' }
   use { 'tommcdo/vim-exchange' }
   use { 'machakann/vim-highlightedyank' }
@@ -19,10 +18,8 @@ return require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup { fast_wrap = {} } end
   }
   use { 'haya14busa/is.vim' }
-  ---@diagnostic disable-next-line: undefined-global
   use { 'haya14busa/vim-asterisk', config = function() vim.g["asterisk#keeppos"] = 1 end}
   use { 'yuttie/comfortable-motion.vim' }
-  -- use { 'fisadev/vim-isort', ft = { "python" } }
   use { 'bps/vim-textobj-python', ft = { "python" }, requires = { "kana/vim-textobj-user" } }
   use {
     'VonHeikemen/lsp-zero.nvim',
@@ -88,12 +85,7 @@ return require('packer').startup(function(use)
     requires =  'nvim-lua/plenary.nvim'
   }
   use { 'nvim-treesitter/nvim-treesitter' }
-  use {
-    'lervag/vimtex',
-    -- config = function() require('vimtex').setup()  end,
-    -- ft = { "tex" }
-  }
-  -- use { 'psf/black' }
+  use { 'lervag/vimtex' }
   use {
     "lukas-reineke/indent-blankline.nvim",
     config = function() require('indent_blankline').setup {show_current_context = true} end
@@ -102,7 +94,6 @@ return require('packer').startup(function(use)
     'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end
     -- tag = 'release' -- To use the latest release
   }
-  -- use { 'glepnir/dashboard-nvim' }
   use { 'kevinhwang91/rnvimr' }
   use { "untitled-ai/jupyter_ascending.vim" }
   use { "nvim-treesitter/playground" }
@@ -120,7 +111,6 @@ return require('packer').startup(function(use)
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",
       "nvim-telescope/telescope.nvim",
-      -- "preservim/vim-markdown",
     },
     config = function() require("config.obsidian").setup() end
   }
