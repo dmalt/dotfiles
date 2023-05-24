@@ -77,8 +77,8 @@ return require('packer').startup(function(use)
 
   use({
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ---@diagnostic disable-line: undefined-global
+    run = "cd app && yarn install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" },
   })
 
