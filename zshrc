@@ -30,7 +30,6 @@ export PATH="/home/dmalt/.gem/ruby/2.4.0/bin/:$PATH"
 export PATH=$PATH:/home/dmalt/Desktop/mendeleydesktop-1.16.3-linux-x86_64/bin
 # export PATH=$HOME/anaconda2/bin:$PATH
 # export PATH=$HOME/anaconda3/bin:$PATH
-export PATH=$HOME/Code/bash/todotxt:$PATH
 # export PATH=$HOME/miniconda3/bin:$PATH
 
 export LD_LIBRARY_PATH=/opt/OpenBLAS/lib:/opt/OpenBLAS/lib
@@ -40,7 +39,7 @@ export EDITOR=nvim
 # export VISUAL=nvr
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 # export TZ=America/Montreal
-export TZ=Europe/Moscow
+# export TZ=Europe/Moscow
 
 export SCRIPTS_DIR=$HOME/Dropbox/scripts
 
@@ -65,7 +64,7 @@ unset __conda_setup
 
 bindkey '^l' autosuggest-accept # map ctrl+l to accept zsh autosuggestions
 
-export PATH="/home/altukhov/.local/bin:$PATH"
+export PATH="/home/dmalt/.local/bin:$PATH"
 
 if [ -f $DOTFILES_LOCAL/zshrc_local ]; then
     source $DOTFILES_LOCAL/zshrc_local
