@@ -59,7 +59,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-bindkey '^l' autosuggest-accept # map ctrl+l to accept zsh autosuggestions
+bindkey '^;' autosuggest-accept # map ctrl+l to accept zsh autosuggestions
 
 export PATH="/home/dmalt/.local/bin:$PATH"
 
