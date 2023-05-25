@@ -59,9 +59,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-bindkey '^;' autosuggest-accept # map ctrl+l to accept zsh autosuggestions
+bindkey '^i' autosuggest-accept # map ctrl+i to accept zsh autosuggestions
 
-export PATH="/home/dmalt/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 if [ -f $DOTFILES_LOCAL/zshrc_local ]; then
     source $DOTFILES_LOCAL/zshrc_local
