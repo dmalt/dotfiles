@@ -14,6 +14,10 @@ function M.setup()
     end)
   -- (Optional) Configure lua language server for neovim
   lsp.nvim_workspace()
+  lsp.setup_nvim_cmp({
+      preselect = 'none',
+      completion = { completeopt = 'menu,menuone,noinsert,noselect' },
+  })
   lsp.setup()
 
 

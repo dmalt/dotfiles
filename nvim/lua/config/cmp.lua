@@ -7,8 +7,8 @@ local cmp = require 'cmp'
 local function my_select(direction)
   local map = {next = cmp.select_next_item, prev = cmp.select_prev_item}
   return function()
-    if cmp.visible() then
-      map[direction]({ behavior = cmp.SelectBehavior.Insert })
+    if cmp.visible()then
+      map[direction]({ behavior = cmp.SelectBehavior.Replace })
     else
       cmp.complete()
     end
@@ -16,38 +16,21 @@ local function my_select(direction)
 end
 
 function M.setup()
-  ---@diagnostic disable-next-line: undefined-global
-  vim.opt.completeopt={"menu", "menuone", "noselect", "preview"}
+  vim.opt.completeopt= "menu,menuone,preview,noselect"
+  -- vim.opt.completeopt= "noselect"
 
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        ---@diagnostic disable-next-line: undefined-global
-        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
         vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end,
     },
     window = {documentation = cmp.config.window.bordered()},
     mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-b>'] = cmp.mapping.scroll_docs(-3),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-e>'] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
-   --[[
-    Accept currently selected item.
-     Set `select` to `false` to only confirm explicitly selected items.
-   --]]
-     ["<CR>"] = cmp.mapping({
-       i = function(fallback)
-         if cmp.visible() and cmp.get_active_entry() then
-           cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-         else
-           fallback()
-         end
-       end,
-       s = cmp.mapping.confirm({ select = true }),
-       c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-     }),
       ['<C-n>'] = cmp.mapping({ c = my_select("next"), i = my_select("next") }),
       ['<C-p>'] = cmp.mapping({ c = my_select("prev"), i = my_select("prev") }),
     }),
