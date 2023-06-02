@@ -37,7 +37,17 @@ function M.setup()
     Accept currently selected item.
      Set `select` to `false` to only confirm explicitly selected items.
    --]]
-      ['<CR>'] = cmp.mapping.confirm({ select = false }),
+     ["<CR>"] = cmp.mapping({
+       i = function(fallback)
+         if cmp.visible() and cmp.get_active_entry() then
+           cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+         else
+           fallback()
+         end
+       end,
+       s = cmp.mapping.confirm({ select = true }),
+       c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+     }),
       ['<C-n>'] = cmp.mapping({ c = my_select("next"), i = my_select("next") }),
       ['<C-p>'] = cmp.mapping({ c = my_select("prev"), i = my_select("prev") }),
     }),
