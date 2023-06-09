@@ -22,7 +22,7 @@ set.number = true
 set.relativenumber = true
 set.cursorline = true
 set.list = true  -- enable explicit chars for endlines and such
-set.listchars = {eol = '﬋', tab = '>-'}
+set.listchars = {eol = '󰌑', tab = '>-'}
 set.foldmethod = "marker"
 
 set.expandtab = true
