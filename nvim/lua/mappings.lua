@@ -119,7 +119,7 @@ wk.register({
     o = {
       name = "+obsidian",
       b = {"<cmd>ObsidianBackLinks<cr>", "Show links to this buffer"},
-      t = {"<cmd>ObsidianToday<cr>", "Create today's note"},
+      d = {"<cmd>ObsidianToday<cr>", "Create daily note"},
       y = {"<cmd>ObsidianYesterday<cr>", "Open yesterday's note"},
       o = {"<cmd>ObsidianOpen<cr>", "Open note in Obsidian"},
       n = {"<cmd>ObsidianNew<cr>", "New note"},
@@ -128,7 +128,7 @@ wk.register({
       l = {"<cmd>ObsidianLink<cr>", "Link visual selection to a note"},
       L = {"<cmd>ObsidianLinkNew<cr>", "Link visual selection to a new note"},
       g = {"<cmd>ObsidianFollowLink<cr>", "Go to link (follow)"},
-      T = {"<cmd>ObsidianTemplate<cr>", "Insert a template"},
+      t = {"<cmd>ObsidianTemplate<cr>", "Insert a template"},
       e = {'<cmd>lua require("nabla").popup()<cr>', "Equation"}
     },
   },
