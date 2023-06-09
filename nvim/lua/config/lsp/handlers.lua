@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup()
   -- Diagnostic signs
-  local signs = { Error = "" ,  Warn = "" ,  Hint = "" ,  Info = "" }
+  local signs = { Error = "" ,  Warn = "" ,  Info = "",  Hint = "" }
   for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { texthl = hl, text = icon, numhl = hl })
