@@ -126,5 +126,14 @@ return require('packer').startup(function(use)
       }
     end
   }
-  use { "christoomey/vim-tmux-navigator" }
+  use {
+    "christoomey/vim-tmux-navigator",
+    config = function()
+      vim.g.tmux_navigator_no_mappings = 1
+      vim.keymap.set('n', '<c-j>', ':<C-U>TmuxNavigateDown<cr>')
+      vim.keymap.set('n', '<c-k>', ':<C-U>TmuxNavigateUp<cr>')
+      vim.keymap.set('n', '<c-h>', ':<C-U>TmuxNavigateLeft<cr>')
+      vim.keymap.set('n', '<c-l>', ':<C-U>TmuxNavigateRight<cr>')
+    end
+  }
 end)
