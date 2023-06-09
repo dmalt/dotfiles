@@ -50,7 +50,6 @@ map('t', "<Esc>",  "<C-\\><C-n>", {desc = 'Exit to normal mode'})
 
 map('n', "<LocalLeader><LocalLeader>", "<cmd>ToggleTermSendCurrentLine<cr>")
 map('v', "<LocalLeader><LocalLeader>", ":ToggleTermSendVisualLines<cr>")
--- require("toggleterm").exec
 
 map(
   {'n', 'v', 'o'}, '*', '<Plug>(asterisk-z*)',
