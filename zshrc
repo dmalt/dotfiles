@@ -13,32 +13,19 @@ source $ZSH/oh-my-zsh.sh
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
-# bindkey jk vi-cmd-mode
-
-export FREESURFER_HOME=$HOME/.local/freesurfer
+fsf_home=$HOME/.local/freesurfer
 if [[ -d $FREESURFER_HOME ]]; then
+    export FREESURFER_HOME=$fsf_home
 	source $FREESURFER_HOME/SetUpFreeSurfer.sh  >> /dev/null
 fi
 
 source "$DOTFILES/aliases.sh" # < ---- MY ALIASES
 source "$DOTFILES/functions.sh"
 
-export PATH="/usr/local/MATLAB/R2018a/bin:$PATH"
-export PATH="/usr/local/MATLAB/R2018a/bin/glnxa64:$PATH"
-export PATH="/home/dmalt/.gem/ruby/2.4.0/bin/:$PATH"
-
-# export PATH=$HOME/anaconda2/bin:$PATH
-# export PATH=$HOME/anaconda3/bin:$PATH
-# export PATH=$HOME/miniconda3/bin:$PATH
-
-# export PATH=$HOME/miniconda3/bin:$PATH
 export EDITOR=nvim
-# export VISUAL=nvr
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 # export TZ=America/Montreal
 # export TZ=Europe/Moscow
-
-export SCRIPTS_DIR=$HOME/Dropbox/scripts
 
 
 [ -f ~/.fzf/shell/key-bindings.zsh ] && source ~/.fzf/shell/key-bindings.zsh
@@ -46,20 +33,20 @@ export SCRIPTS_DIR=$HOME/Dropbox/scripts
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/altukhov/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/dmalt/Applications/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/altukhov/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/altukhov/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/dmalt/Applications/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/dmalt/Applications/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/altukhov/miniconda3/bin:$PATH"
+        export PATH="/Users/dmalt/Applications/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-bindkey '^i' autosuggest-accept # map ctrl+i to accept zsh autosuggestions
+bindkey "^o" autosuggest-accept # map ctrl+i to accept zsh autosuggestions
 
 export PATH="$HOME/.local/bin:$PATH"
 
