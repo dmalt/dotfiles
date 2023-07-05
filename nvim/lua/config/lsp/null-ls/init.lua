@@ -34,6 +34,7 @@ local sources = {
     extra_args = { "--ignore",  "E203,W503,E704", "--max-line-length", "99" }
   }),
   -- b.diagnostics.flake8,
+  b.diagnostics.mypy,
   b.diagnostics.tsc,
   with_root_file(b.diagnostics.selene, "selene.toml"),
   with_diagnostics_code(b.diagnostics.shellcheck),
