@@ -3,13 +3,9 @@ My tools
 
 | Category          | Tool      | Dotfile           |
 |-------------------|-----------|-------------------|
-| Windows manager   | i3        | i3/config         |
-| Status bar        | i3blocks  | i3/i3blocks.conf  |
 | Text editor       | neovim    | nvim/init.vim     |
 | Shell             | zsh       | zshrc, zlogin     |
 | Version control   | git       | gitconfig         |
-| System monitor    | conky     | conkyrc           |
-| Terminal emulator | alacritty |                   |
 
 Installation
 ============
@@ -39,7 +35,8 @@ Then logout and log back in
 Alacritty
 ---------
 
-For Ubuntu just add repo and install ([imported from here](https://ubuntuhandbook.org/index.php/2020/12/install-alacritty-ppa-ubuntu-20-04/)):
+For Ubuntu just add repo and install ([imported from
+here](https://ubuntuhandbook.org/index.php/2020/12/install-alacritty-ppa-ubuntu-20-04/)):
 
 ```
 sudo add-apt-repository ppa:aslatter/ppa
