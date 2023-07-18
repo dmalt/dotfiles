@@ -16,7 +16,7 @@ map('v', '/', '/\\v')
 
 map('i', '<c-d>', '<del>', {desc = 'delete one char to the right'})
 map('n', 'gp', '`[v`]', {desc = 'select last paste'})  -- select last paste
-map('n', '<cr>', 'a<cr><esc>', {desc = 'break the line'})
+-- map('n', '<cr>', 'a<cr><esc>', {desc = 'break the line'})
 map('i', '<C-l>', '<C-G>U<right>', {desc = 'move cursor one char to the right'})
 map('i', '<C-h>', '<C-G>U<left>', {desc = 'move cursor one char to the right'})
 
