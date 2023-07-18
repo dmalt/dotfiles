@@ -100,7 +100,11 @@ wk.register({
       f = {"<cmd>ToggleTerm direction=float<cr>", "Floating terminal"},
       v = {"<cmd>ToggleTerm direction=vertical size=40<cr>", "Terminal in a vertical split"},
       h = {"<cmd>ToggleTerm direction=horizontal size=10<cr>", "Terminal in a horizontal split"},
-      p = {[[<cmd>TermExec cmd='conda activate kalman; ipython -i -c "import numpy as np"'<cr>]], "Open ipython"},
+      p = {
+        string.format(
+          [[<cmd>TermExec cmd='conda activate %s; ipython -i'<cr>]],
+          os.getenv("CONDA_DEFAULT_ENV")),
+        "Open ipython"},
     },
     g = {
       name = "+git",
