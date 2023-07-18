@@ -7,3 +7,5 @@ package.json
 *.lock
 *lock.json
 node_modules
+ranger/plugins
+ranger/tagged
