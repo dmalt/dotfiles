@@ -15,7 +15,7 @@ return require('packer').startup(function(use)
   use { 'honza/vim-snippets' }
   use {
     'windwp/nvim-autopairs',
-    config = function() require("nvim-autopairs").setup { fast_wrap = {} } end
+    config = function() require("nvim-autopairs").setup { fast_wrap = {map='<C-e>'} } end
   }
   use { 'haya14busa/is.vim' }
   use { 'haya14busa/vim-asterisk', config = function() vim.g["asterisk#keeppos"] = 1 end}
