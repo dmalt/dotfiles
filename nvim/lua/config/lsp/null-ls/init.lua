@@ -21,9 +21,9 @@ end
 
 local sources = {
   -- formatting
+  b.formatting.isort.with({ extra_args = { "--line-length", line_length } }),
   b.formatting.black.with({ extra_args = { "--line-length", line_length } }),
   b.formatting.prettierd,
-  b.formatting.isort,
   with_root_file(b.formatting.stylua, "stylua.toml"),
 
   -- diagnostics
