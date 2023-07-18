@@ -3,3 +3,7 @@
 ranger/bookmarks
 ranger/history
 __pycache__
+package.json
+*.lock
+*lock.json
+node_modules
