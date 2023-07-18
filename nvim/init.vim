@@ -166,12 +166,6 @@ lua require("colors")
 lua require("plugins_config/treesitter_config")
 
 
-function OpenMarkdownPreview (url)
-    execute "silent ! google-chrome --new-window " . a:url
-endfunction
-let g:mkdp_browserfunc = 'OpenMarkdownPreview'
-
-
 lua << EOF
 -- If you want insert `(` after select function or method item
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
