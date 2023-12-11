@@ -184,6 +184,8 @@ require('nvim-treesitter.configs').setup {
   },
   highlight = { enable = true },
 }
+
+
 EOF
 
 nmap <localleader>x <Plug>JupyterExecute

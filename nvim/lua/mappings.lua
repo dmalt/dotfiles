@@ -5,6 +5,8 @@ vim.g.mapleader = ' '
 ---@diagnostic disable-next-line: undefined-global
 vim.g.maplocalleader = '\\'
 
+-- map('i', "C-e", "<esc>l<cmd>lua require('nvim-autopairs.fastwrap').show()<cr>")
+-- map('i', "C-e", "<esc><cmd>echo hello<cr>")
 -- up and down when the lines are wrapped
 -- behave like the regular up and down
 map('n', 'j', 'gj', {desc = 'move down one line, even for wrapped lines'})
@@ -48,8 +50,11 @@ map('n', "<Right>",  "<C-W>>", {desc = 'Increase pane size horizontally'})
 map('n', "<Left>",  "<C-W><", {desc = 'Decrease pane size horizontally'})
 map('t', "<Esc>",  "<C-\\><C-n>", {desc = 'Exit to normal mode'})
 
+
+
 map('n', "<LocalLeader><LocalLeader>", "<cmd>ToggleTermSendCurrentLine<cr>")
-map('v', "<LocalLeader><LocalLeader>", ":ToggleTermSendVisualLines<cr>")
+map('v', "<LocalLeader><LocalLeader>", "<cmd> lua require('utils').visual_send()<cr>")
+-- map('v', "<LocalLeader><LocalLeader>", ":ToggleTermSendVisualLinesNoTrims<cr>")
 
 map(
   {'n', 'v', 'o'}, '*', '<Plug>(asterisk-z*)',

@@ -47,4 +47,14 @@ function M.dump(o)
    end
 end
 
+function M.visual_send()
+    if vim.bo.filetype == "python" then
+        vim.api.nvim_feedkeys('"+y', "v", true)
+        require("toggleterm").exec("%paste", 1)
+    else
+        -- fallback doesn't work :/
+        require("toggleterm").send_lines_to_terminal("visual_selection", true, "1")
+    end
+end
+
 return M

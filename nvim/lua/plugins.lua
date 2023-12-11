@@ -11,15 +11,24 @@ return require('packer').startup(function(use)
   use { 'kana/vim-textobj-entire' }
   use { 'tommcdo/vim-exchange' }
   use { 'machakann/vim-highlightedyank' }
-  use { 'SirVer/ultisnips' }
   use { 'honza/vim-snippets' }
   use {
     'windwp/nvim-autopairs',
-    config = function() require("nvim-autopairs").setup { fast_wrap = {map='<C-e>'} } end
+    config = function() require("nvim-autopairs").setup { fast_wrap = {
+      map = '<C-e>',
+      chars = { '{', '[', '(', '"', "'" },
+      pattern = [=[[%'%"%>%]%)%}%,]]=],
+      end_key = '$',
+      keys = 'qwertyuiopzxcvbnmasdfghjkl',
+      check_comma = true,
+      manual_position = true,
+      highlight = 'Search',
+      highlight_grey='Comment'
+    } } end
   }
   use { 'haya14busa/is.vim' }
   use { 'haya14busa/vim-asterisk', config = function() vim.g["asterisk#keeppos"] = 1 end}
-  use { 'yuttie/comfortable-motion.vim' }
+  -- use { 'yuttie/comfortable-motion.vim' }
   use { 'bps/vim-textobj-python', ft = { "python" }, requires = { "kana/vim-textobj-user" } }
   use {
     'VonHeikemen/lsp-zero.nvim',
@@ -39,7 +48,6 @@ return require('packer').startup(function(use)
       "hrsh7th/cmp-nvim-lua",
       "ray-x/cmp-treesitter",
       "hrsh7th/cmp-cmdline",
-      'quangnguyen30192/cmp-nvim-ultisnips',
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp-signature-help",

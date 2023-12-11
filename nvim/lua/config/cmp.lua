@@ -22,9 +22,9 @@ function M.setup()
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
-      expand = function(args)
-        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-      end,
+      -- expand = function(args)
+      --   vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      -- end,
     },
     window = {documentation = cmp.config.window.bordered()},
     mapping = cmp.mapping.preset.insert({
@@ -33,6 +33,7 @@ function M.setup()
       ['<C-e>'] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
       ['<C-n>'] = cmp.mapping({ c = my_select("next"), i = my_select("next") }),
       ['<C-p>'] = cmp.mapping({ c = my_select("prev"), i = my_select("prev") }),
+      ['<Tab>'] = cmp.mapping({ c = cmp.config.disable, i = cmp.config.disable }),
     }),
     sources = cmp.config.sources(
       {

@@ -83,7 +83,7 @@ case "$extension" in
             { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
     # MNE-python .fif files
     fif)
-        try mct $path && { dump | trim; exit 0; } || exit 1;;
+        try qfif "$path" && { dump | trim; exit 0; } || exit 1;;
     # BitTorrent Files
     torrent)
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;

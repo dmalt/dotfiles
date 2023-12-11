@@ -53,3 +53,5 @@ export PATH="$HOME/.local/bin:$PATH"
 if [ -f $DOTFILES_LOCAL/zshrc_local ]; then
     source $DOTFILES_LOCAL/zshrc_local
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
