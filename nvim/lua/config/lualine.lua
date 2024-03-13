@@ -40,11 +40,9 @@ end
 
 local function cwd()
   local path = vim.fn.getcwd()
-  local home_len = string.len(vim.env.HOME)
-  return '~' .. string.sub(path, home_len + 1)
+  return '~' .. string.sub(path, #vim.env.HOME + 1)
 end
 
--- sections = { lualine_a = { hello } }
 
 function M.setup()
   -- local gps = require "nvim-gps"
