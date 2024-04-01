@@ -1,33 +1,18 @@
 return require('packer').startup(function(use)
-  use {'wbthomason/packer.nvim'}
+  use { 'wbthomason/packer.nvim' }
 
   use { 'tpope/vim-surround' }
   use { 'tpope/vim-commentary' }
   use { 'tpope/vim-unimpaired' }
   use { 'tpope/vim-repeat' }
   use { 'tpope/vim-fugitive' }
-  use { 'kassio/neoterm' }
+  -- use { 'kassio/neoterm' }
   use { 'michaeljsmith/vim-indent-object' }
   use { 'kana/vim-textobj-entire' }
   use { 'tommcdo/vim-exchange' }
   use { 'machakann/vim-highlightedyank' }
-  use { 'honza/vim-snippets' }
-  use {
-    'windwp/nvim-autopairs',
-    config = function() require("nvim-autopairs").setup { fast_wrap = {
-      map = '<C-e>',
-      chars = { '{', '[', '(', '"', "'" },
-      pattern = [=[[%'%"%>%]%)%}%,]]=],
-      end_key = '$',
-      keys = 'qwertyuiopzxcvbnmasdfghjkl',
-      check_comma = true,
-      manual_position = true,
-      highlight = 'Search',
-      highlight_grey='Comment'
-    } } end
-  }
   use { 'haya14busa/is.vim' }
-  use { 'haya14busa/vim-asterisk', config = function() vim.g["asterisk#keeppos"] = 1 end}
+  use { 'haya14busa/vim-asterisk', config = function() vim.g["asterisk#keeppos"] = 1 end }
   -- use { 'yuttie/comfortable-motion.vim' }
   use { 'bps/vim-textobj-python', ft = { "python" }, requires = { "kana/vim-textobj-user" } }
   use {
@@ -51,6 +36,7 @@ return require('packer').startup(function(use)
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp-signature-help",
+      "saadparwaiz1/cmp_luasnip",
       -- "ray-x/lsp_signature.nvim",
       "folke/neodev.nvim",
       "jose-elias-alvarez/null-ls.nvim",
@@ -77,26 +63,31 @@ return require('packer').startup(function(use)
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons' }, -- optional, for file icon
     -- tag = 'nightly', -- optional, updated every week. (see issue #1193)
-    config = function() require('nvim-tree').setup { view = {width = 50} } end
+    config = function() require('nvim-tree').setup { view = { width = 50 } } end
   }
-
-  use({
+  use {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && yarn install",
+    run = "cd app && npm install",
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" },
-  })
+  }
+  -- use({
+  --   "iamcco/markdown-preview.nvim",
+  --   run = "cd app && yarn install",
+  --   setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+  --   ft = { "markdown" },
+  -- })
 
   use { 'nvim-lua/plenary.nvim' }
   use {
     'nvim-telescope/telescope.nvim',
-    requires =  'nvim-lua/plenary.nvim'
+    requires = 'nvim-lua/plenary.nvim'
   }
-  use { 'nvim-treesitter/nvim-treesitter' }
+  use { 'nvim-treesitter/nvim-treesitter', run = { ':TSUpdate' } }
   use { 'lervag/vimtex' }
   use {
     "lukas-reineke/indent-blankline.nvim",
-    config = function() require('indent_blankline').setup {show_current_context = true} end
+    config = function() require('ibl').setup() end
   }
   use {
     'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end
@@ -106,15 +97,16 @@ return require('packer').startup(function(use)
   use { "untitled-ai/jupyter_ascending.vim" }
   use { "nvim-treesitter/playground" }
   use { "Integralist/vim-mypy" }
+  use { 'rose-pine/neovim', config = function() vim.cmd "colorscheme rose-pine-moon" end }
+  -- use {
+  --   "sainnhe/everforest",
+  --   config = function()
+  --     vim.cmd "colorscheme everforest"
+  --   end,
+  -- }
   use {
-    "sainnhe/everforest",
-    config = function()
-      vim.cmd "colorscheme everforest"
-    end,
-  }
-  use {
-   "epwalsh/obsidian.nvim",
-    event =  "BufReadPre " .. vim.fn.expand "~" .. "/Documents/notes/**.md" ,
+    "epwalsh/obsidian.nvim",
+    event = "BufReadPre " .. vim.fn.expand "~" .. "/Documents/notes/**.md",
     requires = {
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",
@@ -122,7 +114,7 @@ return require('packer').startup(function(use)
     },
     config = function() require("config.obsidian").setup() end
   }
-  use { 'jbyuki/nabla.nvim' }
+  -- use { 'jbyuki/nabla.nvim' }
   use {
     "akinsho/toggleterm.nvim",
     tag = '*',
@@ -144,4 +136,19 @@ return require('packer').startup(function(use)
       vim.keymap.set('n', '<c-l>', ':<C-U>TmuxNavigateRight<cr>')
     end
   }
+  use {
+    'ThePrimeagen/harpoon',
+    branch = "harpoon2",
+    config = function()
+      require("harpoon").setup { menu = { width = vim.api.nvim_win_get_width(0) - 4 } }
+    end
+  }
+  use({
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!:).
+    run = "make install_jsregexp"
+  })
+  use { 'mbbill/undotree' }
 end)
