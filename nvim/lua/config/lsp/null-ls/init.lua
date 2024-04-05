@@ -3,7 +3,7 @@ local M = {}
 local nls = require "null-ls"
 local nls_utils = require "null-ls.utils"
 local b = nls.builtins
-local line_length = 99
+local line_length = 88
 
 local with_diagnostics_code = function(builtin)
   return builtin.with {
@@ -29,9 +29,9 @@ local sources = {
   -- diagnostics
   b.diagnostics.write_good,
   b.diagnostics.markdownlint,
-  -- b.diagnostics.eslint_d,
+  b.diagnostics.eslint,
   b.diagnostics.flake8.with({
-    extra_args = { "--ignore",  "E203,W503,E704", "--max-line-length", "99" }
+    extra_args = { "--ignore",  "E203,W503,E704", "--max-line-length", "88" }
   }),
   -- b.diagnostics.flake8,
   b.diagnostics.mypy,

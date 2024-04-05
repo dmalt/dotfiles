@@ -31,27 +31,31 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 [ -f ~/.fzf/shell/key-bindings.zsh ] && source ~/.fzf/shell/key-bindings.zsh
 [ -f ~/.fzf/shell/completion.zsh ] && source ~/.fzf/shell/completion.zsh
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/dmalt/Applications/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/dmalt/Applications/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/dmalt/Applications/miniconda3/etc/profile.d/conda.sh"
+if [[ -z "${CONDA_SHLVL}" ]]; then
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/Users/dmitriialtukhov/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
     else
-        export PATH="/Users/dmalt/Applications/miniconda3/bin:$PATH"
+        if [ -f "/Users/dmitriialtukhov/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/Users/dmitriialtukhov/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/Users/dmitriialtukhov/miniconda3/bin:$PATH"
+        fi
     fi
+    unset __conda_setup
+    # <<< conda initialize <<<
 fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 bindkey "^o" autosuggest-accept # map ctrl+i to accept zsh autosuggestions
 
-export PATH="$HOME/.local/bin:$PATH"
-
+# export PATH="$HOME/.local/bin:$PATH"
+# export PATH="/opt/homebrew/bin:$PATH"
 if [ -f $DOTFILES_LOCAL/zshrc_local ]; then
     source $DOTFILES_LOCAL/zshrc_local
 fi
+
+export PATH="/Users/dmitriialtukhov/.local/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

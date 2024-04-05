@@ -22,9 +22,10 @@ function M.setup()
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
-      -- expand = function(args)
-      --   vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-      -- end,
+      expand = function(args)
+          local ls = require("luasnip")
+          ls.lsp_expand(args.body)
+      end,
     },
     window = {documentation = cmp.config.window.bordered()},
     mapping = cmp.mapping.preset.insert({
@@ -40,7 +41,7 @@ function M.setup()
         { name = 'nvim_lsp' },
         { name = 'nvim_lua'},
         { name = 'nvim_lsp_signature_help' },
-        { name = 'ultisnips' },
+        { name = 'luasnip' },
         { name = 'buffer' },
         { name = 'path' }
       }
@@ -77,50 +78,3 @@ end
 
 
 return M
-
---local on_attach = function(client, bufnr)
---  -- Mappings.
---  -- See `:help vim.lsp.*` for documentation on any of the below functions
---  local bufopts = { noremap=true, silent=true, buffer=bufnr }
---  ---@diagnostic disable-next-line: undefined-global
---  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
---    -- Use LSP as the handler for formatexpr.
---    -- See `:help formatexpr` for more information.
---  vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
---  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
---  ---@diagnostic disable-next-line: undefined-global
---  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
---  vim.keymap.set('n', 'gK', vim.lsp.buf.signature_help, bufopts)
---  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
---  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
---  vim.keymap.set('n', '<localleader>d', vim.diagnostic.open_float, bufopts)
---end
---  -- Setup lspconfig.
---local capabilities = require('cmp_nvim_lsp').default_capabilities(
---  ---@diagnostic disable-next-line: undefined-global
---  vim.lsp.protocol.make_client_capabilities()
---)
----- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
---require('lspconfig')['pyright'].setup {
---  capabilities = capabilities,
---  on_attach = on_attach,
---  filetypes = { "python" }
---}
---require'lspconfig'.pylsp.setup{
---  on_attach=on_attach,
---  capabilities=capabilities,
---  filetypes = { "python" },
---  settings = {
---    pylsp = {
---      configurationSources = { "flake8" },
---      plugins = {
---        pycodestyle = { enabled = false },
---        flake8 = { enabled = true, ignore = {"E203"}, maxLineLength = 99 },
---        -- pylsp_mypy = { enabled = true, live_mode = false },  -- doesn't work for some reason
---        -- pyls_mypy = { enabled = true, live_mode = false },
---        -- mypy = { enabled = true, live_mode = false },
---      },
---    }
---  }
---}

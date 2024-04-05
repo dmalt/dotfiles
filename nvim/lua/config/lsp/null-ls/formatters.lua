@@ -28,7 +28,7 @@ function M.setup(_, bufnr)
   local filetype = api.nvim_buf_get_option(bufnr, "filetype")
 
   if M.has_formatter(filetype) then
-    vim.keymap.set('n', "<leader>af", function() vim.schedule(M.format) end, {desc = "Autoformat"})
+    vim.keymap.set('n', "<leader>a", function() vim.schedule(M.format) end, {desc = "Autoformat"})
   end
 end
 

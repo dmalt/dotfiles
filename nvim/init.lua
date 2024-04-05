@@ -1,6 +1,6 @@
-require("settings")
-require("mappings")
-require("plugins")
-require("colors")
+require 'settings'
+require 'mappings'
+require 'plugins'
+require 'colors'
 
-require("plugins_config/treesitter_config")
+-- require("plugins_config/treesitter_config")
