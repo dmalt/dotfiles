@@ -28,14 +28,9 @@ done
 
 ./install_oh_my_zsh.sh
 
-# Install Vundle for vim
-if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]
-then
-    git clone https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
-fi
 
 # make symbolic links
-./make_links.sh
+# ./make_links.sh
 
 # install fzf
 if [ ! -d "$HOME/.fzf" ]

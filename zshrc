@@ -8,6 +8,7 @@ ZSH_THEME="pure_dmalt"
 plugins=(tmux git pip python web-search cp colorize zsh-autosuggestions z safe-paste zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+export TERM="xterm-256color"
 
 # ------------ My changes -------- #
 bindkey '^[[A' up-line-or-search
@@ -33,14 +34,14 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/dmalt/Applications/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/ubuntu/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/dmalt/Applications/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/dmalt/Applications/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/ubuntu/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/ubuntu/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/dmalt/Applications/miniconda3/bin:$PATH"
+        export PATH="/home/ubuntu/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup

@@ -1,6 +1,6 @@
 local set = vim.opt  ---@diagnostic disable-line: undefined-global
 local g = vim.g  ---@diagnostic disable-line: undefined-global
-Line_length = 99
+Line_length = 88
 
 set.tabstop = 4
 set.shiftwidth = 4

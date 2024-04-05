@@ -17,6 +17,7 @@ if [ -L "$HOME/.config/tmux" ] || [ -d "$HOME/.config/tmux" ]
 then
     rm -r "$HOME/.config/tmux"
 fi
+mkdir "$HOME/.config/tmux"
 ln -sfv "$DOTFILES/tmux.conf"             "$HOME/.config/tmux/tmux.conf"
 
 if [ -L "$HOME/.config/ranger" ] || [ -d "$HOME/.config/ranger" ]

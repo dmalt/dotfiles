@@ -94,10 +94,7 @@ return require('packer').startup(function(use)
   }
   use { 'nvim-treesitter/nvim-treesitter' }
   use { 'lervag/vimtex' }
-  use {
-    "lukas-reineke/indent-blankline.nvim",
-    config = function() require('indent_blankline').setup {show_current_context = true} end
-  }
+  use { "lukas-reineke/indent-blankline.nvim" }
   use {
     'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end
     -- tag = 'release' -- To use the latest release
