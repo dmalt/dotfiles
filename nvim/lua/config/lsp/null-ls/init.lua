@@ -29,7 +29,7 @@ local sources = {
   -- diagnostics
   b.diagnostics.write_good,
   b.diagnostics.markdownlint,
-  -- b.diagnostics.eslint_d,
+  b.diagnostics.eslint,
   b.diagnostics.flake8.with({
     extra_args = { "--ignore",  "E203,W503,E704", "--max-line-length", "88" }
   }),

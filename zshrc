@@ -1,7 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-export DOTFILES=$HOME/.dotfiles
-export DOTFILES_LOCAL=$HOME/.dotfiles_local
+export DOTFILES=$HOME/.dotfiles export DOTFILES_LOCAL=$HOME/.dotfiles_local
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="pure_dmalt"
 # Add wisely, as too many plugins slow down shell startup.
@@ -43,16 +42,18 @@ else
     else
         export PATH="/home/ubuntu/miniconda3/bin:$PATH"
     fi
+    unset __conda_setup
+    # <<< conda initialize <<<
 fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 bindkey "^o" autosuggest-accept # map ctrl+i to accept zsh autosuggestions
 
-export PATH="$HOME/.local/bin:$PATH"
-
+# export PATH="$HOME/.local/bin:$PATH"
+# export PATH="/opt/homebrew/bin:$PATH"
 if [ -f $DOTFILES_LOCAL/zshrc_local ]; then
     source $DOTFILES_LOCAL/zshrc_local
 fi
+
+export PATH="/Users/dmitriialtukhov/.local/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

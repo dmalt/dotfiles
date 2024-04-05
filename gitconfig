@@ -11,7 +11,11 @@
     co = checkout
     cob = checkout -b
     la = "!git config -l | grep alias | cut -c 7-"
+    wa = worktree add
+    wr = worktree remove
 [http]
     sslverify = false
 [credentials]
 	helper = store
+[push]
+    autoSetupRemote = true

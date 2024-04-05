@@ -38,6 +38,11 @@ local function lsp_client(msg)
   -- return [[hello, beach]]
 end
 
+local function cwd()
+  local path = vim.fn.getcwd()
+  return '~' .. string.sub(path, #vim.env.HOME + 1)
+end
+
 
 function M.setup()
   -- local gps = require "nvim-gps"
@@ -74,7 +79,7 @@ function M.setup()
         --   color = { fg = colors.green },
         -- },
       },
-      lualine_x = { "filename", "encoding", "fileformat", "filetype" },
+      lualine_x = { cwd },
       lualine_y = { "progress" },
       lualine_z = { "location" },
     },

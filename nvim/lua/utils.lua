@@ -17,9 +17,9 @@ function M.t(str)
 end
 
 function M.log(msg, hl, name)
-  name = name or "Neovim"
-  hl = hl or "Todo"
-  vim.api.nvim_echo({ { name .. ": ", hl }, { msg } }, true, {})
+  name = name or 'Neovim'
+  hl = hl or 'Todo'
+  vim.api.nvim_echo({ { name .. ': ', hl }, { msg } }, true, {})
 end
 
 function M.warn(msg, name)
@@ -35,26 +35,28 @@ function M.info(msg, name)
 end
 
 function M.dump(o)
-   if type(o) == 'table' then
-      local s = '{ '
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. dump(v) .. ','
+  if type(o) == 'table' then
+    local s = '{ '
+    for k, v in pairs(o) do
+      if type(k) ~= 'number' then
+        k = '"' .. k .. '"'
       end
-      return s .. '} '
-   else
-      return tostring(o)
-   end
+      s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
+    end
+    return s .. '} '
+  else
+    return tostring(o)
+  end
 end
 
 function M.visual_send()
-    if vim.bo.filetype == "python" then
-        vim.api.nvim_feedkeys('"+y', "v", true)
-        require("toggleterm").exec("%paste", 1)
-    else
-        -- fallback doesn't work :/
-        require("toggleterm").send_lines_to_terminal("visual_selection", true, "1")
-    end
+  if vim.bo.filetype == 'python' then
+    vim.api.nvim_feedkeys('"+y', 'v', true)
+    require('toggleterm').exec('%paste', 1)
+  else
+    -- fallback doesn't work :/
+    require('toggleterm').send_lines_to_terminal('visual_selection', true, '1')
+  end
 end
 
 return M
