@@ -15,6 +15,7 @@ require('lazy').setup {
   'tpope/vim-fugitive',
   -- 'michaeljsmith/vim-indent-object',
   -- 'tommcdo/vim-exchange',
+  require 'plugins.telescope',
   {
     'haya14busa/vim-asterisk',
     config = function()
@@ -161,37 +162,10 @@ require('lazy').setup {
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons' }, -- optional, for file icon
     -- tag = 'nightly', -- optional, updated every week. (see issue #1193)
-    config = function() require('nvim-tree').setup { view = {width = 50} } end
-  }
-
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && yarn install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-    ft = { "markdown" },
-  })
-
-  use { 'nvim-lua/plenary.nvim' }
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires =  'nvim-lua/plenary.nvim'
-  }
-  use { 'nvim-treesitter/nvim-treesitter' }
-  use { 'lervag/vimtex' }
-  use { "lukas-reineke/indent-blankline.nvim" }
-  use {
-    'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end
-    -- tag = 'release' -- To use the latest release
-  }
-  use { 'kevinhwang91/rnvimr' }
-  use { "untitled-ai/jupyter_ascending.vim" }
-  use { "nvim-treesitter/playground" }
-  use { "Integralist/vim-mypy" }
-  use {
-    "sainnhe/everforest",
     config = function()
-      vim.cmd 'colorscheme onedark'
-    end,
+      require('nvim-tree').setup { view = { width=50 } }
+      vim.keymap.set('n', '<leader>no', require('nvim-tree.api').tree.open, { desc = '[N]vim-tree [O]pen' })
+    end
   },
 
   -- {
@@ -200,12 +174,12 @@ require('lazy').setup {
   --     vim.cmd 'colorscheme rose-pine-moon'
   --   end,
   -- },
-  --  {
-  --   "sainnhe/everforest",
-  --   config = function()
-  --     vim.cmd "colorscheme everforest"
-  --   end,
-  -- }
+   {
+    "sainnhe/everforest",
+    config = function()
+      vim.cmd "colorscheme everforest"
+    end,
+  },
   {
     'epwalsh/obsidian.nvim',
     event = 'BufReadPre ' .. vim.fn.expand '~' .. '/Documents/notes/**.md',
