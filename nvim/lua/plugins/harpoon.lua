@@ -9,7 +9,7 @@ return {
     harpoon:setup()
     -- REQUIRED
 
-    vim.keymap.set('n', '<C-,>', function()
+    vim.keymap.set({ 'n', 't' }, '<C-,>', function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end)
     vim.keymap.set('n', '<LocalLeader>m', function()
@@ -24,7 +24,7 @@ return {
     vim.keymap.set('n', '<LocalLeader>d', function()
       harpoon:list():select(3)
     end)
-    vim.keymap.set('n', '<LocalLeader>;', function()
+    vim.keymap.set('n', '<LocalLeader>f', function()
       harpoon:list():select(4)
     end)
   end,

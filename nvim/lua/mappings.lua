@@ -96,4 +96,12 @@ map({ 'n', 'v', 'o' }, '#', '<Plug>(asterisk-gz*)', { noremap = false })
 -- Toggle previous & next buffers stored within Harpoon list
 -- vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
 -- vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
+--
 vim.keymap.set('i', '<C-c>', '<Esc>')
+
+local sync_fn = function()
+  vim.cmd 'Git push'
+  vim.cmd "TermExec cmd='git pull'"
+end
+
+map('n', '<Leader>ru', sync_fn, { desc = '[R]emote [U]pdate' })

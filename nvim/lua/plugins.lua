@@ -10,7 +10,7 @@ require('lazy').setup {
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   'tpope/vim-surround',
   'tpope/vim-commentary',
-  'tpope/vim-unimpaired',
+  -- 'tpope/vim-unimpaired',
   'tpope/vim-repeat',
   'tpope/vim-fugitive',
   -- 'michaeljsmith/vim-indent-object',
