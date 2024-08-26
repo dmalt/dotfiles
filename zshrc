@@ -54,6 +54,8 @@ if [ -f $DOTFILES_LOCAL/zshrc_local ]; then
     source $DOTFILES_LOCAL/zshrc_local
 fi
 
-export PATH="/Users/dmitriialtukhov/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PP_BACKEND_URL="http://ip-10-3-11-203.ec2.internal:8010"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+cd /home/ubuntu/code/monorepo

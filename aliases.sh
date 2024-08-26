@@ -56,3 +56,4 @@ alias yast="yandex-disk status"
 alias df='df -x"squashfs"'
 alias llh='ll -t | head'
 alias kivi='NVIM_APPNAME="kickstart.nvim" nvim'
+alias icat='kitten icat'
