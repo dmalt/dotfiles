@@ -1,84 +1,30 @@
-return { -- Autoformat
+return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
   cmd = { 'ConformInfo' },
+  keys = {
+    {
+      '<leader>f',
+      function()
+        require('conform').format { async = true, lsp_format = 'fallback' }
+      end,
+      mode = '',
+      desc = '[F]ormat buffer',
+    },
+  },
   opts = {
     notify_on_error = false,
-    format_on_save = function(bufnr)
-      -- Disable "format_on_save lsp_fallback" for languages that don't
-      -- have a well standardized coding style. You can add additional
-      -- languages here or re-enable it for the disabled ones.
-      print 'autofmt'
-      local disable_filetypes = { c = true, cpp = true }
-      return {
-        timeout_ms = 500,
-        lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-      }
-    end,
     formatters_by_ft = {
       lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
-      python = { 'isort', 'black' },
+      python = { 'ruff_format', 'ruff_fix', 'ruff_organize_imports' },
+      markdown = { 'markdownlint' },
       --
       -- You can use a sub-list to tell conform to run *until* a formatter
       -- is found.
-      -- javascript = { { "prettierd", "prettier" } },
-    },
-  },
-  keys = {
-    {
-      -- Customize or remove this keymap to your liking
-      '<leader>cf',
-      function()
-        require('conform').format { async = true, lsp_fallback = true }
-      end,
-      mode = '',
-      desc = 'Format buffer',
+      javascript = { 'prettierd', 'prettier' },
+      typescript = { 'prettierd', 'prettier' },
+      typescriptreact = { 'prettierd', 'prettier' },
     },
   },
 }
--- {
---   'stevearc/conform.nvim',
---   event = { 'BufWritePre' },
---   cmd = { 'ConformInfo' },
---   -- keys = {
---   --   {
---   --     -- Customize or remove this keymap to your liking
---   --     '<leader>cf',
---   --     function()
---   --       require('conform').format { async = true, lsp_fallback = true }
---   --     end,
---   --     mode = '',
---   --     desc = 'Format buffer',
---   --   },
---   -- },
---   -- Everything in opts will be passed to setup()
---   opts = {
---     -- Define your formatters
---     formatters_by_ft = {
---       lua = { 'stylua' },
---       python = { 'isort', 'black' },
---       javascript = { { 'prettierd', 'prettier' } },
---     },
---     -- Customize formatters
---     formatters = {
---       shfmt = {
---         prepend_args = { '-i', '2' },
---       },
---     },
---   },
---   format_on_save = function(bufnr)
---     -- Disable "format_on_save lsp_fallback" for languages that don't
---     -- have a well standardized coding style. You can add additional
---     -- languages here or re-enable it for the disabled ones.
---     local disable_filetypes = { c = true, cpp = true }
---     return {
---       timeout_ms = 500,
---       lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
---     }
---   end,
---   init = function()
---     -- If you want the formatexpr, here is the place to set it
---     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
---   end,
--- },

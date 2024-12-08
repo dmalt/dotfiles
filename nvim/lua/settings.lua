@@ -15,6 +15,7 @@ set.hidden = true
 set.ruler = false
 set.smartcase = true
 
+vim.g.have_nerd_font = true
 vim.schedule(function()
   set.clipboard = 'unnamed,unnamedplus'
 end)

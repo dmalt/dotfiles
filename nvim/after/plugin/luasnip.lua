@@ -64,12 +64,37 @@ local conds_expand = require 'luasnip.extras.conditions.expand'
 local function copy(args)
   return args[1]
 end
+
+local function date()
+  return vim.fn.trim(vim.fn.system 'date +%Y-%m-%dT%H:%M')
+end
+
+local function fname2title()
+  local fname = vim.fn.expand '%'
+  local title = fname:gsub('_', ' ')
+  title = title:gsub('^%l', string.upper)
+  title = title:gsub('.md', '')
+  return title
+end
+
 ls.add_snippets('all', {
-  s('now', {
-    f(function(args, snip, user_arg_1)
-      return vim.fn.trim(vim.fn.system 'date +%Y-%m-%dT%H:%M')
-    end, {}),
-  }),
+  s('now', t(date())),
+})
+
+ls.add_snippets('markdown', {
+  s(
+    'haha',
+    fmt(
+      [[
+        ---
+        title: {}
+        date: {}
+        tags: {}
+        ---
+    ]],
+      { i(1, fname2title()), t(date()), i(2, 'tags') }
+    )
+  ),
 })
 
 ls.add_snippets('lua', {

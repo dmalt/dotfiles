@@ -63,6 +63,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
 local sync_fn = function()
   vim.cmd 'Git push'
   vim.cmd "TermExec cmd='git pull'"
