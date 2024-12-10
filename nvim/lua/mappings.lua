@@ -1,4 +1,6 @@
 vim.g.mapleader = ' '
+vim.keymap.set('n', ',,', ',')
+vim.g.maplocalleader = ','
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
@@ -70,3 +72,6 @@ local sync_fn = function()
 end
 
 vim.keymap.set('n', '<Leader>ru', sync_fn, { desc = '[R]emote [U]pdate' })
+
+vim.keymap.set('n', '<leader><leader>x', '<cmd>source %<cr>')
+vim.keymap.set('n', '<leader>x', ':.lua<cr>')

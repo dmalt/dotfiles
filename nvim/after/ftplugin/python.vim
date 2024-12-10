@@ -1,7 +1,7 @@
 setlocal nospell
 " echom 'SUCCESS!'
 let g:python_highlight_all=1
-set cc=100
+"set cc=100
 
 " define custom mappings for the python filetype
 
