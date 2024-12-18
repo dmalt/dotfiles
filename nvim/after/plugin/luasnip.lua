@@ -83,7 +83,7 @@ ls.add_snippets('all', {
 
 ls.add_snippets('markdown', {
   s(
-    'haha',
+    'head',
     fmt(
       [[
         ---
