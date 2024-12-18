@@ -80,3 +80,17 @@ vim.keymap.set('n', '<Leader>ru', sync_fn, { desc = '[R]emote [U]pdate' })
 
 vim.keymap.set('n', '<leader><leader>x', '<cmd>source %<cr>')
 vim.keymap.set('n', '<leader>x', ':.lua<cr>')
+
+local job_id = 0
+vim.keymap.set('n', '<leader>tt', function()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd 'J'
+  vim.api.nvim_win_set_height(0, 10)
+  job_id = vim.bo.channel
+end)
+
+vim.keymap.set('n', '<leader>tm', function()
+  vim.fn.chansend(job_id, {"make\r\n"})
+end)
+
