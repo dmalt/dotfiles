@@ -52,7 +52,12 @@ vim.keymap.set('n', '<Left>', '<C-W><', { desc = 'Decrease pane size horizontall
 vim.api.nvim_create_autocmd('TermOpen', {
   desc = 'Enter insert mode for terminal right away',
   group = vim.api.nvim_create_augroup('term-open', { clear = true }),
-  command = 'startinsert',
+  -- command = 'startinsert',
+  callback = function()
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+    vim.cmd 'startinsert'
+  end,
 })
 
 -- Highlight when yanking (copying) text

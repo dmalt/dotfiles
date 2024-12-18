@@ -68,6 +68,7 @@ return { -- LSP Configuration & Plugins
         --  For example, in C this would take you to the header.
         nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
+        vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, { desc = '[S]ignature Help' })
         -- The following two autocommands are used to highlight references of the
         -- word under your cursor when your cursor rests there for a little while.
         --    See `:help CursorHold` for information about when this is executed
@@ -93,8 +94,8 @@ return { -- LSP Configuration & Plugins
     --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
     --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-
+    -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+    capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
     --
