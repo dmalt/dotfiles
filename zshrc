@@ -5,7 +5,7 @@ export DOTFILES_LOCAL=$HOME/.dotfiles_local
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="pure_dmalt"
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tmux git pip python web-search cp colorize zsh-autosuggestions z safe-paste zsh-syntax-highlighting)
+plugins=(git pip python web-search cp colorize zsh-autosuggestions safe-paste zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -50,8 +50,8 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 bindkey "^o" autosuggest-accept # map ctrl+i to accept zsh autosuggestions
 
-# export PATH="$HOME/.local/bin:$PATH"
-# export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 if [ -f $DOTFILES_LOCAL/zshrc_local ]; then
     source $DOTFILES_LOCAL/zshrc_local
 fi
@@ -60,4 +60,16 @@ fi
 export PATH="/Users/dmitriialtukhov/.local/bin:$PATH"
 export PATH="/Users/dmitriialtukhov/bin:$PATH"
 
+eval "$(zoxide init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export TEST=/Users/dmitriialtukhov
+export TEST=$HOME
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/dmitriialtukhov/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/dmitriialtukhov/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/dmitriialtukhov/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/dmitriialtukhov/google-cloud-sdk/completion.zsh.inc'; fi
+
+export AWS_PROFILE=dev
+export HISTSIZE=1000000

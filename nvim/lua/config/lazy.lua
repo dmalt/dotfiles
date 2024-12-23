@@ -30,8 +30,9 @@ require('lazy').setup {
   { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
   {
     'iamcco/markdown-preview.nvim',
-    run = 'cd app && npm install',
-    setup = function()
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = 'cd app && npm install',
+    init = function()
       vim.g.mkdp_filetypes = { 'markdown' }
     end,
     ft = { 'markdown' },

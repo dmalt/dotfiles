@@ -79,6 +79,8 @@ end
 
 ls.add_snippets('all', {
   s('now', t(date())),
+  s('wab', fmt('git wa -b sai-{}-{}-{} sai_{}_{}_{}', { i(1, '000'), i(2, 'branch'), i(3, 'name'), rep(1), rep(2), rep(3) })),
+  s('wa', fmt('git wa sai_{}_{}_{} sai-{}-{}-{} ', { rep(1), rep(2), rep(3), i(1, '000'), i(2, 'branch'), i(3, 'name') })),
 })
 
 ls.add_snippets('markdown', {
