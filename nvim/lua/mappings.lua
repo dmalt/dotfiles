@@ -38,8 +38,8 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set('i', '<C-l>', '<C-G>U<right>', { desc = 'move cursor one char to the right' })
-vim.keymap.set('n', '<tab>', '<c-^>', { desc = 'edit alt buffer' })
+-- vim.keymap.set('i', '<C-l>', '<C-G>U<right>', { desc = 'move cursor one char to the right' })
+-- vim.keymap.set('n', '<tab>', '<c-^>', { desc = 'edit alt buffer' })
 
 vim.keymap.set('n', '<Up>', '<C-W>+', { desc = 'Increase pane size vertically' })
 vim.keymap.set('n', '<Down>', '<C-W>-', { desc = 'Decrease pane size vertically' })
@@ -54,8 +54,8 @@ vim.api.nvim_create_autocmd('TermOpen', {
   group = vim.api.nvim_create_augroup('term-open', { clear = true }),
   -- command = 'startinsert',
   callback = function()
-    vim.opt.number = false
-    vim.opt.relativenumber = false
+    -- vim.opt.number = false
+    -- vim.opt.relativenumber = false
     vim.cmd 'startinsert'
   end,
 })
@@ -73,7 +73,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 local sync_fn = function()
   vim.cmd 'Git push'
-  vim.cmd "TermExec cmd='git pull'"
+  vim.fn.system('ssh ec2 -t "cd code/monorepo && git pull"')
 end
 
 vim.keymap.set('n', '<Leader>ru', sync_fn, { desc = '[R]emote [U]pdate' })
@@ -91,6 +91,5 @@ vim.keymap.set('n', '<leader>tt', function()
 end)
 
 vim.keymap.set('n', '<leader>tm', function()
-  vim.fn.chansend(job_id, {"make\r\n"})
+  vim.fn.chansend(job_id, { 'make\r\n' })
 end)
-

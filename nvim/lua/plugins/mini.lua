@@ -22,7 +22,14 @@ return { -- Collection of various small independent plugins/modules
     local statusline = require 'mini.statusline'
     -- set use_icons to true if you have a Nerd Font
     statusline.setup { use_icons = vim.g.have_nerd_font }
-
+    require('mini.comment').setup {
+      -- Enable treesitter-based commenting
+      options = {
+        custom_commentstring = function()
+          return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
+        end,
+      },
+    }
     -- You can configure sections in the statusline by overriding their
     -- default behavior. For example, here we set the section for
     -- cursor location to LINE:COLUMN

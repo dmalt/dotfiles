@@ -31,7 +31,7 @@ function mlfd {
 
 
 alias cwd='pwd | xclip'
-alias pp='ping -c3 -4 ya.ru'
+alias pp='ping -c3 google.com'
 alias kk='ll'
 
 alias wpd='pwd'
@@ -57,3 +57,7 @@ alias df='df -x"squashfs"'
 alias llh='ll -t | head'
 alias kivi='NVIM_APPNAME="kickstart.nvim" nvim'
 alias icat='kitten icat'
+
+alias ec2_status='aws status_ec2_small | jq ".Reservations[0].Instances[0].State.Name"'
+alias ec2_start="aws start_ec2_small"
+alias ec2_stop="aws stop_ec2_small"

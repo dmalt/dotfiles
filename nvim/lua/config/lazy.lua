@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   { import = 'plugins' },
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-surround',
+  -- 'tpope/vim-surround',
   -- 'tpope/vim-commentary',
   'tpope/vim-unimpaired',
   'tpope/vim-repeat',
@@ -30,7 +30,7 @@ require('lazy').setup {
   { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
   {
     'iamcco/markdown-preview.nvim',
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
     build = 'cd app && npm install',
     init = function()
       vim.g.mkdp_filetypes = { 'markdown' }
@@ -42,9 +42,26 @@ require('lazy').setup {
   {
     'L3MON4D3/LuaSnip',
     -- follow latest release.
-    tag = 'v2.*', -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- tag = 'v2.*', -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    version = 'v2.*',
     -- install jsregexp (optional!:).
     run = 'make install_jsregexp',
+  },
+  {
+    'rmagatti/auto-session',
+    lazy = false,
+
+    ---enables autocomplete for opts
+    ---@module "auto-session"
+    ---@type AutoSession.Config
+    opts = {
+      suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+      -- log_level = 'debug',
+    },
+  },
+  {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },
   -- {
   --   'VonHeikemen/lsp-zero.nvim',
