@@ -12,27 +12,18 @@ ls.config.set_config {
   -- update snippets as you type
   updateevents = 'TextChanged,TextChangedI',
 
-  -- ext_opts = {
-  --   [types.choiceNode] = {
-  --     active = {
-  --       virt_text = { { "<=", "Error" } }
-  --     }
-  --   }
-  -- }
+  ext_opts = {
+    [types.choiceNode] = {
+      active = {
+        virt_text = { { '<=', 'Error' } },
+      },
+    },
+  },
 }
 
-local map = vim.keymap.set
-map({ 'i', 's' }, '<c-k>', function()
-  print 'outside'
-  if ls.expand_or_jumpable() then
-    print 'inside'
-    ls.expand_or_jump()
-  end
-end, { silent = true })
-
-map({ 'i', 's' }, '<c-j>', function()
-  if ls.jumpable(-1) then
-    ls.jump(-1)
+vim.keymap.set({ 'i', 's' }, '<C-E>', function()
+  if ls.choice_active() then
+    ls.change_choice(1)
   end
 end, { silent = true })
 
@@ -77,10 +68,62 @@ local function fname2title()
   return title
 end
 
+local function create_branch_format(args, snip, _, user_args)
+  local count = tonumber(user_args) or tonumber(snip.captures[1])
+
+  -- Start with the fixed prefix
+  local inner = function()
+    local nodes = {}
+    table.insert(nodes, t 'git wa -b sai-')
+    table.insert(nodes, i(1, "000"))
+
+    -- Create the dynamic number of sections with insert nodes
+    for ii = 1, count do
+      table.insert(nodes, t '-')
+      table.insert(nodes, i(ii, 'word' .. ii))
+    end
+
+    -- Add the second part with references to the first parts
+    table.insert(nodes, t ' sai')
+    for ii = 1, count do
+      table.insert(nodes, t '_')
+      table.insert(nodes, rep(ii))
+    end
+    return nodes
+  end
+
+  local nodes = inner()
+  local nodes1 = inner()
+  -- local nodes1 = {t'hello', i(1, ' world')}
+  table.insert(nodes1, t " dmalt-dev")
+
+  -- Optionally add dmalt-dev
+  -- table.insert(nodes, t(" dmalt-dev"))  -- Uncomment if needed
+
+  return sn(nil, c(1, {sn(nil, nodes), sn(nil, nodes1)}))
+end
+
 ls.add_snippets('all', {
-  s('now', t(date())),
-  s('wab', fmt('git wa -b sai-{}-{}-{} sai_{}_{}_{}', { i(1, '000'), i(2, 'branch'), i(3, 'name'), rep(1), rep(2), rep(3) })),
+  s('now', f(date)),
+  s('wab', { d(1, create_branch_format, {}, {user_args={2}}) }),
+  s(
+    {
+      trig = 'wab(%d+)', -- Regex pattern that captures digits after "wab"
+      regTrig = true, -- Enable regex trigger
+    },
+    { d(1, create_branch_format) } -- Dynamic node that depends on the count
+  ),
   s('wa', fmt('git wa sai_{}_{}_{} sai-{}-{}-{} ', { rep(1), rep(2), rep(3), i(1, '000'), i(2, 'branch'), i(3, 'name') })),
+  s(
+    'trig',
+    c(1, {
+      t 'Ugh boring, a text node',
+      i(nil, 'At least I can edit something now...'),
+      f(function(args)
+        return 'Still only counts as text!!'
+      end, {}),
+    })
+  ),
 })
 
 ls.add_snippets('markdown', {
@@ -90,11 +133,11 @@ ls.add_snippets('markdown', {
       [[
         ---
         title: {}
-        date: {}
+        dates: {}
         tags: {}
         ---
     ]],
-      { i(1, fname2title()), t(date()), i(2, 'tags') }
+      { i(1, fname2title()), f(date), i(2, 'tags') }
     )
   ),
 })

@@ -1,3 +1,16 @@
+-- local live_multigrep = function(opts)
+--   opts = opts or {}
+--   opts.cwd = opts.cwd or vim.uv.cwd()
+--   local finders = require "telescope.finders"
+--   local finder = finders.new_async_job(opts) {
+--     command_generator = function (prompt)
+--       if not prompt or prompt == "" then
+--         return nil
+--     end
+--   }
+-- end
+
+
 return { -- Fuzzy Finder (files, lsp, etc)
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',
@@ -69,11 +82,17 @@ return { -- Fuzzy Finder (files, lsp, etc)
     local builtin = require 'telescope.builtin'
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-    vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = '[S]earch [F]iles' })
+    vim.keymap.set('n', '<leader><leader>', function()
+      local opts = require('telescope.themes').get_ivy()
+      builtin.find_files(opts)
+    end, { desc = '[S]earch [F]iles' })
     vim.keymap.set('n', '<leader>st', builtin.git_files, { desc = '[S]earch gi[t] files' })
     vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-    vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+    vim.keymap.set('n', '<leader>sg', function()
+      local opts = require('telescope.themes').get_ivy()
+      builtin.live_grep(opts)
+    end, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })

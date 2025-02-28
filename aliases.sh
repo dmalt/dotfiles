@@ -61,3 +61,8 @@ alias icat='kitten icat'
 alias ec2_status='aws status_ec2_small | jq ".Reservations[0].Instances[0].State.Name"'
 alias ec2_start="aws start_ec2_small"
 alias ec2_stop="aws stop_ec2_small"
+alias gt="cd `git rev-parse --show-toplevel`"
+
+alias ec2g6_status='aws status_ec2_g6 | jq ".Reservations[0].Instances[0].State.Name"'
+alias ec2g6_start="aws start_ec2_g6"
+alias ec2g6_stop="aws stop_ec2_g6"
