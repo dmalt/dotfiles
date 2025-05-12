@@ -8,10 +8,10 @@ vim.keymap.set('n', 'j', 'gj', { desc = 'move down one line, even for wrapped li
 vim.keymap.set('n', 'k', 'gk', { desc = 'move up one line, even for wrapped lines' })
 
 -- set 'very magic' option when searching
-vim.keymap.set('n', '/', '/\\v')
-vim.keymap.set('n', '?', '?\\v')
-vim.keymap.set('v', '/', '/\\v')
-vim.keymap.set('v', '?', '?\\v')
+-- vim.keymap.set('n', '/', '/\\v')
+-- vim.keymap.set('n', '?', '?\\v')
+-- vim.keymap.set('v', '/', '/\\v')
+-- vim.keymap.set('v', '?', '?\\v')
 
 vim.keymap.set('n', 'gp', '`[v`]', { desc = 'select last paste' })
 
@@ -73,7 +73,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 local sync_fn = function()
   vim.cmd 'Git push'
-  vim.fn.system('ssh ec2 -t "cd code/monorepo && git pull"')
+  vim.fn.system 'ssh ec2 -t "cd code/monorepo && git pull"'
 end
 
 vim.keymap.set('n', '<Leader>ru', sync_fn, { desc = '[R]emote [U]pdate' })
@@ -89,7 +89,20 @@ vim.keymap.set('n', '<leader>tt', function()
   vim.api.nvim_win_set_height(0, 10)
   job_id = vim.bo.channel
 end)
-
 vim.keymap.set('n', '<leader>tm', function()
   vim.fn.chansend(job_id, { 'make\r\n' })
 end)
+
+-- vim.keymap.set('i', '<ESC><ESC>', '<ESC>:w<CR>', { desc = 'Exit to Normal mode and save' })
+--
+-- vim.keymap.set('n', '<leader>rr', "*:%s//<C-R>//g", { desc = '[R]eplace' })
+-- vim.keymap.set('n', '<leader>rr', "*:%s//<C-R>=substitute(@/, '\\\\<\\\\>', '', 'g')<CR>/g", { desc = '[R]eplace' })
+vim.keymap.set('n', '<leader>rr', function()
+    local word = vim.fn.expand('<cword>')
+    vim.fn.feedkeys([[:%s/\<]] .. word .. [[\>/]] .. word, "n")
+    
+end, { desc = '[R]eplace' })
+
+
+vim.keymap.set('n', '<leader>rv', 'O<C-R>. = <C-R>"<ESC>==', { desc = '[R]efactor [V]ariable' })
+vim.keymap.set('n', '<leader>rv', 'O<C-R>. = <C-R>"<ESC>==', { desc = '[R]efactor [V]ariable' })

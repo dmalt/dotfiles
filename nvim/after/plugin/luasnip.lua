@@ -78,14 +78,14 @@ local function create_branch_format(args, snip, _, user_args)
     table.insert(nodes, i(1, "000"))
 
     -- Create the dynamic number of sections with insert nodes
-    for ii = 1, count do
+    for ii = 2, count + 1 do
       table.insert(nodes, t '-')
       table.insert(nodes, i(ii, 'word' .. ii))
     end
 
     -- Add the second part with references to the first parts
     table.insert(nodes, t ' sai')
-    for ii = 1, count do
+    for ii = 1, count + 1 do
       table.insert(nodes, t '_')
       table.insert(nodes, rep(ii))
     end

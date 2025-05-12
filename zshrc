@@ -3,9 +3,10 @@ export ZSH=$HOME/.oh-my-zsh
 export DOTFILES=$HOME/.dotfiles
 export DOTFILES_LOCAL=$HOME/.dotfiles_local
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="pure_dmalt"
+# ZSH_THEME="pure"
+ZSH_THEME=""
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip python web-search cp colorize zsh-autosuggestions safe-paste zsh-syntax-highlighting)
+plugins=(git pip web-search cp colorize zsh-autosuggestions safe-paste zsh-syntax-highlighting poetry)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -73,3 +74,8 @@ if [ -f '/Users/dmitriialtukhov/google-cloud-sdk/completion.zsh.inc' ]; then . '
 
 export AWS_PROFILE=dev
 export HISTSIZE=1000000
+
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
+autoload -U promptinit; promptinit
+prompt pure
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
