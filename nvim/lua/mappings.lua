@@ -98,11 +98,13 @@ end)
 -- vim.keymap.set('n', '<leader>rr', "*:%s//<C-R>//g", { desc = '[R]eplace' })
 -- vim.keymap.set('n', '<leader>rr', "*:%s//<C-R>=substitute(@/, '\\\\<\\\\>', '', 'g')<CR>/g", { desc = '[R]eplace' })
 vim.keymap.set('n', '<leader>rr', function()
-    local word = vim.fn.expand('<cword>')
-    vim.fn.feedkeys([[:%s/\<]] .. word .. [[\>/]] .. word, "n")
-    
+  local word = vim.fn.expand '<cword>'
+  vim.fn.feedkeys([[:%s/\<]] .. word .. [[\>/]] .. word, 'n')
 end, { desc = '[R]eplace' })
 
+vim.keymap.set('n', '<leader>rv', 'O<C-R>. = <C-R>"<ESC>==', { desc = '[R]efactor [V]ariable' })
+vim.keymap.set('n', '<leader>rv', 'O<C-R>. = <C-R>"<ESC>==', { desc = '[R]efactor [V]ariable' })
 
-vim.keymap.set('n', '<leader>rv', 'O<C-R>. = <C-R>"<ESC>==', { desc = '[R]efactor [V]ariable' })
-vim.keymap.set('n', '<leader>rv', 'O<C-R>. = <C-R>"<ESC>==', { desc = '[R]efactor [V]ariable' })
+vim.keymap.set('n', '<leader>yd', ":let @+ = expand('%:p:h')<CR>", { desc = '[Y]ank [D]ir' })
+vim.keymap.set('n', '<leader>yp', ":let @+ = expand('%:p')<CR>", { desc = '[Y]ank [P]ath' })
+vim.keymap.set('n', '<leader>yn', ":let @+ = expand('%:t')<CR>", { desc = '[Y]ank [N]ame' })
