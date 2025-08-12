@@ -15,8 +15,11 @@ return {
   ---@type blink.cmp.Config
   opts = {
     snippets = { preset = 'luasnip' },
-    keymap = { preset = 'default', ['<C-l>'] = { 'snippet_forward', 'fallback' }, ['<C-h>'] = { 'snippet_backward', 'fallback' } },
-
+    keymap = {
+      preset = 'default',
+      ['<C-l>'] = { 'snippet_forward', 'fallback' },
+      ['<C-h>'] = { 'snippet_backward', 'fallback' },
+    },
     appearance = {
       use_nvim_cmp_as_default = true,
       nerd_font_variant = 'mono',
@@ -25,9 +28,14 @@ return {
     -- default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, via `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = { 'snippets', 'lsp', 'path', 'buffer' },
       -- optionally disable cmdline completions
       -- cmdline = {},
+      providers = {
+        snippets = {
+          score_offset = 1000, -- Keep snippets prioritized during filtering
+        },
+      },
     },
 
     -- experimental signature help support
