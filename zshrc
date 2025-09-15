@@ -57,3 +57,5 @@ autoload -U promptinit; promptinit
 prompt pure
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH=~/.npm-global/bin:$PATH
+# to protect history from the cleaning tools on MacOS
+export HISTFILE="$HOME/.config/zsh_history"
