@@ -81,18 +81,6 @@ vim.keymap.set('n', '<Leader>ru', sync_fn, { desc = '[R]emote [U]pdate' })
 vim.keymap.set('n', '<leader><leader>x', '<cmd>source %<cr>')
 vim.keymap.set('n', '<leader>x', ':.lua<cr>')
 
-local job_id = 0
-vim.keymap.set('n', '<leader>tt', function()
-  vim.cmd.vnew()
-  vim.cmd.term()
-  vim.cmd.wincmd 'J'
-  vim.api.nvim_win_set_height(0, 10)
-  job_id = vim.bo.channel
-end)
-vim.keymap.set('n', '<leader>tm', function()
-  vim.fn.chansend(job_id, { 'make\r\n' })
-end)
-
 -- vim.keymap.set('i', '<ESC><ESC>', '<ESC>:w<CR>', { desc = 'Exit to Normal mode and save' })
 --
 -- vim.keymap.set('n', '<leader>rr', "*:%s//<C-R>//g", { desc = '[R]eplace' })
@@ -103,8 +91,39 @@ vim.keymap.set('n', '<leader>rr', function()
 end, { desc = '[R]eplace' })
 
 vim.keymap.set('n', '<leader>rv', 'O<C-R>. = <C-R>"<ESC>==', { desc = '[R]efactor [V]ariable' })
-vim.keymap.set('n', '<leader>rv', 'O<C-R>. = <C-R>"<ESC>==', { desc = '[R]efactor [V]ariable' })
+vim.keymap.set('v', '<leader>rv', 'O<C-R>. = <C-R>"<ESC>==', { desc = '[R]efactor [V]ariable' })
 
 vim.keymap.set('n', '<leader>yd', ":let @+ = expand('%:p:h')<CR>", { desc = '[Y]ank [D]ir' })
 vim.keymap.set('n', '<leader>yp', ":let @+ = expand('%:p')<CR>", { desc = '[Y]ank [P]ath' })
 vim.keymap.set('n', '<leader>yn', ":let @+ = expand('%:t')<CR>", { desc = '[Y]ank [N]ame' })
+
+
+local function close_buffer_keep_window()
+  local buf = vim.api.nvim_get_current_buf()
+  local wins = vim.fn.win_findbuf(buf)
+
+  -- If buffer is shown in multiple windows, just switch this window
+  if #wins > 1 then
+    if vim.fn.buflisted(vim.fn.bufnr '#') == 1 then
+      vim.cmd 'buffer #'
+    else
+      vim.cmd 'enew'
+    end
+  else
+    -- Buffer only in current window, safe to delete
+    if vim.fn.buflisted(vim.fn.bufnr '#') == 1 then
+      vim.cmd 'buffer #'
+    else
+      vim.cmd 'enew'
+    end
+    vim.api.nvim_buf_delete(buf, { force = true })
+  end
+end
+
+vim.keymap.set('n', '<leader>kb', close_buffer_keep_window, { desc = '[K]ill [b]uffer, keep window' })
+
+-- Terminal in current buffer's directory
+vim.keymap.set('n', '<leader>tt', function()
+  local current_dir = vim.fn.expand('%:p:h')
+  vim.cmd('term cd ' .. vim.fn.shellescape(current_dir) .. ' && $SHELL')
+end, { desc = '[T]erminal in folder' })
