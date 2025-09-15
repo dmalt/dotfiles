@@ -16,7 +16,6 @@ bindkey '^[[B' down-line-or-search
 
 
 source "$DOTFILES/aliases.sh" # < ---- MY ALIASES
-source "$DOTFILES/functions.sh"
 
 export EDITOR=nvim
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
