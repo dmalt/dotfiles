@@ -6,7 +6,7 @@ export DOTFILES_LOCAL=$HOME/.dotfiles_local
 # ZSH_THEME="pure"
 ZSH_THEME=""
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip web-search cp colorize zsh-autosuggestions safe-paste zsh-syntax-highlighting poetry)
+plugins=(git pip cp colorize zsh-autosuggestions safe-paste zsh-syntax-highlighting poetry docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -14,40 +14,17 @@ source $ZSH/oh-my-zsh.sh
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
-# fsf_home=$HOME/.local/freesurfer
-# if [[ -d $FREESURFER_HOME ]]; then
-#     export FREESURFER_HOME=$fsf_home
-# 	source $FREESURFER_HOME/SetUpFreeSurfer.sh  >> /dev/null
-# fi
 
 source "$DOTFILES/aliases.sh" # < ---- MY ALIASES
 source "$DOTFILES/functions.sh"
 
 export EDITOR=nvim
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
-# export TZ=America/Montreal
-# export TZ=Europe/Moscow
 
 
 [ -f ~/.fzf/shell/key-bindings.zsh ] && source ~/.fzf/shell/key-bindings.zsh
 [ -f ~/.fzf/shell/completion.zsh ] && source ~/.fzf/shell/completion.zsh
 
-# if [[ -z "${CONDA_SHLVL}" ]]; then
-#     # >>> conda initialize >>>
-#     # !! Contents within this block are managed by 'conda init' !!
-#     __conda_setup="$('/Users/dmitriialtukhov/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-#     if [ $? -eq 0 ]; then
-#         eval "$__conda_setup"
-#     else
-#         if [ -f "/Users/dmitriialtukhov/miniconda3/etc/profile.d/conda.sh" ]; then
-#             . "/Users/dmitriialtukhov/miniconda3/etc/profile.d/conda.sh"
-#         else
-#             export PATH="/Users/dmitriialtukhov/miniconda3/bin:$PATH"
-#         fi
-#     fi
-#     unset __conda_setup
-#     # <<< conda initialize <<<
-# fi
 
 bindkey "^o" autosuggest-accept # map ctrl+i to accept zsh autosuggestions
 
@@ -79,3 +56,4 @@ fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
 prompt pure
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH=~/.npm-global/bin:$PATH
