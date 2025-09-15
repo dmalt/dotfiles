@@ -1,9 +1,0 @@
-# im-config(8) generated on Mon, 05 Oct 2015 17:44:04 +0300
-run_im xim
-
-xset r rate 250 60 
-
-xmodmap -e 'keycode 66 = Control_L'
-xmodmap -e 'clear Lock'
-xmodmap -e 'add Control = Control_L'
-# im-config signature: 4b162c5ea9dc78a9fd7524e0f0751a39  -
