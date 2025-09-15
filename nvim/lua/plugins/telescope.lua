@@ -60,10 +60,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
       --
-      -- defaults = { mappings = {
-      --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-      --   },
-      -- },
+      defaults = {
+        layout_strategy = 'vertical',
+        layout_config = { height = 0.95, width = 0.95 },
+      },
       -- pickers = {}
       extensions = {
         ['ui-select'] = {
@@ -77,28 +77,29 @@ return { -- Fuzzy Finder (files, lsp, etc)
     pcall(require('telescope').load_extension, 'ui-select')
 
     -- See `:help telescope.builtin`
-    local ivy_opts = require('telescope.themes').get_ivy()
+    -- local opts = require('telescope.themes').get_ivy()
+    local opts = {}
     local builtin = require 'telescope.builtin'
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
     vim.keymap.set('n', '<leader><leader>', function()
-      builtin.find_files(ivy_opts)
+      builtin.find_files(opts)
     end, { desc = '[S]earch [F]iles' })
     vim.keymap.set('n', '<leader>st', builtin.git_files, { desc = '[S]earch gi[t] files' })
     vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
     vim.keymap.set('n', '<leader>sw', function()
-      builtin.grep_string(ivy_opts)
+      builtin.grep_string(opts)
     end, { desc = '[S]earch current [W]ord' })
     vim.keymap.set('n', '<leader>sg', function()
-      builtin.live_grep(ivy_opts)
+      builtin.live_grep(opts)
     end, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', function()
-      builtin.oldfiles(ivy_opts)
+      builtin.oldfiles(opts)
     end, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader>b', function()
-      builtin.buffers(ivy_opts)
+      builtin.buffers(opts)
     end, { desc = '[ ] Find existing buffers' })
 
     -- Slightly advanced example of overriding default behavior and theme
@@ -124,5 +125,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [N]eovim files' })
     require('config.telescope.multigrep').setup()
+    require('config.telescope.monorepo').setup()
   end,
 }
