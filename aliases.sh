@@ -29,3 +29,4 @@ alias ipi="ip addr show dev wlp2s0"
 alias df='df -x"squashfs"'
 alias llh='ll -t | head'
 alias kivi='NVIM_APPNAME="kickstart.nvim" nvim'
+alias gt='cd `git rev-parse --show-toplevel`'
