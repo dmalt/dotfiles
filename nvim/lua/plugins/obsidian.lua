@@ -3,7 +3,7 @@ return {
   event = 'BufReadPre ' .. vim.fn.expand '~' .. '/Documents/notes/**.md',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'hrsh7th/nvim-cmp',
+    -- 'hrsh7th/nvim-cmp',
     'nvim-telescope/telescope.nvim',
   },
   config = function()
@@ -12,7 +12,7 @@ return {
       notes_subdir = 'zk',
 
       -- Optional, completion.
-      completion = { nvim_cmp = true },
+      -- completion = { nvim_cmp = true },
 
       -- Optional, customize how names/IDs for new notes are created.
       -- note_id_func = function(title)

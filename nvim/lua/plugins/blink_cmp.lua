@@ -28,14 +28,14 @@ return {
     -- default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, via `opts_extend`
     sources = {
-      default = { 'snippets', 'lsp', 'path', 'buffer' },
+      default = { 'lsp', 'snippets', 'path', 'buffer' },
       -- optionally disable cmdline completions
       -- cmdline = {},
-      providers = {
-        snippets = {
-          score_offset = 1000, -- Keep snippets prioritized during filtering
-        },
-      },
+      -- providers = {
+      --   snippets = {
+      --     score_offset = 100, -- Keep snippets prioritized during filtering
+      --   },
+      -- },
     },
 
     -- experimental signature help support

@@ -74,7 +74,7 @@ local function create_branch_format(args, snip, _, user_args)
   -- Start with the fixed prefix
   local inner = function()
     local nodes = {}
-    table.insert(nodes, t 'git wa -b sai-')
+    table.insert(nodes, t 'git wa -b ai-')
     table.insert(nodes, i(1, "000"))
 
     -- Create the dynamic number of sections with insert nodes
@@ -84,7 +84,7 @@ local function create_branch_format(args, snip, _, user_args)
     end
 
     -- Add the second part with references to the first parts
-    table.insert(nodes, t ' sai')
+    table.insert(nodes, t ' ai')
     for ii = 1, count + 1 do
       table.insert(nodes, t '_')
       table.insert(nodes, rep(ii))
@@ -105,7 +105,7 @@ end
 
 ls.add_snippets('all', {
   s('now', f(date)),
-  s('wab', { d(1, create_branch_format, {}, {user_args={2}}) }),
+  s('wab', { d(1, create_branch_format, {}, {user_args={3}}) }),
   s(
     {
       trig = 'wab(%d+)', -- Regex pattern that captures digits after "wab"
@@ -113,7 +113,7 @@ ls.add_snippets('all', {
     },
     { d(1, create_branch_format) } -- Dynamic node that depends on the count
   ),
-  s('wa', fmt('git wa sai_{}_{}_{} sai-{}-{}-{} ', { rep(1), rep(2), rep(3), i(1, '000'), i(2, 'branch'), i(3, 'name') })),
+  s('wa', fmt('git wa ai_{}_{}_{} ai-{}-{}-{} ', { rep(1), rep(2), rep(3), i(1, '000'), i(2, 'branch'), i(3, 'name') })),
   s(
     'trig',
     c(1, {
