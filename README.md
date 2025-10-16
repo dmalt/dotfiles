@@ -2,7 +2,6 @@
 
 Personal development environment configuration for macOS, centered around Neovim and Zsh.
 
-
 ## Installation
 
 ### Quick Setup
