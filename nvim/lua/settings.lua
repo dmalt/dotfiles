@@ -20,25 +20,27 @@ vim.schedule(function()
   set.clipboard = 'unnamed,unnamedplus'
 end)
 
--- Enable OSC 52 clipboard for seamless clipboard over SSH
-local function paste()
-  return {
-    vim.fn.split(vim.fn.getreg(''), '\n'),
-    vim.fn.getregtype(''),
+-- Enable OSC 52 clipboard only for SSH sessions
+if vim.env.SSH_CONNECTION or vim.env.SSH_TTY then
+  local function paste()
+    return {
+      vim.fn.split(vim.fn.getreg('+'), '\n'),
+      vim.fn.getregtype('+'),
+    }
+  end
+
+  vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+      ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+    },
+    paste = {
+      ['+'] = paste,
+      ['*'] = paste,
+    },
   }
 end
-
-vim.g.clipboard = {
-  name = 'OSC 52',
-  copy = {
-    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-  },
-  paste = {
-    ['+'] = paste,
-    ['*'] = paste,
-  },
-}
 
 set.splitbelow = true
 set.splitright = true
