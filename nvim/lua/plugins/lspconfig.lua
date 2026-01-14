@@ -49,8 +49,7 @@ return { -- LSP Configuration & Plugins
         nmap('<leader>ds', function()
           opts = require('telescope.themes').get_dropdown()
           require('telescope.builtin').lsp_document_symbols(opts)
-        end
-          , '[D]ocument [S]ymbols')
+        end, '[D]ocument [S]ymbols')
 
         -- Fuzzy find all the symbols in your current workspace.
         --  Similar to document symbols, except searches over your entire project.
@@ -66,7 +65,9 @@ return { -- LSP Configuration & Plugins
 
         -- Opens a popup that displays documentation about the word under your cursor
         --  See `:help K` for why this keymap.
-        nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+        nmap('K', function()
+          vim.lsp.buf.hover { border = 'rounded' }
+        end, 'Hover Documentation')
 
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header.
@@ -111,9 +112,42 @@ return { -- LSP Configuration & Plugins
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
       -- clangd = {},
-      -- gopls = {},
-      pyright = {},
-      -- rust_analyzer = {},
+      gopls = {},
+      pyright = {
+        settings = {
+          python = {
+            venvPath = '.', -- project root
+            venv = '.venv', -- the actual environment directory
+            analysis = {
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+            },
+          },
+        },
+      },
+      rust_analyzer = {
+        settings = {
+          ['rust-analyzer'] = {
+            cargo = {
+              allFeatures = true,
+              loadOutDirsFromCheck = true,
+              buildScripts = {
+                enable = true,
+              },
+            },
+            -- Add clippy lints for Rust.
+            checkOnSave = true,
+            procMacro = {
+              enable = true,
+              ignored = {
+                ['async-trait'] = { 'async_trait' },
+                ['napi-derive'] = { 'napi' },
+                ['async-recursion'] = { 'async_recursion' },
+              },
+            },
+          },
+        },
+      },
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --
       -- Some languages (like typescript) have entire language plugins that can be useful:

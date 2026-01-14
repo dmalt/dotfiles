@@ -7,8 +7,11 @@ return {
     'nvim-telescope/telescope.nvim',
   },
   config = function()
+    local vault_dir = '~/Documents/notes/'
+    local attachments_subdir = 'Files/'
+
     require('obsidian').setup {
-      dir = '~/Documents/notes/', -- no need to call 'vim.fn.expand' here
+      dir = vault_dir,
       notes_subdir = 'zk',
 
       -- Optional, completion.
@@ -44,6 +47,11 @@ return {
         -- Open the URL in the default web browser.
         vim.fn.jobstart { 'open', url } -- Mac OS
         -- vim.fn.jobstart({"xdg-open", url})  -- linux
+      end,
+
+      follow_img_func = function(img)
+        local full_path = vim.fn.expand(vault_dir) .. attachments_subdir .. img
+        vim.fn.jobstart { 'open', full_path }
       end,
 
       -- Optional, set to true if you use the Obsidian Advanced URI plugin.

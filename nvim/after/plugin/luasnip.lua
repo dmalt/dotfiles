@@ -74,7 +74,7 @@ local function create_branch_format(args, snip, _, user_args)
   -- Start with the fixed prefix
   local inner = function()
     local nodes = {}
-    table.insert(nodes, t 'git wa -b ai-')
+    table.insert(nodes, t 'git wa -b stu-')
     table.insert(nodes, i(1, "000"))
 
     -- Create the dynamic number of sections with insert nodes
@@ -113,7 +113,7 @@ ls.add_snippets('all', {
     },
     { d(1, create_branch_format) } -- Dynamic node that depends on the count
   ),
-  s('wa', fmt('git wa ai_{}_{}_{} ai-{}-{}-{} ', { rep(1), rep(2), rep(3), i(1, '000'), i(2, 'branch'), i(3, 'name') })),
+  s('wa', fmt('git wa ai_{}_{}_{} stu-{}-{}-{} ', { rep(1), rep(2), rep(3), i(1, '000'), i(2, 'branch'), i(3, 'name') })),
   s(
     'trig',
     c(1, {

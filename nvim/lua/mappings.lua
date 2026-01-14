@@ -24,10 +24,19 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>cq', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('i', 'jk', 'Esc', { desc = 'Exit to normal mode' })
 
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit to normal mode' })
+-- vim.keymap.set('t', 'jk', '<C-\\><C-n>', { desc = 'Exit to normal mode' })
+
+-- Terminal mode split navigation
+vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = 'Move to left window from terminal' })
+vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Move to lower window from terminal' })
+vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move to upper window from terminal' })
+vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move to right window from terminal' })
+vim.keymap.set('t', 'jk', '<C-\\><C-n>', { desc = 'Exit to normal mode' })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -97,7 +106,6 @@ vim.keymap.set('n', '<leader>yd', ":let @+ = expand('%:p:h')<CR>", { desc = '[Y]
 vim.keymap.set('n', '<leader>yp', ":let @+ = expand('%:p')<CR>", { desc = '[Y]ank [P]ath' })
 vim.keymap.set('n', '<leader>yn', ":let @+ = expand('%:t')<CR>", { desc = '[Y]ank [N]ame' })
 
-
 local function close_buffer_keep_window()
   local buf = vim.api.nvim_get_current_buf()
   local wins = vim.fn.win_findbuf(buf)
@@ -124,6 +132,6 @@ vim.keymap.set('n', '<leader>kb', close_buffer_keep_window, { desc = '[K]ill [b]
 
 -- Terminal in current buffer's directory
 vim.keymap.set('n', '<leader>tt', function()
-  local current_dir = vim.fn.expand('%:p:h')
+  local current_dir = vim.fn.expand '%:p:h'
   vim.cmd('term cd ' .. vim.fn.shellescape(current_dir) .. ' && $SHELL')
 end, { desc = '[T]erminal in folder' })

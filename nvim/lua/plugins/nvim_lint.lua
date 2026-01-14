@@ -9,7 +9,25 @@ return {
         markdown = { 'markdownlint' },
         python = { 'mypy' },
       }
-    -- Set pylint to work in virtualenv
+
+      -- Configure mypy to use venv installation instead of system/Mason
+      local venv = os.getenv('VIRTUAL_ENV')
+      if venv then
+        local venv_mypy = venv .. '/bin/mypy'
+        if vim.fn.executable(venv_mypy) == 1 then
+          lint.linters.mypy.cmd = venv_mypy
+          -- Make error code optional so reveal_type() notes work
+          lint.linters.mypy.parser = require('lint.parser').from_pattern(
+            '([^:]+):(%d+):(%d+):(%d+):(%d+): (%a+): (.-)%s*%[?([%a-]*)%]?$',
+            { 'file', 'lnum', 'col', 'end_lnum', 'end_col', 'severity', 'message', 'code' },
+            { error = vim.diagnostic.severity.ERROR, warning = vim.diagnostic.severity.WARN, note = vim.diagnostic.severity.HINT },
+            { source = 'mypy' },
+            { end_col_offset = 0 }
+          )
+        end
+      end
+
+    -- Set mypy to work in virtualenv
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
       -- lint.linters_by_ft = lint.linters_by_ft or {}

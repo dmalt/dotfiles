@@ -18,7 +18,7 @@ return {
       lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
       python = { 'ruff_format', 'ruff_fix', 'ruff_organize_imports' },
-      markdown = { 'markdownlint' },
+      markdown = { 'markdownlint', 'prettierd', 'prettier' },
       --
       -- You can use a sub-list to tell conform to run *until* a formatter
       -- is found.
@@ -26,6 +26,7 @@ return {
       typescript = { 'prettierd', 'prettier' },
       json = { 'prettierd', 'prettier' },
       typescriptreact = { 'prettierd', 'prettier' },
+      rust = {'rustfmt'},
     },
   },
 }

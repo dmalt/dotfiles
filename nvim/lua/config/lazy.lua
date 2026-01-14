@@ -62,7 +62,7 @@ require('lazy').setup {
   {
     'rmagatti/auto-session',
     lazy = false,
-    enabled=false,
+    enabled = false,
 
     ---enables autocomplete for opts
     ---@module "auto-session"
@@ -76,6 +76,7 @@ require('lazy').setup {
     'JoosepAlviste/nvim-ts-context-commentstring',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },
+  { 'rust-lang/rust.vim' },
   -- {
   --   'VonHeikemen/lsp-zero.nvim',
   --   branch = 'v1.x',
