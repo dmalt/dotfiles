@@ -6,7 +6,7 @@ export DOTFILES_LOCAL=$HOME/.dotfiles_local
 # ZSH_THEME="pure"
 ZSH_THEME=""
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip cp colorize zsh-autosuggestions safe-paste zsh-syntax-highlighting poetry docker-compose)
+plugins=(git pip cp colorize zsh-autosuggestions safe-paste zsh-syntax-highlighting poetry docker-compose docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -58,3 +58,6 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH=~/.npm-global/bin:$PATH
 # to protect history from the cleaning tools on MacOS
 export HISTFILE="$HOME/.config/zsh_history"
+
+# opencode
+export PATH=/Users/dmitriialtukhov/.opencode/bin:$PATH
