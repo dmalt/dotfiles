@@ -20,6 +20,12 @@ cd .dotfiles
 chsh -s $(which zsh)
 # Logout and log back in
 ```
+This command will typically ask for password. An alternative with sudo, that typically
+works is:
+
+```bash
+sudo chsh -s $(which zsh) $USER
+```
 
 ### Create Symbolic Links
 
