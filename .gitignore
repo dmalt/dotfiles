@@ -9,3 +9,4 @@ package.json
 node_modules
 ranger/plugins
 ranger/tagged
+.DS_Store
