@@ -24,7 +24,9 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>cq', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-vim.keymap.set('i', 'jk', 'Esc<CR>', { desc = 'Exit to normal mode' })
+vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit to normal mode' })
+
+vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save' })
 
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
@@ -39,7 +41,6 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit to normal mode' 
 -- vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move to upper window from terminal' })
 -- vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move to right window from terminal' })
 vim.keymap.set('t', 'jk', '<C-\\><C-n>', { desc = 'Exit to normal mode' })
-
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -109,7 +110,7 @@ vim.keymap.set('n', '<leader>yd', ":let @+ = expand('%:p:h')<CR>", { desc = '[Y]
 vim.keymap.set('n', '<leader>yp', ":let @+ = expand('%:p')<CR>", { desc = '[Y]ank [P]ath' })
 vim.keymap.set('n', '<leader>yn', ":let @+ = expand('%:t')<CR>", { desc = '[Y]ank [N]ame' })
 -- skip the '> ' terminal symbol on the left when copying the command
-vim.keymap.set('n', '<leader>yy', "0lly$", { desc = '[Y]ank Command' })
+vim.keymap.set('n', '<leader>yy', '0lly$', { desc = '[Y]ank Command' })
 
 local function close_buffer_keep_window()
   local buf = vim.api.nvim_get_current_buf()
