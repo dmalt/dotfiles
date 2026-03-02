@@ -15,6 +15,20 @@ return { -- LSP Configuration & Plugins
     { 'folke/lazydev.nvim', opts = {} },
   },
   config = function()
+    -- Fix backslash-escaped punctuation in hover/signature docs
+    -- (e.g., \[T.FailNow] from gopls, argument\_default from pyright)
+    local orig_open_floating_preview = vim.lsp.util.open_floating_preview
+
+    ---@diagnostic disable-next-line: duplicate-set-field
+    vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
+      if syntax == 'markdown' then
+        for i, line in ipairs(contents) do
+          contents[i] = line:gsub('\\(%p)', '%1')
+        end
+      end
+      return orig_open_floating_preview(contents, syntax, opts, ...)
+    end
+
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
@@ -190,16 +204,13 @@ return { -- LSP Configuration & Plugins
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-          -- This handles overriding only values explicitly passed
-          -- by the server configuration above. Useful when disabling
-          -- certain features of an LSP (for example, turning off formatting for tsserver)
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          vim.lsp.config(server_name, server)
-        end,
-      },
+      ensure_installed = vim.tbl_keys(servers),
     }
+
+    for server_name, server_opts in pairs(servers) do
+      server_opts.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server_opts.capabilities or {})
+      vim.lsp.config(server_name, server_opts)
+    end
+    vim.lsp.enable(vim.tbl_keys(servers))
   end,
 }
