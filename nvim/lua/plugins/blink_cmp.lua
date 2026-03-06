@@ -17,6 +17,8 @@ return {
     snippets = { preset = 'luasnip' },
     keymap = {
       preset = 'default',
+      ['<Tab>'] = { 'fallback' },
+      ['<S-Tab>'] = { 'fallback' },
       ['<C-l>'] = { 'snippet_forward', 'fallback' },
       ['<C-h>'] = { 'snippet_backward', 'fallback' },
     },
