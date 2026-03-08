@@ -61,3 +61,5 @@ export HISTFILE="$HOME/.config/zsh_history"
 
 # opencode
 export PATH=/Users/dmitriialtukhov/.opencode/bin:$PATH
+
+export PATH="$HOME/go/bin:$PATH"
