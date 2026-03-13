@@ -50,6 +50,7 @@ if [ -f '/Users/dmitriialtukhov/google-cloud-sdk/completion.zsh.inc' ]; then . '
 
 export AWS_PROFILE=dev
 export HISTSIZE=1000000
+export SAVEHIST=1000000
 
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
