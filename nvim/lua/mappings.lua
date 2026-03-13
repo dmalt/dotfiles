@@ -141,3 +141,6 @@ vim.keymap.set('n', '<leader>tt', function()
   local current_dir = vim.fn.expand '%:p:h'
   vim.cmd('term cd ' .. vim.fn.shellescape(current_dir) .. ' && $SHELL')
 end, { desc = '[T]erminal in folder' })
+
+
+vim.keymap.set('n', '<leader>m', "i<CR><ESC>O")
