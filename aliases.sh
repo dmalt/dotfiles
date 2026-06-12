@@ -53,6 +53,9 @@ function splitflac() {
 
     mkdir -p tracks
     shnsplit -f "$cue" -o "flac flac --best -o %f -" -t "%n - %t" -d tracks "$flac" || return 1
+    # drop the pre-track-1 stub shnsplit emits when the cue has INDEX 00 before track 1,
+    # otherwise cuetag.sh sees N+1 files and tags every track off-by-one.
+    rm -f "tracks/00 - pregap.flac"
     cuetag.sh "$cue" tracks/*.flac
 
     # carry embedded cover art from source flac over to each split
