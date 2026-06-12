@@ -19,8 +19,8 @@ return {
       preset = 'default',
       ['<Tab>'] = { 'fallback' },
       ['<S-Tab>'] = { 'fallback' },
-      ['<C-l>'] = { 'snippet_forward', 'fallback' },
-      ['<C-h>'] = { 'snippet_backward', 'fallback' },
+      ['<C-f>'] = { 'snippet_forward', 'fallback' },
+      ['<C-b>'] = { 'snippet_backward', 'fallback' },
     },
     appearance = {
       use_nvim_cmp_as_default = true,

@@ -73,8 +73,9 @@ require('lazy').setup {
     },
   },
   {
-    'JoosepAlviste/nvim-ts-context-commentstring',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    'folke/ts-comments.nvim',
+    opts = {},
+    event = 'VeryLazy',
   },
   { 'rust-lang/rust.vim' },
   -- {
