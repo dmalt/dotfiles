@@ -48,7 +48,6 @@ if [ -f '/Users/dmitriialtukhov/google-cloud-sdk/path.zsh.inc' ]; then . '/Users
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/dmitriialtukhov/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/dmitriialtukhov/google-cloud-sdk/completion.zsh.inc'; fi
 
-export AWS_PROFILE=dev
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 

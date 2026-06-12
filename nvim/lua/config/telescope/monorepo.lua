@@ -77,9 +77,9 @@ local function pyproject_picker(opts)
 
           if selection and selection.value and selection.value.path then
             vim.schedule(function()
-              builtin.live_grep {
+              builtin.find_files {
                 cwd = selection.value.path,
-                prompt_title = 'Search in ' .. vim.fn.fnamemodify(selection.value.path, ':t'),
+                prompt_title = 'Files in ' .. vim.fn.fnamemodify(selection.value.path, ':t'),
               }
             end)
           end
@@ -91,9 +91,9 @@ local function pyproject_picker(opts)
 
           if selection and selection.value and selection.value.path then
             vim.schedule(function()
-              builtin.find_files {
+              builtin.live_grep {
                 cwd = selection.value.path,
-                prompt_title = 'Files in ' .. vim.fn.fnamemodify(selection.value.path, ':t'),
+                prompt_title = 'Search in ' .. vim.fn.fnamemodify(selection.value.path, ':t'),
               }
             end)
           end

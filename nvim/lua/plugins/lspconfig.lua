@@ -15,20 +15,6 @@ return { -- LSP Configuration & Plugins
     { 'folke/lazydev.nvim', opts = {} },
   },
   config = function()
-    -- Fix backslash-escaped punctuation in hover/signature docs
-    -- (e.g., \[T.FailNow] from gopls, argument\_default from pyright)
-    local orig_open_floating_preview = vim.lsp.util.open_floating_preview
-
-    ---@diagnostic disable-next-line: duplicate-set-field
-    vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
-      if syntax == 'markdown' then
-        for i, line in ipairs(contents) do
-          contents[i] = line:gsub('\\(%p)', '%1')
-        end
-      end
-      return orig_open_floating_preview(contents, syntax, opts, ...)
-    end
-
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
@@ -139,6 +125,13 @@ return { -- LSP Configuration & Plugins
           },
         },
       },
+      -- ty = {
+      --   settings = {
+      --     ty = {
+      --
+      --     }
+      --   }
+      -- },
       rust_analyzer = {
         settings = {
           ['rust-analyzer'] = {
